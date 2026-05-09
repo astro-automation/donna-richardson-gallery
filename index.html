@@ -11,8 +11,10 @@
 
 <style>
 :root{
-  --ink:#030303;
-  --black:#050506;
+  --ink:#461257;
+  --black:#12051a;
+  --royal-purple:#461257;
+  --deep-purple:#2a0a36;
   --charcoal:#101013;
   --wall:#17161a;
   --wall-2:#202027;
@@ -39,10 +41,10 @@
 html{scroll-behavior:smooth}
 body{
   background:
-    radial-gradient(circle at 22% 5%, rgba(240,79,191,.12), transparent 34%),
-    radial-gradient(circle at 78% 18%, rgba(31,182,206,.11), transparent 32%),
-    radial-gradient(circle at 50% 100%, rgba(198,167,102,.08), transparent 34%),
-    var(--ink);
+    radial-gradient(circle at 20% 4%, rgba(240,79,191,.18), transparent 34%),
+    radial-gradient(circle at 82% 18%, rgba(31,182,206,.12), transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(198,167,102,.10), transparent 34%),
+    linear-gradient(180deg,#461257 0%,#2a0a36 58%,#16041f 100%);
   color:var(--cream);
   font-family:var(--sans);
   overflow-x:hidden;
@@ -99,6 +101,10 @@ button{font-family:inherit;color:inherit}
   white-space:nowrap;
 }
 .brand em{font-style:italic;color:var(--gold);font-weight:300}
+.brand span{display:block;color:var(--gold-soft);line-height:.92}
+.brand small{display:block;margin-top:6px;font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,236,223,.7)}
+.nav-cta{border:1px solid rgba(198,167,102,.72);padding:12px 22px;font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--gold-soft);background:rgba(70,18,87,.22);box-shadow:0 12px 40px rgba(0,0,0,.3);transition:.35s}
+.nav-cta:hover{background:rgba(198,167,102,.12);transform:translateY(-2px)}
 .nav-links{display:flex;gap:clamp(14px,2vw,34px);list-style:none;align-items:center}
 .nav-links a{
   font-size:11px;
@@ -183,185 +189,195 @@ button{font-family:inherit;color:inherit}
   box-shadow:0 22px 70px rgba(198,167,102,.14);
 }
 
-/* HERO CINEMATIC GALLERY ROOM */
+/* HERO CINEMATIC REAL-LIFE MOCKUP GALLERY ROOM */
 .hero{
   min-height:100vh;
   position:relative;
   overflow:hidden;
   display:flex;
-  align-items:flex-end;
+  align-items:stretch;
   justify-content:center;
-  padding:120px clamp(16px,4vw,54px) 32px;
+  padding:0;
   background:
-    radial-gradient(circle at 48% 5%, rgba(255,255,255,.13), transparent 27%),
-    radial-gradient(circle at 5% 70%, rgba(31,182,206,.16), transparent 36%),
-    radial-gradient(circle at 90% 70%, rgba(240,79,191,.13), transparent 32%),
-    linear-gradient(180deg,#070708 0%,#121116 45%,#080809 100%);
-}
-.hero video.hero-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:.18;
-  filter:saturate(1.05) contrast(1.1) blur(.1px);
-  mix-blend-mode:screen;
+    radial-gradient(circle at 50% 8%,rgba(255,230,170,.18),transparent 22%),
+    linear-gradient(180deg,#24110a 0%,#2b1b13 35%,#120b08 100%);
 }
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,.05) 34%,rgba(0,0,0,.75) 100%),
-    radial-gradient(ellipse at 50% 32%, rgba(255,255,255,.12), transparent 44%);
   z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.18) 62%,rgba(0,0,0,.65) 100%),
+    radial-gradient(ellipse at 50% 44%,rgba(255,222,158,.20),transparent 45%),
+    radial-gradient(ellipse at 8% 58%,rgba(0,0,0,.48),transparent 34%),
+    radial-gradient(ellipse at 94% 56%,rgba(0,0,0,.42),transparent 36%);
 }
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  background:radial-gradient(ellipse at 50% 50%,transparent 48%,rgba(0,0,0,.38) 100%);
+  mix-blend-mode:multiply;
+}
+.hero-video{display:none}
 .hero-room{
-  width:min(1500px,100%);
-  min-height:72vh;
   position:relative;
   z-index:2;
-  perspective:1500px;
-  display:grid;
-  grid-template-rows:1fr auto;
+  width:100%;
+  min-height:100vh;
+  perspective:1300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:118px clamp(18px,3vw,54px) 64px;
 }
 .gallery-wall{
   position:relative;
-  min-height:64vh;
-  border-radius:30px 30px 8px 8px;
-  overflow:hidden;
+  width:min(1390px,94vw);
+  height:min(690px,68vh);
+  min-height:590px;
+  border-radius:0 0 4px 4px;
+  overflow:visible;
   transform-style:preserve-3d;
   background:
-    radial-gradient(circle at 50% 4%, rgba(255,255,255,.12), transparent 18%),
-    linear-gradient(100deg,rgba(255,255,255,.055),rgba(255,255,255,.015) 45%,rgba(255,255,255,.06)),
-    linear-gradient(180deg,#1b1a1f,#101014 58%,#09090b);
-  border:1px solid rgba(255,255,255,.1);
+    radial-gradient(ellipse at 50% 4%,rgba(246,219,157,.38),transparent 33%),
+    radial-gradient(ellipse at 22% 18%,rgba(198,167,102,.18),transparent 20%),
+    radial-gradient(ellipse at 78% 18%,rgba(198,167,102,.17),transparent 22%),
+    linear-gradient(90deg,#4b372b 0%,#816d5d 22%,#96806d 50%,#7c6757 78%,#463226 100%);
+  border-left:1px solid rgba(255,255,255,.08);
+  border-right:1px solid rgba(255,255,255,.08);
   box-shadow:
-    inset 0 0 120px rgba(0,0,0,.72),
-    0 42px 110px rgba(0,0,0,.7);
+    inset 0 60px 90px rgba(0,0,0,.38),
+    inset 0 -70px 90px rgba(0,0,0,.40),
+    0 40px 100px rgba(0,0,0,.68);
 }
 .gallery-wall::before{
   content:"";
   position:absolute;
-  left:0;right:0;top:0;height:68%;
+  left:-18vw;right:-18vw;top:-118px;height:152px;
   background:
-    radial-gradient(ellipse at 18% 12%, rgba(198,167,102,.22), transparent 20%),
-    radial-gradient(ellipse at 50% 8%, rgba(255,255,255,.22), transparent 28%),
-    radial-gradient(ellipse at 82% 12%, rgba(31,182,206,.17), transparent 22%),
-    repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 1px,transparent 1px 90px);
-  opacity:.75;
-  pointer-events:none;
+    linear-gradient(180deg,#3a2518 0%,#21150f 100%);
+  clip-path:polygon(10% 0,90% 0,79% 100%,21% 100%);
+  box-shadow:inset 0 -40px 70px rgba(0,0,0,.56);
+  z-index:0;
 }
 .gallery-wall::after{
   content:"";
   position:absolute;
-  left:-5%;right:-5%;bottom:0;height:31%;
+  left:-18vw;right:-18vw;bottom:-136px;height:140px;
   background:
-    linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.9)),
-    linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.1),rgba(255,255,255,.04));
-  transform:skewX(-7deg);
-  transform-origin:bottom;
-  opacity:.96;
+    repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 84px),
+    linear-gradient(180deg,#6b4125 0%,#3b2214 100%);
+  transform:perspective(900px) rotateX(62deg);
+  transform-origin:top center;
+  box-shadow:0 -22px 40px rgba(0,0,0,.4),inset 0 34px 64px rgba(255,198,111,.08);
+  z-index:1;
 }
-.wall-label{
+.gallery-side{
   position:absolute;
-  left:clamp(18px,3vw,44px);
-  top:clamp(74px,10vw,108px);
-  z-index:4;
-  max-width:320px;
-  padding:18px 18px 16px;
-  border-left:1px solid rgba(198,167,102,.7);
-  background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,0));
-  backdrop-filter:blur(5px);
+  top:0;bottom:-120px;width:18vw;z-index:0;
+  background:linear-gradient(180deg,#493529,#2f2119 58%,#160f0b 100%);
+  box-shadow:inset 0 0 80px rgba(0,0,0,.45);
 }
-.wall-label h1{
-  font-family:var(--serif);
-  font-size:clamp(42px,6vw,92px);
-  line-height:.85;
-  letter-spacing:-.05em;
-  font-weight:400;
-}
-.wall-label p{
-  color:rgba(245,236,223,.76);
-  margin-top:13px;
-  font-size:14px;
-}
+.gallery-side.left{left:-18vw;transform:skewY(0deg)}
+.gallery-side.right{right:-18vw}
+.gallery-side.left::after{content:"THE JOURNEY\A THE MESSAGE\A THE MASTERPIECE";white-space:pre;position:absolute;left:9vw;top:42%;font-family:var(--serif);font-size:18px;line-height:1.55;letter-spacing:.06em;color:rgba(36,20,12,.9);text-transform:uppercase}
+.gallery-side.right::after{content:"ART THAT\A INSPIRES.\A STORIES THAT\A CONNECT.\A LEGACY THAT\A REMAINS.";white-space:pre;position:absolute;right:7vw;top:34%;text-align:center;font-size:16px;line-height:1.36;letter-spacing:.1em;color:rgba(42,24,14,.88);font-weight:700;text-transform:uppercase}
+.track-light{position:absolute;top:-86px;width:10px;height:74px;background:#0b0908;border-radius:999px;z-index:6;box-shadow:0 20px 38px rgba(255,218,140,.20)}
+.track-light::after{content:"";position:absolute;left:50%;bottom:-10px;width:30px;height:20px;transform:translateX(-50%);background:#461257;border-radius:4px 4px 12px 12px;box-shadow:0 20px 38px rgba(255,213,132,.3)}
+.tl1{left:14%}.tl2{left:30%}.tl3{left:50%}.tl4{left:70%}.tl5{left:86%}
+.wall-label{display:none}
 .series-frame{
   position:absolute;
-  z-index:3;
+  z-index:5;
   cursor:pointer;
-  border:12px solid #12100d;
-  background:#080808;
-  box-shadow:
-    0 22px 60px rgba(0,0,0,.76),
-    inset 0 0 0 2px rgba(198,167,102,.5),
-    inset 0 0 0 7px rgba(255,255,255,.08);
+  border:0;
+  padding:0;
+  overflow:visible;
+  background:transparent;
   transition:.45s cubic-bezier(.2,.8,.2,1);
+  transform:translateZ(0);
 }
-.series-frame::before{
-  content:"";
+.series-frame .frame-art{
   position:absolute;
-  inset:-18px;
-  border:1px solid rgba(198,167,102,.22);
-  pointer-events:none;
-}
-.series-frame::after{
-  content:attr(data-title);
-  position:absolute;
-  left:50%;
-  bottom:-38px;
-  transform:translateX(-50%);
-  white-space:nowrap;
-  font-size:10px;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-  color:rgba(245,236,223,.62);
+  inset:13px;
+  overflow:hidden;
+  background:#0b0a08;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.7);
 }
 .series-frame img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:saturate(1.06) contrast(1.03);
+  width:100%;height:100%;object-fit:cover;object-position:center center;
+  filter:saturate(1.05) contrast(1.02);
+  transition:transform 1.2s ease,filter .8s ease;
+}
+.series-frame .gold-frame{
+  position:absolute;inset:0;
+  border:10px solid transparent;
+  border-image:linear-gradient(135deg,#4b2e13,#d9b35c 18%,#6f4218 35%,#f0d386 52%,#6a3a13 72%,#c79a43) 1;
+  box-shadow:
+    0 20px 42px rgba(0,0,0,.62),
+    inset 0 0 0 5px rgba(45,25,10,.9),
+    inset 0 0 0 8px rgba(255,232,172,.28);
+  pointer-events:none;
+}
+.series-frame .plaque{
+  position:absolute;
+  left:50%;bottom:-34px;
+  transform:translateX(-50%);
+  min-width:112px;
+  padding:8px 14px;
+  background:linear-gradient(180deg,#f2d899,#b48636);
+  border:1px solid rgba(70,38,11,.7);
+  box-shadow:0 10px 20px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.55);
+  color:#231407;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-align:center;
+  text-transform:uppercase;
+  white-space:nowrap;
 }
 .series-frame:hover{
-  transform:translateY(-10px) scale(1.025);
-  border-color:#21180f;
-  box-shadow:
-    0 30px 90px rgba(0,0,0,.82),
-    0 0 55px rgba(240,79,191,.16),
-    inset 0 0 0 2px rgba(198,167,102,.85);
+  transform:translateY(-9px) scale(1.018);
+  filter:brightness(1.04);
 }
-.frame-children{left:22%;top:18%;width:17%;height:32%}
-.frame-music{left:44%;top:10%;width:20%;height:28%}
-.frame-icons{left:68%;top:18%;width:16%;height:34%}
-.frame-sports{left:17%;top:57%;width:21%;height:22%}
-.frame-nature{left:42%;top:50%;width:17%;height:31%}
-.frame-cigar{left:63%;top:57%;width:13%;height:26%}
-.frame-faces{left:79%;top:53%;width:13%;height:28%}
-
+.series-frame:hover img{transform:scale(1.045)}
+.series-frame:hover .gold-frame{box-shadow:0 30px 70px rgba(0,0,0,.68),0 0 48px rgba(246,219,157,.22),inset 0 0 0 6px rgba(45,25,10,.95),inset 0 0 0 9px rgba(255,232,172,.36)}
+.frame-children{left:11.2%;top:19%;width:14.2%;height:30%}
+.frame-sports{left:27.4%;top:19%;width:14.2%;height:30%}
+.frame-music{left:43.6%;top:19%;width:14.2%;height:30%}
+.frame-icons{left:59.8%;top:19%;width:14.2%;height:30%}
+.frame-cigar{left:76%;top:19%;width:14.2%;height:30%}
+.frame-faces{left:28.7%;top:60.5%;width:20%;height:22%}
+.frame-nature{left:53%;top:60.5%;width:20%;height:22%}
+.hero-plant{position:absolute;left:1.5%;bottom:-116px;width:170px;height:300px;z-index:6;background:radial-gradient(ellipse at center,rgba(0,0,0,.6),transparent 55%)}
+.hero-plant::before{content:"";position:absolute;left:48%;bottom:62px;width:34px;height:190px;background:linear-gradient(90deg,#102310,#1e3f1e,#0c180d);border-radius:60% 50% 20% 20%;box-shadow:-54px -20px 0 -18px #173117,42px -38px 0 -16px #1e3a1e,-82px -74px 0 -22px #1a391a,80px -95px 0 -24px #173317,-20px -118px 0 -20px #1f431f,34px -152px 0 -25px #183718}
+.hero-plant::after{content:"";position:absolute;left:39%;bottom:0;width:88px;height:88px;background:#0b0a09;border-radius:0 0 18px 18px;box-shadow:inset 0 12px 22px rgba(255,255,255,.04)}
+.hero-bench{position:absolute;left:50%;bottom:-108px;width:min(520px,40vw);height:64px;transform:translateX(-50%);z-index:7;background:linear-gradient(180deg,#24201d,#080707);border-radius:14px;box-shadow:0 26px 44px rgba(0,0,0,.58),inset 0 1px rgba(255,255,255,.1)}
+.hero-bench::before,.hero-bench::after{content:"";position:absolute;bottom:-56px;width:8px;height:64px;background:#6f552b}.hero-bench::before{left:12%}.hero-bench::after{right:12%}
 .hero-caption{
-  position:relative;
-  z-index:5;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:24px;
-  padding:18px clamp(4px,1vw,10px) 0;
+  position:absolute;
+  left:50%;bottom:34px;transform:translateX(-50%);
+  z-index:8;
+  display:flex;justify-content:center;align-items:center;gap:24px;
+  padding:0;
+  pointer-events:none;
 }
-.hero-caption p{
-  max-width:760px;
-  color:rgba(245,236,223,.78);
-  font-size:clamp(15px,1.25vw,20px);
-}
-.hero-caption .cta{margin-bottom:6px}
-
+.hero-caption p{display:none}
+.hero-caption .cta{pointer-events:auto;border-radius:0;border-color:rgba(246,219,157,.62);background:rgba(70,18,87,.42);backdrop-filter:blur(10px)}
+.hero-caption .cta:hover{background:rgba(81,8,126,.56)}
+.rooms,.story,.voice,.exhibitions,.collector,footer{background-color:var(--royal-purple)}
+.energy{background:radial-gradient(circle at 20% 15%,rgba(240,79,191,.15),transparent 32%),radial-gradient(circle at 80% 10%,rgba(31,182,206,.12),transparent 32%),linear-gradient(180deg,#461257,#2a0a36)}
 /* Energy section */
 .energy{
   background:
     radial-gradient(circle at 20% 15%,rgba(240,79,191,.15),transparent 32%),
     radial-gradient(circle at 80% 10%,rgba(31,182,206,.12),transparent 32%),
-    linear-gradient(180deg,#050505,#111016);
+    linear-gradient(180deg,#461257,#2a0a36);
 }
 .energy-grid{
   display:grid;
@@ -406,7 +422,7 @@ button{font-family:inherit;color:inherit}
 /* series rooms */
 .rooms{
   background:
-    linear-gradient(180deg,#0a0a0d,#121116 48%,#080809);
+    linear-gradient(180deg,#461257,#2a0a36 48%,#16041f);
   padding-top:120px;
 }
 .room-intro{
@@ -522,7 +538,7 @@ button{font-family:inherit;color:inherit}
 .story{
   background:
     radial-gradient(circle at 80% 10%, rgba(240,79,191,.12), transparent 30%),
-    linear-gradient(180deg,#050505,#111016);
+    linear-gradient(180deg,#461257,#2a0a36);
 }
 .story-grid{
   display:grid;
@@ -566,7 +582,7 @@ button{font-family:inherit;color:inherit}
 
 /* Voice / video */
 .voice{
-  background:#050505;
+  background:#461257;
   overflow:hidden;
 }
 .video-gallery{
@@ -615,7 +631,7 @@ button{font-family:inherit;color:inherit}
 .exhibitions{
   background:
     radial-gradient(circle at 15% 20%,rgba(198,167,102,.12),transparent 28%),
-    linear-gradient(180deg,#111016,#080809);
+    linear-gradient(180deg,#461257,#2a0a36);
 }
 .exhibition-grid{
   margin-top:42px;
@@ -642,7 +658,7 @@ button{font-family:inherit;color:inherit}
   background:
     radial-gradient(circle at 50% 30%,rgba(240,79,191,.16),transparent 30%),
     radial-gradient(circle at 30% 80%,rgba(31,182,206,.12),transparent 30%),
-    #050505;
+    #461257;
 }
 .collector-inner{
   max-width:980px;
@@ -654,8 +670,27 @@ footer{
   text-align:center;
   color:rgba(245,236,223,.46);
   border-top:1px solid rgba(255,255,255,.08);
-  background:#050505;
+  background:#461257;
 }
+
+
+/* automatically moving gallery sliders */
+.strip-track.auto-drift{overflow:hidden;scrollbar-width:none}
+.strip-track.auto-drift::-webkit-scrollbar{display:none}
+.strip-track.auto-drift .art-tile{animation:floatTile 7s ease-in-out infinite}
+.strip-track.auto-drift .art-tile:nth-child(even){animation-delay:1.4s}
+@keyframes floatTile{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.series-pages{background:linear-gradient(180deg,#2a0a36,#461257 54%,#23072e);padding-top:40px}
+.series-page{min-height:100vh;padding:110px clamp(18px,5vw,76px);border-top:1px solid rgba(255,255,255,.09);position:relative;overflow:hidden}
+.series-page::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 18%,rgba(240,79,191,.14),transparent 32%),radial-gradient(circle at 86% 20%,rgba(31,182,206,.12),transparent 34%);pointer-events:none}
+.series-page-head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:34px}
+.series-page-head p{max-width:560px;color:rgba(245,236,223,.72);font-size:17px;line-height:1.85}
+.series-page-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.series-page-art{height:390px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:#100615;box-shadow:0 28px 70px rgba(0,0,0,.42);cursor:pointer;position:relative}
+.series-page-art img{width:100%;height:100%;object-fit:cover;transition:1s ease}
+.series-page-art:hover img{transform:scale(1.055)}
+.series-page-art::after{content:attr(data-title);position:absolute;left:14px;right:14px;bottom:14px;padding:10px 12px;border-radius:14px;background:rgba(0,0,0,.50);backdrop-filter:blur(8px);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.84)}
 
 /* modal */
 .modal{
@@ -770,61 +805,58 @@ footer{
 
 /* responsive */
 @media (max-width:1100px){
-  .nav-links{display:none}
+  .nav-links,.nav-cta{display:none}
   .mobile-note{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-  .gallery-wall{min-height:76vh}
-  .wall-label{top:84px;max-width:280px}
-  .series-frame{border-width:8px}
-  .frame-children{left:10%;top:31%;width:25%;height:23%}
-  .frame-music{left:39%;top:24%;width:28%;height:22%}
-  .frame-icons{left:70%;top:32%;width:23%;height:24%}
-  .frame-sports{left:8%;top:65%;width:28%;height:18%}
-  .frame-nature{left:40%;top:58%;width:25%;height:25%}
-  .frame-cigar{left:70%;top:64%;width:21%;height:20%}
-  .frame-faces{left:45%;top:82%;width:28%;height:15%}
-  .hero-caption{display:block}
-  .hero-caption .cta{margin-top:18px}
+  .hero-room{padding:100px 12px 58px;align-items:center}
+  .gallery-wall{width:96vw;height:760px;min-height:760px}
+  .gallery-side,.hero-plant,.hero-bench{display:none}
+  .track-light{top:-78px}
+  .frame-children{left:9%;top:17%;width:22%;height:23%}
+  .frame-sports{left:39%;top:17%;width:22%;height:23%}
+  .frame-music{left:69%;top:17%;width:22%;height:23%}
+  .frame-icons{left:9%;top:50%;width:22%;height:23%}
+  .frame-cigar{left:39%;top:50%;width:22%;height:23%}
+  .frame-faces{left:69%;top:50%;width:22%;height:23%}
+  .frame-nature{left:33%;top:77%;width:34%;height:16%}
+  .series-frame .plaque{bottom:-27px;min-width:92px;font-size:8px;padding:6px 8px}
+  .hero-caption{bottom:18px}
   .energy-grid,.story-grid,.video-gallery{grid-template-columns:1fr}
   .series-grid{grid-template-columns:repeat(2,1fr)}
   .exhibition-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:680px){
-  .site-nav{padding:15px 16px}
-  .brand{font-size:20px}
-  .hero{padding:94px 12px 28px}
-  .gallery-wall{border-radius:22px;min-height:82vh}
-  .wall-label{left:16px;right:16px;top:70px}
-  .wall-label h1{font-size:45px}
-  .series-frame::after{font-size:8px;bottom:-26px}
-  .series-grid{grid-template-columns:1fr}
-  .series-card{min-height:360px}
-  .texture-stack,.portrait-collage{min-height:560px}
-  .texture-video-card{width:86%;height:43%}
-  .texture-img-card.one{width:58%;height:34%;top:28%}
-  .texture-img-card.two{width:78%;height:34%}
-  .portrait-main{width:78%;height:60%}
-  .portrait-small{top:38%;width:55%;height:32%}
-  .portrait-wide{left:4%;width:92%}
-  .feature-video{min-height:420px}
-  .exhibition-grid{grid-template-columns:1fr}
-  .modal-head{display:block}
-  .modal-lead{margin-top:14px}
+  .site-nav{padding:15px 16px}.brand{font-size:20px}.brand small{font-size:7px}
+  .gallery-wall{height:790px;min-height:790px}
+  .series-frame .gold-frame{border-width:7px}.series-frame .frame-art{inset:10px}
+  .frame-children{left:8%;top:13%;width:38%;height:20%}
+  .frame-sports{left:54%;top:13%;width:38%;height:20%}
+  .frame-music{left:8%;top:39%;width:38%;height:20%}
+  .frame-icons{left:54%;top:39%;width:38%;height:20%}
+  .frame-cigar{left:8%;top:65%;width:38%;height:20%}
+  .frame-faces{left:54%;top:65%;width:38%;height:20%}
+  .frame-nature{left:23%;top:89%;width:54%;height:10%}
+  .hero-caption{display:none}
+  .series-grid{grid-template-columns:1fr}.series-card{min-height:360px}
+  .texture-stack,.portrait-collage{min-height:560px}.texture-video-card{width:86%;height:43%}.texture-img-card.one{width:58%;height:34%;top:28%}.texture-img-card.two{width:78%;height:34%}
+  .portrait-main{width:78%;height:60%}.portrait-small{top:38%;width:55%;height:32%}.portrait-wide{left:4%;width:92%}
+  .feature-video{min-height:420px}.exhibition-grid{grid-template-columns:1fr}.modal-head{display:block}.modal-lead{margin-top:14px}
 }
 </style>
 </head>
 
 <body>
 <nav class="site-nav">
-  <a href="#" class="brand">Donna M. <em>Richardson</em></a>
+  <a href="#" class="brand"><span>Donna M. Richardson</span><small>Fine Art That Speaks. Stories That Last.</small></a>
   <ul class="nav-links">
-    <li><a href="#world">Gallery</a></li>
-    <li><a href="#series">Series</a></li>
-    <li><a href="#energy">Energy</a></li>
-    <li><a href="#story">Meet Donna</a></li>
-    <li><a href="#voice">Video</a></li>
+    <li><a href="#world">Home</a></li>
+    <li><a href="#series">The Art</a></li>
     <li><a href="#exhibitions">Exhibitions</a></li>
+    <li><a href="#story">The Artist</a></li>
+    <li><a href="#voice">Speaking</a></li>
+    <li><a href="#collector">Collectors</a></li>
     <li><a href="#collector">Contact</a></li>
   </ul>
+  <a class="nav-cta" href="#series">Enter The Experience</a>
   <div class="mobile-note">Virtual Gallery</div>
 </nav>
 
@@ -835,44 +867,55 @@ footer{
 
   <div class="hero-room">
     <div class="gallery-wall" aria-label="Donna M. Richardson cinematic fixed-wall gallery">
-      <div class="wall-label">
-        <div class="eyebrow">Private Digital Exhibition</div>
-        <h1>Every Dot Has Energy.</h1>
-        <p>A cinematic virtual gallery experience honoring culture, rhythm, memory, nature, and the emotional light inside Donna M. Richardson’s work.</p>
-      </div>
+      <div class="gallery-side left" aria-hidden="true"></div>
+      <div class="gallery-side right" aria-hidden="true"></div>
+      <span class="track-light tl1" aria-hidden="true"></span>
+      <span class="track-light tl2" aria-hidden="true"></span>
+      <span class="track-light tl3" aria-hidden="true"></span>
+      <span class="track-light tl4" aria-hidden="true"></span>
+      <span class="track-light tl5" aria-hidden="true"></span>
+      <div class="hero-plant" aria-hidden="true"></div>
+      <div class="hero-bench" aria-hidden="true"></div>
 
-      <button class="series-frame frame-children" data-series="children" data-title="Children" aria-label="Open Children series">
-        <img src="/assets/images/artwork/children/artwork-children.png" alt="Children series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/children/children-series-01-daisy.jpg'">
-      </button>
+      <a class="series-frame frame-children" href="#series-children" data-series="children" data-title="Children" aria-label="Open Children series">
+        <span class="frame-art"><img src="/assets/images/artwork/children/artwork-children.png" alt="Children series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/children/children-series-01-daisy.jpg'"></span>
+        <span class="gold-frame"></span><span class="plaque">Children</span>
+      </a>
 
-      <button class="series-frame frame-music" data-series="music" data-title="Music" aria-label="Open Music series">
-        <img src="/assets/images/artwork/music/artwork-music.jpg" alt="Music series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/music/music-series-08-miles-davis.jpg'">
-      </button>
+      <a class="series-frame frame-sports" href="#series-sports" data-series="sports" data-title="Sports" aria-label="Open Sports series">
+        <span class="frame-art"><img src="/assets/images/artwork/sports/artwork-sports.jpg" alt="Sports series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg'"></span>
+        <span class="gold-frame"></span><span class="plaque">Sports</span>
+      </a>
 
-      <button class="series-frame frame-icons" data-series="icons" data-title="Icons" aria-label="Open Icons series">
-        <img src="/assets/images/artwork/icons/artwork-icons.jpg" alt="Icons series by Donna M. Richardson">
-      </button>
+      <a class="series-frame frame-music" href="#series-music" data-series="music" data-title="Music" aria-label="Open Music series">
+        <span class="frame-art"><img src="/assets/images/artwork/music/artwork-music.jpg" alt="Music series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/music/music-series-08-miles-davis.jpg'"></span>
+        <span class="gold-frame"></span><span class="plaque">Music</span>
+      </a>
 
-      <button class="series-frame frame-sports" data-series="sports" data-title="Sports" aria-label="Open Sports series">
-        <img src="/assets/images/artwork/sports/artwork-sports.jpg" alt="Sports series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg'">
-      </button>
+      <a class="series-frame frame-icons" href="#series-icons" data-series="icons" data-title="Icons" aria-label="Open Icons series">
+        <span class="frame-art"><img src="/assets/images/artwork/icons/artwork-icons.jpg" alt="Icons series by Donna M. Richardson"></span>
+        <span class="gold-frame"></span><span class="plaque">Icons</span>
+      </a>
 
-      <button class="series-frame frame-nature" data-series="nature" data-title="Nature" aria-label="Open Nature series">
-        <img src="/assets/images/artwork/nature/artwork-nature.jpg" alt="Nature series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/nature/nature-series-01-dragon-fly.jpg'">
-      </button>
+      <a class="series-frame frame-cigar" href="#series-cigar" data-series="cigar" data-title="Cigar" aria-label="Open Cigar series">
+        <span class="frame-art"><img src="/assets/images/artwork/cigar/artwork-cigar.png" alt="Cigar series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/cigar/artwork-cigar-2.png'"></span>
+        <span class="gold-frame"></span><span class="plaque">Cigar</span>
+      </a>
 
-      <button class="series-frame frame-cigar" data-series="cigar" data-title="Cigar" aria-label="Open Cigar series">
-        <img src="/assets/images/artwork/cigar/artwork-cigar.png" alt="Cigar series by Donna M. Richardson">
-      </button>
+      <a class="series-frame frame-faces" href="#series-faces" data-series="faces" data-title="Faces & Figures" aria-label="Open Faces and Figures series">
+        <span class="frame-art"><img src="/assets/images/artwork/faces-figures/artwork-faces-figures.png" alt="Faces and Figures series by Donna M. Richardson"></span>
+        <span class="gold-frame"></span><span class="plaque">Faces & Figures</span>
+      </a>
 
-      <button class="series-frame frame-faces" data-series="faces" data-title="Faces & Figures" aria-label="Open Faces and Figures series">
-        <img src="/assets/images/artwork/faces-figures/artwork-faces-figures.png" alt="Faces and Figures series by Donna M. Richardson">
-      </button>
+      <a class="series-frame frame-nature" href="#series-nature" data-series="nature" data-title="Nature" aria-label="Open Nature series">
+        <span class="frame-art"><img src="/assets/images/artwork/nature/artwork-nature.jpg" alt="Nature series by Donna M. Richardson" onerror="this.src='/assets/images/artwork/nature/nature-series-01-dragon-fly.jpg'"></span>
+        <span class="gold-frame"></span><span class="plaque">Nature</span>
+      </a>
     </div>
 
     <div class="hero-caption">
-      <p>This is not a standard artist portfolio. It is a cinematic fixed-wall gallery designed to let the artwork become the light source, the emotion, and the atmosphere.</p>
-      <a class="cta" href="#series">Enter the Series Rooms →</a>
+      <p>Enter Donna M. Richardson’s cinematic fixed-wall gallery.</p>
+      <a class="cta" href="#series">Enter the Experience →</a>
     </div>
   </div>
 </header>
@@ -892,6 +935,8 @@ footer{
     <div class="strip-track" id="highlightStrip"></div>
   </div>
 </section>
+
+<section class="series-pages" id="seriesPages" aria-label="Full series pages"></section>
 
 <section class="section energy" id="energy">
   <div class="energy-grid">
@@ -1334,7 +1379,16 @@ function closeLightbox(){
 function wireEvents(){
   document.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-series]");
-    if(trigger) openSeries(trigger.dataset.series);
+    if(trigger){
+      const href = trigger.getAttribute("href");
+      if(href && href.startsWith("#series-")){
+        e.preventDefault();
+        document.querySelector(href)?.scrollIntoView({behavior:"smooth", block:"start"});
+        history.replaceState(null,"",href);
+        return;
+      }
+      openSeries(trigger.dataset.series);
+    }
   });
   document.getElementById("modalClose").addEventListener("click", closeSeries);
   document.getElementById("seriesModal").addEventListener("click", (e) => {
@@ -1370,8 +1424,63 @@ function initFallbacks(){
   });
 }
 
+
+function buildSeriesPages(){
+  const holder = document.getElementById("seriesPages");
+  if(!holder) return;
+  Object.keys(media).forEach(key => {
+    const s = media[key];
+    const section = document.createElement("section");
+    section.className = "series-page";
+    section.id = `series-${key}`;
+    section.innerHTML = `
+      <div class="series-page-head">
+        <div>
+          <div class="eyebrow">Full Series Page</div>
+          <h2 class="section-title">${s.label} <em>Series</em></h2>
+        </div>
+        <p>${s.mood}</p>
+      </div>
+      <div class="series-page-grid"></div>
+    `;
+    const grid = section.querySelector(".series-page-grid");
+    s.works.forEach(([file,title]) => {
+      const art = document.createElement("div");
+      art.className = "series-page-art";
+      art.dataset.title = title;
+      const src = pathFor(key,file);
+      art.appendChild(imgEl(src,title));
+      art.addEventListener("click", () => openLightbox(src,title));
+      grid.appendChild(art);
+    });
+    holder.appendChild(section);
+  });
+}
+
+function activateLivingMotion(){
+  const strip = document.getElementById("highlightStrip");
+  if(!strip) return;
+  strip.classList.add("auto-drift");
+  let paused = false;
+  strip.addEventListener("mouseenter",()=>paused=true);
+  strip.addEventListener("mouseleave",()=>paused=false);
+  strip.addEventListener("touchstart",()=>paused=true,{passive:true});
+  setInterval(()=>{
+    if(paused || !strip.children.length) return;
+    const max = strip.scrollWidth - strip.clientWidth;
+    if(max <= 0) return;
+    if(strip.scrollLeft >= max - 8){
+      strip.scrollTo({left:0, behavior:"smooth"});
+    }else{
+      strip.scrollBy({left:360, behavior:"smooth"});
+    }
+  }, 2800);
+}
+
 buildSeriesGrid();
 buildHighlights();
+buildSeriesPages();
+activateLivingMotion();
 buildExhibitions();
 wireEvents();
 initFallbacks();
