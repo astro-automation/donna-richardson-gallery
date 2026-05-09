@@ -3,42 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Donna M. Richardson | Cinematic Virtual Gallery</title>
-  <meta name="description" content="Donna M. Richardson cinematic virtual gallery — a luxury fixed-wall digital exhibition experience for collectors, curators, institutions, and art buyers." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Donna M. Richardson | Cinematic Virtual Gallery</title>
+  <meta name="description" content="A cinematic fixed-wall virtual gallery experience for Donna M. Richardson — contemporary art, culture, spirit, color, movement, exhibitions, and collector inquiries." />
 
   <style>
     :root {
-      --ink: #070713;
-      --deep: #0d0718;
-      --plum: #21102e;
-      --violet: #6f40ff;
-      --lavender: #d8c8ff;
-      --fuchsia: #ff4fd8;
-      --cyan: #42e9ff;
-      --cobalt: #225cff;
-      --ocean: #10d5c9;
-      --cream: #fff8eb;
-      --sand: #dac39d;
-      --gold: #d8b56d;
-      --white: #ffffff;
-      --soft: rgba(255,255,255,.74);
-      --line: rgba(255,255,255,.16);
-      --shadow: 0 40px 140px rgba(0,0,0,.58);
-      --galleryWall: linear-gradient(115deg, #f7efe5 0%, #d8c7b4 28%, #f9f1e7 50%, #c9b7a4 78%, #efe2d1 100%);
-      --ease: cubic-bezier(.2,.8,.2,1);
+      --black: #020206;
+      --ink: #050511;
+      --deep: #09071a;
+      --white: #fff8ff;
+      --muted: rgba(255, 248, 255, 0.74);
+      --soft: rgba(255, 248, 255, 0.52);
+      --line: rgba(255,255,255,0.18);
+      --lavender: #bda4ff;
+      --fuchsia: #ff36d7;
+      --cyan: #48eaff;
+      --turquoise: #2ffff0;
+      --cobalt: #244dff;
+      --ocean: #0bb7ff;
+      --gold: #ffcf6b;
+      --rose: #ff86d8;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --ease: cubic-bezier(.22,1,.36,1);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--black);
+    }
+
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at 50% 0%, #2b1042 0%, #0c0717 42%, #04030a 100%);
+      font-family: var(--sans);
       color: var(--white);
+      background: #020206;
       overflow-x: hidden;
     }
 
@@ -46,932 +50,1604 @@
       content: "";
       position: fixed;
       inset: 0;
+      z-index: 0;
       pointer-events: none;
-      z-index: 1;
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,79,216,.13), transparent 30%),
-        radial-gradient(circle at 78% 8%, rgba(66,233,255,.12), transparent 30%),
-        radial-gradient(circle at 50% 80%, rgba(111,64,255,.13), transparent 38%),
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: auto, auto, auto, 100% 5px;
-      mix-blend-mode: screen;
-      opacity: .75;
+        radial-gradient(circle at 20% 0%, rgba(255,54,215,.16), transparent 28%),
+        radial-gradient(circle at 88% 14%, rgba(72,234,255,.14), transparent 32%),
+        radial-gradient(circle at 50% 96%, rgba(36,77,255,.20), transparent 42%),
+        linear-gradient(180deg, #020206 0%, #070616 42%, #020206 100%);
     }
 
-    a { color: inherit; text-decoration: none; }
-    img, video { max-width: 100%; display: block; }
-    button, input, textarea, select { font: inherit; }
-
-    .site-shell { position: relative; z-index: 2; }
-
-    .topbar {
+    body::after {
+      content: "";
       position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(1180px, calc(100% - 28px));
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 12px 14px 12px 18px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 999px;
-      background: rgba(8,5,18,.45);
-      backdrop-filter: blur(22px);
-      box-shadow: 0 18px 60px rgba(0,0,0,.26);
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      opacity: .11;
+      mix-blend-mode: overlay;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.26) 0 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,.18) 0 1px, transparent 1px);
+      background-size: 160px 160px, 230px 230px;
+      animation: grain 9s steps(6) infinite;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      min-width: fit-content;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: .78rem;
+    @keyframes grain {
+      0% { transform: translate3d(0,0,0); }
+      25% { transform: translate3d(-1.5%,1%,0); }
+      50% { transform: translate3d(1%,-1.5%,0); }
+      75% { transform: translate3d(-1%,1.5%,0); }
+      100% { transform: translate3d(0,0,0); }
     }
 
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: conic-gradient(from 130deg, var(--fuchsia), var(--cyan), var(--violet), var(--fuchsia));
-      box-shadow: 0 0 28px rgba(255,79,216,.3), inset 0 0 0 6px rgba(0,0,0,.25);
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
     }
 
     .nav {
+      position: fixed;
+      z-index: 100;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1220px, calc(100% - 28px));
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      gap: 5px;
-      flex-wrap: wrap;
+      gap: 16px;
+      padding: 12px 13px 12px 18px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      background: rgba(2,2,6,.58);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 20px 80px rgba(0,0,0,.26);
     }
 
-    .nav a {
-      padding: 9px 11px;
-      border-radius: 999px;
-      color: rgba(255,255,255,.8);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      transition: .3s var(--ease);
+    .brand {
+      display: grid;
+      gap: 2px;
+      line-height: 1;
     }
 
-    .nav a:hover { background: rgba(255,255,255,.1); color: white; }
-
-    .top-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 15px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--fuchsia), var(--violet), var(--cyan));
-      color: white;
-      font-size: .76rem;
-      font-weight: 900;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      box-shadow: 0 16px 46px rgba(111,64,255,.34);
+    .brand strong {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      letter-spacing: -.02em;
       white-space: nowrap;
     }
 
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 112px 24px 44px;
-      overflow: hidden;
-      isolation: isolate;
+    .brand span {
+      font-size: .65rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.52);
+      white-space: nowrap;
     }
 
-    .hero::before {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      border-radius: 999px;
+      padding: 10px 11px;
+      color: rgba(255,255,255,.70);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      transition: .24s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      background: rgba(255,255,255,.09);
+      box-shadow: 0 0 34px rgba(72,234,255,.20);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid rgba(255,255,255,.16);
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      border-radius: 999px;
+      padding: 9px 12px;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: .14em;
+      cursor: pointer;
+    }
+
+    .section {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .kicker {
+      color: var(--cyan);
+      font-weight: 900;
+      font-size: .74rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      line-height: 1.82;
+      font-size: clamp(1.02rem, 1.45vw, 1.24rem);
+      margin: 0;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.20);
+      color: #fff;
+      background: rgba(255,255,255,.075);
+      backdrop-filter: blur(18px);
+      padding: 14px 20px;
+      font-size: .72rem;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .24s var(--ease);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, rgba(255,54,215,.96), rgba(36,77,255,.95) 52%, rgba(47,255,240,.78));
+      box-shadow: 0 22px 70px rgba(255,54,215,.20), 0 0 70px rgba(72,234,255,.13);
+      border-color: rgba(255,255,255,.34);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 74px rgba(0,0,0,.45), 0 0 36px rgba(72,234,255,.20);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: .95s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       HERO: ORIGINAL FIXED-WALL REALISTIC GALLERY CONCEPT
+    ============================================================ */
+
+    .hero-gallery {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      padding: 0;
+      background: #020206;
+    }
+
+    .hero-video-layer {
+      position: absolute;
+      inset: 0;
+      z-index: -8;
+      opacity: .88;
+      overflow: hidden;
+    }
+
+    .hero-video-layer video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.15) contrast(1.05);
+      transform: scale(1.05);
+    }
+
+    .hero-video-layer::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at top, rgba(255,255,255,.14), transparent 28%),
-        radial-gradient(circle at 20% 40%, rgba(255,79,216,.12), transparent 26%),
-        radial-gradient(circle at 82% 48%, rgba(66,233,255,.13), transparent 28%),
-        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.62));
-      z-index: -3;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 34vh;
-      background: linear-gradient(to bottom, transparent, rgba(4,3,10,.98));
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .gallery-stage {
-      width: min(1440px, 100%);
-      min-height: min(760px, calc(100vh - 150px));
-      position: relative;
-      display: grid;
-      place-items: center;
-      perspective: 1400px;
+        linear-gradient(90deg, rgba(0,0,0,.34), rgba(0,0,0,.18) 45%, rgba(0,0,0,.28)),
+        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.12) 42%, rgba(0,0,0,.26));
     }
 
     .gallery-room {
-      width: min(1320px, 100%);
-      min-height: 690px;
       position: relative;
-      transform-style: preserve-3d;
-      border-radius: 34px;
+      width: 100%;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
       overflow: hidden;
-      background: #120b18;
-      box-shadow: var(--shadow), inset 0 0 0 1px rgba(255,255,255,.15);
+      perspective: 1400px;
     }
 
-    .ceiling-glow {
-      position: absolute;
-      inset: 0 0 auto;
-      height: 32%;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(255,248,235,.68), rgba(255,248,235,.17) 38%, transparent 72%),
-        linear-gradient(180deg, rgba(255,255,255,.22), transparent);
-      mix-blend-mode: screen;
-      opacity: .78;
-      z-index: 6;
-      pointer-events: none;
-    }
-
-    .gallery-wall {
-      position: absolute;
-      inset: 0 8% 16%;
-      top: 3%;
-      border-radius: 14px 14px 6px 6px;
-      background: var(--galleryWall);
-      transform: translateZ(-20px);
-      box-shadow:
-        inset 0 0 90px rgba(80,45,20,.2),
-        inset 0 -70px 120px rgba(70,45,20,.2),
-        0 35px 100px rgba(0,0,0,.36);
-      overflow: hidden;
-    }
-
-    .gallery-wall::before {
+    .gallery-room::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.26), transparent 13%, transparent 87%, rgba(0,0,0,.25)),
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.56), transparent 36%),
-        repeating-linear-gradient(90deg, rgba(75,46,22,.04) 0 1px, transparent 1px 7px);
+        radial-gradient(circle at 16% 8%, rgba(255,255,255,.20), transparent 13%),
+        radial-gradient(circle at 50% 6%, rgba(255,255,255,.30), transparent 16%),
+        radial-gradient(circle at 84% 8%, rgba(255,255,255,.20), transparent 13%),
+        linear-gradient(90deg, rgba(18,18,28,.40), rgba(31,29,45,.46) 18%, rgba(245,241,255,.20) 50%, rgba(31,29,45,.46) 82%, rgba(18,18,28,.40)),
+        linear-gradient(180deg, rgba(11,9,24,.98) 0%, rgba(228,222,243,.40) 35%, rgba(12,10,24,.55) 100%);
+      z-index: -6;
+    }
+
+    .gallery-room::after {
+      content: "";
+      position: absolute;
+      left: -15%;
+      right: -15%;
+      bottom: -22%;
+      height: 42%;
+      z-index: -2;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.28)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 100px);
+      transform: rotateX(62deg);
+      transform-origin: top;
+      opacity: .95;
+    }
+
+    .gallery-depth-left,
+    .gallery-depth-right {
+      position: absolute;
+      top: 0;
+      bottom: 16%;
+      width: 26%;
+      z-index: -3;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.76)),
+        linear-gradient(90deg, rgba(0,0,0,.34), rgba(255,255,255,.08));
+      opacity: .82;
+      filter: blur(.2px);
+    }
+
+    .gallery-depth-left {
+      left: -4%;
+      transform: skewY(4deg);
+      transform-origin: right center;
+    }
+
+    .gallery-depth-right {
+      right: -4%;
+      transform: skewY(-4deg) scaleX(-1);
+      transform-origin: left center;
+    }
+
+    .spotlights {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 16% 24%, rgba(255,255,255,.27), transparent 15%),
+        radial-gradient(ellipse at 33% 24%, rgba(255,255,255,.24), transparent 14%),
+        radial-gradient(ellipse at 50% 22%, rgba(255,255,255,.30), transparent 16%),
+        radial-gradient(ellipse at 67% 24%, rgba(255,255,255,.24), transparent 14%),
+        radial-gradient(ellipse at 84% 24%, rgba(255,255,255,.27), transparent 15%);
+      mix-blend-mode: screen;
+      animation: galleryLight 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes galleryLight {
+      from { opacity: .58; transform: translateY(-4px) scale(1); }
+      to { opacity: .96; transform: translateY(3px) scale(1.02); }
+    }
+
+    .camera-drift {
+      width: min(1320px, calc(100% - 28px));
+      min-height: 76svh;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: cameraDrift 12s ease-in-out infinite alternate;
+      margin-top: 72px;
+    }
+
+    @keyframes cameraDrift {
+      from { transform: translate3d(-8px, 0, 0) rotateY(.8deg); }
+      to { transform: translate3d(8px, -4px, 0) rotateY(-.8deg); }
+    }
+
+    .gallery-title {
+      position: absolute;
+      z-index: 12;
+      left: clamp(18px, 4vw, 58px);
+      top: clamp(90px, 12vh, 130px);
+      width: min(680px, 92vw);
       pointer-events: none;
     }
 
-    .left-wall, .right-wall {
-      position: absolute;
-      top: 3%;
-      bottom: 16%;
-      width: 12%;
-      background: linear-gradient(90deg, rgba(95,74,57,.72), rgba(235,219,199,.88));
-      transform-origin: right center;
-      opacity: .9;
-      filter: saturate(.9);
-    }
-    .left-wall { left: 0; transform: rotateY(36deg); border-radius: 26px 0 0 10px; }
-    .right-wall { right: 0; transform: rotateY(-36deg); transform-origin: left center; border-radius: 0 26px 10px 0; background: linear-gradient(270deg, rgba(95,74,57,.72), rgba(235,219,199,.88)); }
-
-    .gallery-floor {
-      position: absolute;
-      left: -8%;
-      right: -8%;
-      bottom: -8%;
-      height: 30%;
-      background:
-        radial-gradient(ellipse at top, rgba(255,255,255,.22), transparent 50%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 2px, transparent 2px 86px),
-        linear-gradient(180deg, #957a5c, #3b231a 65%, #130a0b);
-      transform: rotateX(62deg);
-      transform-origin: top center;
-      box-shadow: inset 0 40px 80px rgba(255,255,255,.1);
-      z-index: 1;
+    .gallery-title h1 {
+      font-size: clamp(4rem, 11.5vw, 12.7rem);
+      line-height: .75;
+      letter-spacing: -.095em;
+      text-shadow: 0 18px 76px rgba(0,0,0,.26);
+      margin-bottom: 22px;
     }
 
-    .hero-title-card {
-      position: absolute;
-      z-index: 18;
-      left: clamp(22px, 4vw, 56px);
-      bottom: clamp(30px, 5vw, 70px);
-      width: min(520px, calc(100% - 44px));
-      padding: clamp(22px, 3vw, 34px);
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(9,5,18,.74), rgba(22,8,32,.52));
-      backdrop-filter: blur(20px);
-      box-shadow: 0 28px 90px rgba(0,0,0,.42);
+    .gallery-title h1 span {
+      display: block;
+      background: linear-gradient(135deg, #fff 8%, #ffd8f7 28%, var(--cyan) 56%, #fff 88%);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: rgba(255,255,255,.78);
-      font-size: .77rem;
-      font-weight: 850;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .eyebrow::before {
-      content: "";
-      width: 35px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--fuchsia), var(--cyan));
-    }
-
-    h1, h2, h3 {
+    .gallery-title p {
+      width: min(620px, 100%);
+      color: rgba(255,255,255,.82);
+      line-height: 1.66;
+      font-size: clamp(1.05rem, 1.6vw, 1.36rem);
       margin: 0;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 600;
-      line-height: .95;
-      letter-spacing: -.045em;
+      text-shadow: 0 12px 48px rgba(0,0,0,.34);
     }
 
-    h1 { font-size: clamp(3.4rem, 8.5vw, 9.5rem); }
-    h2 { font-size: clamp(2.7rem, 6.5vw, 7rem); }
-    h3 { font-size: clamp(1.85rem, 3.2vw, 3.4rem); }
-
-    .hero-title-card h1 {
-      font-size: clamp(3.1rem, 6vw, 6.6rem);
-      text-shadow: 0 15px 45px rgba(0,0,0,.42);
-    }
-
-    .hero-title-card p {
-      margin: 18px 0 24px;
-      color: rgba(255,255,255,.81);
-      font-size: clamp(1rem, 1.45vw, 1.2rem);
-      line-height: 1.7;
-    }
-
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      border: 0;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 13px 17px;
-      border-radius: 999px;
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      transition: .35s var(--ease);
-    }
-    .btn-primary { color: white; background: linear-gradient(135deg, var(--fuchsia), var(--violet), var(--cyan)); box-shadow: 0 18px 50px rgba(111,64,255,.38); }
-    .btn-secondary { color: white; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); }
-    .btn:hover { transform: translateY(-3px); }
-
-    .frame-field {
+    .hero-actions {
       position: absolute;
-      inset: 7% 11% 21%;
-      z-index: 8;
-      display: grid;
-      grid-template-columns: 1fr 1.08fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: clamp(14px, 1.65vw, 27px);
+      z-index: 12;
+      left: clamp(18px, 4vw, 58px);
+      bottom: clamp(24px, 7vh, 72px);
+      display: flex;
       align-items: center;
-      justify-items: center;
-      padding: clamp(12px, 2vw, 26px);
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .art-frame {
-      position: relative;
-      width: 100%;
-      max-width: 276px;
-      height: clamp(150px, 18vw, 240px);
-      border: 12px solid #27150d;
-      border-image: linear-gradient(135deg, #140b07, #d9b96f, #4b2c16, #fff2bd, #241108) 1;
-      background: #160a10;
-      box-shadow: 0 25px 58px rgba(0,0,0,.28), inset 0 0 0 8px rgba(255,255,255,.08);
-      cursor: pointer;
+    .art-wall {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 27%;
+      height: 48%;
+      transform-style: preserve-3d;
+    }
+
+    .hero-art {
+      position: absolute;
+      z-index: 8;
+      display: block;
+      background: #0c0a12;
+      padding: 10px;
+      border: 10px solid #151018;
+      box-shadow:
+        0 26px 80px rgba(0,0,0,.34),
+        0 0 45px rgba(255,255,255,.08);
+      transition: .35s var(--ease);
       overflow: hidden;
-      transform: translateZ(40px);
+      cursor: pointer;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.34)),
+        var(--art-image),
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,.44), transparent 16%),
+        radial-gradient(circle at 62% 55%, rgba(255,54,215,.64), transparent 25%),
+        radial-gradient(circle at 40% 76%, rgba(72,234,255,.60), transparent 22%),
+        linear-gradient(135deg, rgba(255,54,215,.95), rgba(36,77,255,.95), rgba(47,255,240,.72));
+      background-size: cover;
+      background-position: center;
       transition: .45s var(--ease);
     }
 
-    .art-frame.large {
-      max-width: 330px;
-      height: clamp(185px, 23vw, 300px);
-      grid-row: span 2;
-    }
-
-    .art-frame:hover { transform: translateZ(70px) translateY(-8px) scale(1.035); box-shadow: 0 35px 85px rgba(0,0,0,.38), 0 0 55px rgba(255,79,216,.2); }
-
-    .art-frame::before {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border: 1px solid rgba(255,255,255,.26);
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    .art-image {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 25% 25%, var(--fuchsia), transparent 26%),
-        radial-gradient(circle at 75% 30%, var(--cyan), transparent 24%),
-        radial-gradient(circle at 50% 72%, var(--violet), transparent 34%),
-        linear-gradient(135deg, #261146, #0e2e42 48%, #451a2d);
-      filter: saturate(1.3) contrast(1.06);
-    }
-
-    .art-image.children { background: radial-gradient(circle at 24% 24%, #ff8be9, transparent 25%), radial-gradient(circle at 70% 48%, #fff36a, transparent 22%), radial-gradient(circle at 55% 78%, #55f1ff, transparent 28%), linear-gradient(135deg, #42216f, #123a5e); }
-    .art-image.sports { background: linear-gradient(135deg, #111936, #1540ff 35%, #ff4fd8 72%, #140617); }
-    .art-image.music { background: radial-gradient(circle at 70% 30%, #ffd166, transparent 21%), linear-gradient(145deg, #160516, #4f1a70, #0a3352); }
-    .art-image.icons { background: radial-gradient(circle at 50% 40%, #fff3b0, transparent 18%), linear-gradient(135deg, #2a0d2f, #7c173f, #202a6e); }
-    .art-image.cigar { background: radial-gradient(circle at 70% 35%, #d8a14c, transparent 22%), linear-gradient(135deg, #1b0e08, #7d351b, #201020); }
-    .art-image.faces { background: linear-gradient(135deg, #100a1e, #6136ff 28%, #ff58ce 62%, #0a4250); }
-    .art-image.nature { background: radial-gradient(circle at 25% 28%, #f8b3ff, transparent 22%), radial-gradient(circle at 70% 62%, #40ffd2, transparent 28%), linear-gradient(135deg, #102215, #22448b); }
-
-    .frame-label {
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      z-index: 5;
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px;
-      background: linear-gradient(180deg, transparent, rgba(0,0,0,.72));
-      color: white;
-    }
-    .frame-label strong { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.55rem; letter-spacing: -.03em; line-height: 1; }
-    .frame-label span { font-size: .64rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.72); }
-
-    .spotlight {
-      position: absolute;
-      top: 0;
-      width: 20%;
-      height: 58%;
-      background: radial-gradient(ellipse at top, rgba(255,255,255,.5), rgba(255,245,220,.13) 44%, transparent 72%);
-      filter: blur(1px);
-      opacity: .62;
-      z-index: 7;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-    .spotlight.one { left: 17%; }
-    .spotlight.two { left: 40%; }
-    .spotlight.three { right: 16%; }
-
-    .scroll-cue {
-      position: absolute;
-      right: clamp(22px, 4vw, 56px);
-      bottom: 54px;
-      z-index: 18;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: rgba(255,255,255,.78);
-      font-size: .73rem;
-      font-weight: 850;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      writing-mode: vertical-rl;
-    }
-    .scroll-cue::after {
-      content: "";
-      width: 1px;
-      height: 62px;
-      background: linear-gradient(var(--cyan), transparent);
-      animation: pulseLine 1.7s infinite;
-    }
-    @keyframes pulseLine { 0%,100% { opacity: .2; transform: scaleY(.65); } 50% { opacity: 1; transform: scaleY(1); } }
-
-    section { position: relative; padding: clamp(78px, 10vw, 150px) 24px; }
-    .wrap { width: min(1180px, 100%); margin: 0 auto; position: relative; z-index: 2; }
-
-    .section-kicker { color: var(--cyan); font-weight: 900; letter-spacing: .18em; text-transform: uppercase; font-size: .75rem; margin-bottom: 16px; }
-    .section-lead { color: rgba(255,255,255,.76); font-size: clamp(1.04rem, 1.65vw, 1.28rem); line-height: 1.8; max-width: 760px; }
-
-    .split {
-      display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: clamp(34px, 6vw, 90px);
-      align-items: center;
-    }
-
-    .portrait-stack { position: relative; min-height: 590px; }
-    .portrait-card {
-      position: absolute;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 30px 90px rgba(0,0,0,.35);
-    }
-    .portrait-card.main { inset: 0 8% 13% 0; }
-    .portrait-card.small { right: 0; bottom: 0; width: 46%; height: 43%; }
-    .portrait-card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.05) contrast(1.05); }
-    .portrait-card .fallback, .media-fallback {
-      width: 100%; height: 100%; min-height: 250px;
-      background: radial-gradient(circle at 40% 25%, rgba(255,79,216,.55), transparent 28%), radial-gradient(circle at 68% 65%, rgba(66,233,255,.4), transparent 32%), linear-gradient(135deg, #1f1135, #0a2934);
-      display: grid; place-items: center;
-      color: rgba(255,255,255,.72);
-      text-align: center;
-      padding: 24px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-size: .75rem;
-    }
-
-    .story-panel {
-      padding: clamp(24px, 4vw, 44px);
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      box-shadow: 0 28px 90px rgba(0,0,0,.25);
-      backdrop-filter: blur(18px);
-    }
-
-    .series-section { overflow: hidden; }
-    .series-grid {
-      margin-top: 44px;
-      display: grid;
-      grid-template-columns: repeat(7, minmax(210px, 1fr));
-      gap: 18px;
-      overflow-x: auto;
-      padding: 4px 4px 24px;
-      scroll-snap-type: x mandatory;
-    }
-    .series-card {
-      min-height: 430px;
-      border-radius: 32px;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      scroll-snap-align: start;
-      cursor: pointer;
-      box-shadow: 0 28px 80px rgba(0,0,0,.25);
-      transition: .38s var(--ease);
-    }
-    .series-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,.3); }
-    .series-art { position: absolute; inset: 0; filter: saturate(1.28) contrast(1.04); }
-    .series-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,.84)); }
-    .series-copy { position: absolute; inset: auto 0 0; z-index: 3; padding: 24px; }
-    .series-copy .num { color: var(--cyan); font-size: .72rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 11px; }
-    .series-copy h3 { font-size: 2.4rem; margin-bottom: 10px; }
-    .series-copy p { margin: 0; color: rgba(255,255,255,.76); line-height: 1.6; font-size: .95rem; }
-
-    .media-strip {
-      margin-top: 48px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .silent-media {
-      position: relative;
-      min-height: 300px;
-      border-radius: 32px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.055);
-      box-shadow: 0 24px 70px rgba(0,0,0,.25);
-    }
-    .silent-media.wide { grid-column: span 2; min-height: 380px; }
-    .silent-media video {
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-      object-fit: cover;
-      transform: scale(.92);
-      opacity: .86;
-      filter: saturate(1.08) contrast(1.08);
-    }
-    .silent-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 45%, transparent 24%, rgba(0,0,0,.2) 72%), linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.46));
-      pointer-events: none;
-    }
-    .media-caption {
+    .hero-art::after {
+      content: attr(data-title);
       position: absolute;
       left: 18px;
       right: 18px;
       bottom: 18px;
       z-index: 3;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: end;
-      color: rgba(255,255,255,.78);
-      font-size: .78rem;
-      font-weight: 850;
-      letter-spacing: .11em;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.22);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      text-align: center;
       text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .62rem;
+      font-weight: 950;
+      text-shadow: 0 2px 14px rgba(0,0,0,.65);
     }
-    .media-caption strong { color: white; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.65rem; letter-spacing: -.03em; text-transform: none; font-weight: 600; }
 
-    .voice-section {
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,79,216,.18), transparent 32%),
-        radial-gradient(circle at 80% 45%, rgba(66,233,255,.14), transparent 35%),
-        linear-gradient(180deg, rgba(5,3,11,.1), rgba(5,3,11,.78));
+    .hero-art:hover {
+      z-index: 20;
+      transform: translateY(-16px) scale(1.065) rotateZ(0deg) !important;
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.26),
+        0 0 60px rgba(72,234,255,.18),
+        0 0 44px rgba(255,54,215,.17);
     }
-    .voice-grid {
-      margin-top: 46px;
+
+    .hero-art:hover::before {
+      transform: scale(1.08);
+      filter: saturate(1.15) contrast(1.06);
+    }
+
+    .art-children {
+      --art-image: url("assets/images/artwork/artwork-children.jpg");
+      width: 148px;
+      height: 214px;
+      left: 8%;
+      top: 20%;
+      transform: rotateY(11deg) rotateZ(-2deg);
+    }
+
+    .art-sports {
+      --art-image: url("assets/images/artwork/artwork-sports.jpg");
+      width: 178px;
+      height: 132px;
+      left: 22%;
+      top: 33%;
+      transform: rotateY(6deg) rotateZ(1deg);
+    }
+
+    .art-music {
+      --art-image: url("assets/images/artwork/artwork-music.jpg");
+      width: 218px;
+      height: 288px;
+      left: 38%;
+      top: 3%;
+      transform: translateZ(38px) rotateZ(-1deg);
+    }
+
+    .art-icons {
+      --art-image: url("assets/images/artwork/artwork-icons.jpg");
+      width: 174px;
+      height: 230px;
+      left: 57%;
+      top: 19%;
+      transform: rotateY(-5deg) rotateZ(1.5deg);
+    }
+
+    .art-cigar {
+      --art-image: url("assets/images/artwork/artwork-cigar.jpg");
+      width: 190px;
+      height: 136px;
+      left: 71%;
+      top: 32%;
+      transform: rotateY(-8deg) rotateZ(-1deg);
+    }
+
+    .art-faces {
+      --art-image: url("assets/images/artwork/artwork-faces-figures.jpg");
+      width: 132px;
+      height: 178px;
+      left: 85%;
+      top: 23%;
+      transform: rotateY(-13deg) rotateZ(2deg);
+    }
+
+    .art-nature {
+      --art-image: url("assets/images/artwork/artwork-nature.jpg");
+      width: 146px;
+      height: 166px;
+      left: 49%;
+      top: 61%;
+      transform: translateZ(50px) rotateZ(1deg);
+    }
+
+    .floor-reflection {
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      bottom: 2%;
+      height: 22%;
+      z-index: 5;
+      opacity: .36;
+      filter: blur(10px);
+      transform: scaleY(-1);
+      pointer-events: none;
+    }
+
+    .floor-reflection .hero-art {
+      box-shadow: none;
+      opacity: .42;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      z-index: 14;
+      right: clamp(18px, 4vw, 58px);
+      bottom: clamp(24px, 7vh, 72px);
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 8px;
+      color: rgba(255,255,255,.68);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
     }
-    .voice-card {
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 34px;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.035));
-      box-shadow: 0 28px 90px rgba(0,0,0,.28);
-    }
-    .voice-card video {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      background: #08040d;
-    }
-    .voice-copy { padding: 22px 24px 26px; }
-    .voice-copy h3 { font-size: 2.3rem; margin-bottom: 10px; }
-    .voice-copy p { margin: 0; color: rgba(255,255,255,.72); line-height: 1.7; }
 
-    .collector-section { overflow: hidden; }
-    .collector-section::before {
+    .scroll-cue::after {
+      content: "";
+      width: 1px;
+      height: 82px;
+      background: linear-gradient(180deg, #fff, transparent);
+      margin: 12px auto 0;
+      animation: scrollPulse 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes scrollPulse {
+      from { opacity: .25; transform: scaleY(.75); }
+      to { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ============================================================
+       FULL-BLEED CINEMATIC SCENES — NOT BOXES
+    ============================================================ */
+
+    .scene {
+      min-height: 110vh;
+      display: grid;
+      align-items: center;
+      padding: 120px max(22px, 5vw);
+      isolation: isolate;
+    }
+
+    .scene-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -4;
+      overflow: hidden;
+    }
+
+    .scene-bg video,
+    .scene-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.04);
+      transform: scale(1.04);
+    }
+
+    .scene-bg::after {
       content: "";
       position: absolute;
-      inset: 8% -14% auto auto;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,79,216,.18), transparent 68%);
-      filter: blur(12px);
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.28), rgba(0,0,0,.24) 54%, rgba(0,0,0,.36)),
+        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.12), rgba(0,0,0,.26));
     }
-    .collector-grid {
-      margin-top: 44px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    .collector-card {
-      padding: 26px;
-      min-height: 240px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      box-shadow: 0 24px 70px rgba(0,0,0,.22);
-    }
-    .collector-card span { display: block; color: var(--fuchsia); font-size: .74rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 16px; }
-    .collector-card h3 { font-size: 2rem; margin-bottom: 12px; }
-    .collector-card p { margin: 0; color: rgba(255,255,255,.72); line-height: 1.7; }
 
-    .contact-panel {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 30px;
-      align-items: stretch;
-      padding: clamp(24px, 4vw, 50px);
-      border-radius: 42px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: linear-gradient(135deg, rgba(255,255,255,.095), rgba(255,255,255,.035));
-      box-shadow: 0 30px 100px rgba(0,0,0,.3);
-      backdrop-filter: blur(18px);
+    .scene-content {
+      width: min(760px, 100%);
+      position: relative;
+      z-index: 4;
     }
-    .contact-form { display: grid; gap: 14px; }
-    .field { display: grid; gap: 7px; }
-    .field label { color: rgba(255,255,255,.68); font-size: .74rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
-    .field input, .field textarea, .field select {
-      width: 100%;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 18px;
-      background: rgba(0,0,0,.22);
-      color: white;
-      padding: 14px 15px;
-      outline: none;
-    }
-    .field textarea { min-height: 130px; resize: vertical; }
 
-    footer {
-      padding: 38px 24px 54px;
-      color: rgba(255,255,255,.56);
+    .scene-content.right {
+      margin-left: auto;
+    }
+
+    .scene-content.center {
+      margin-inline: auto;
       text-align: center;
-      font-size: .85rem;
+    }
+
+    .scene-content h2 {
+      font-size: clamp(3.5rem, 8.4vw, 10rem);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-shadow: 0 20px 90px rgba(0,0,0,.34);
+      margin-bottom: 22px;
+    }
+
+    .scene-content p {
+      color: rgba(255,255,255,.76);
+      line-height: 1.8;
+      font-size: clamp(1.04rem, 1.5vw, 1.28rem);
+      text-shadow: 0 10px 44px rgba(0,0,0,.30);
+      max-width: 650px;
+      margin: 0 0 26px;
+    }
+
+    .scene-content.center p {
+      margin-inline: auto;
+    }
+
+    .oversized-word {
+      position: absolute;
+      z-index: -1;
+      left: -4vw;
+      bottom: 2vh;
+      font-family: var(--serif);
+      font-size: clamp(7rem, 22vw, 24rem);
+      line-height: .72;
+      letter-spacing: -.11em;
+      color: rgba(255,255,255,.045);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .moving-strip {
+      position: relative;
+      min-height: 80vh;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      background: #020206;
+      border-block: 1px solid rgba(255,255,255,.10);
+    }
+
+    .moving-strip-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      animation: cinematicTrack 42s linear infinite;
+      padding: 8vh 0;
+    }
+
+    .moving-strip:nth-of-type(even) .moving-strip-track {
+      animation-direction: reverse;
+    }
+
+    @keyframes cinematicTrack {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .strip-frame {
+      position: relative;
+      flex: 0 0 auto;
+      width: min(56vw, 580px);
+      height: min(68vh, 640px);
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 42px 130px rgba(0,0,0,.34);
+      transform: rotate(-1.2deg);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .strip-frame:nth-child(even) {
+      width: min(46vw, 480px);
+      height: min(58vh, 540px);
+      transform: translateY(8vh) rotate(1.6deg);
+    }
+
+    .strip-frame img,
+    .strip-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.1) contrast(1.03);
+      transition: .45s var(--ease);
+    }
+
+    .strip-frame:hover img,
+    .strip-frame:hover video {
+      transform: scale(1.06);
+    }
+
+    .strip-frame::after {
+      content: attr(data-title);
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 2;
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.56);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-weight: 950;
+      font-size: .66rem;
+    }
+
+    .series-portal {
+      min-height: 115vh;
+      padding: 118px max(18px, 4vw);
+      display: grid;
+      align-items: center;
+      background:
+        radial-gradient(circle at 20% 16%, rgba(255,54,215,.17), transparent 32%),
+        radial-gradient(circle at 78% 72%, rgba(72,234,255,.12), transparent 32%),
+        #020206;
+    }
+
+    .portal-head {
+      width: min(1050px, 100%);
+      margin: 0 auto 54px;
+      text-align: center;
+    }
+
+    .portal-head h2 {
+      font-size: clamp(3rem, 7.8vw, 8.8rem);
+      line-height: .84;
+      letter-spacing: -.08em;
+      margin-bottom: 20px;
+    }
+
+    .portal-head p {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      color: rgba(255,255,255,.68);
+      line-height: 1.8;
+      font-size: 1.08rem;
+    }
+
+    .portal-grid {
+      width: min(1320px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(220px, 1fr));
+      gap: 22px;
+      overflow-x: auto;
+      padding: 4px 6px 36px;
+      scrollbar-color: rgba(255,255,255,.24) transparent;
+    }
+
+    .portal-card {
+      min-height: 68vh;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 36px 110px rgba(0,0,0,.45);
+      background: #111;
+      transition: .34s var(--ease);
+    }
+
+    .portal-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.06);
+      transition: .48s var(--ease);
+    }
+
+    .portal-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 20%, rgba(0,0,0,.34)),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.26), transparent 22%);
+      z-index: 1;
+    }
+
+    .portal-card div {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 3;
+    }
+
+    .portal-card span {
+      display: block;
+      color: var(--cyan);
+      font-weight: 950;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .68rem;
+      margin-bottom: 11px;
+    }
+
+    .portal-card h3 {
+      font-size: clamp(1.7rem, 2.6vw, 2.65rem);
+      line-height: .95;
+      margin-bottom: 8px;
+    }
+
+    .portal-card p {
+      color: rgba(255,255,255,.68);
+      line-height: 1.55;
+      font-size: .9rem;
+      margin: 0;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-12px) scale(1.015);
+      box-shadow: 0 50px 140px rgba(0,0,0,.66), 0 0 56px rgba(72,234,255,.15);
+    }
+
+    .portal-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .voice-stage {
+      min-height: 120vh;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      background: #020206;
+      border-block: 1px solid rgba(255,255,255,.10);
+    }
+
+    .voice-video {
+      position: relative;
+      min-height: 120vh;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .voice-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .voice-video::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(0,0,0,.36) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.30));
+    }
+
+    .voice-copy {
+      display: grid;
+      align-content: center;
+      padding: 120px max(24px, 5vw);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .voice-copy::before {
+      content: "VOICE";
+      position: absolute;
+      right: -7vw;
+      top: 8vh;
+      font-family: var(--serif);
+      font-size: clamp(7rem, 17vw, 19rem);
+      letter-spacing: -.1em;
+      color: rgba(255,255,255,.045);
+      line-height: .8;
+    }
+
+    .voice-copy h2 {
+      font-size: clamp(3.1rem, 7vw, 7.7rem);
+      line-height: .84;
+      letter-spacing: -.075em;
+      margin-bottom: 24px;
       position: relative;
       z-index: 2;
     }
 
-    .modal {
+    .voice-copy p {
+      color: rgba(255,255,255,.70);
+      line-height: 1.82;
+      font-size: 1.06rem;
+      margin: 0 0 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .video-selector {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .video-selector button {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.07);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 13px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 950;
+      font-size: .62rem;
+      cursor: pointer;
+      transition: .22s var(--ease);
+    }
+
+    .video-selector button:hover {
+      background: rgba(255,255,255,.15);
+      transform: translateY(-2px);
+    }
+
+    .contact-scene {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 118px max(22px, 5vw);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,54,215,.20), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(72,234,255,.16), transparent 32%),
+        #020206;
+    }
+
+    .contact-inner {
+      width: min(1060px, 100%);
+      text-align: center;
+    }
+
+    .contact-inner h2 {
+      font-size: clamp(3.3rem, 8.5vw, 9.5rem);
+      line-height: .82;
+      letter-spacing: -.085em;
+      margin-bottom: 24px;
+    }
+
+    .contact-inner p {
+      width: min(760px, 100%);
+      margin: 0 auto 28px;
+      color: rgba(255,255,255,.70);
+      line-height: 1.82;
+      font-size: 1.08rem;
+    }
+
+    .contact-form {
+      width: min(760px, 100%);
+      margin: 38px auto 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 0;
+      background: rgba(255,255,255,.05);
+      color: #fff;
+      padding: 17px 18px;
+      font: inherit;
+      outline: none;
+      backdrop-filter: blur(14px);
+    }
+
+    .contact-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255,255,255,.44);
+    }
+
+    footer {
+      padding: 36px 22px 64px;
+      text-align: center;
+      color: rgba(255,255,255,.46);
+      background: #020206;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: .84rem;
+    }
+
+    .lightbox {
       position: fixed;
       inset: 0;
-      z-index: 100;
+      z-index: 200;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-      background: rgba(3,2,7,.82);
+      background: rgba(0,0,0,.34);
       backdrop-filter: blur(18px);
+      padding: 24px;
     }
-    .modal.active { display: flex; }
-    .modal-card {
-      width: min(880px, 100%);
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 34px;
-      background: linear-gradient(135deg, rgba(19,9,30,.96), rgba(8,5,18,.96));
-      box-shadow: 0 40px 140px rgba(0,0,0,.6);
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      width: min(1120px, 100%);
+      max-height: 86vh;
+      display: grid;
+      grid-template-columns: 1fr .42fr;
+      background: rgba(8,8,14,.96);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 44px 140px rgba(0,0,0,.26);
       overflow: hidden;
     }
-    .modal-visual { height: 330px; position: relative; }
-    .modal-visual .series-art { inset: 0; }
-    .modal-content { padding: 30px; }
-    .modal-content h3 { font-size: 3.2rem; margin-bottom: 12px; }
-    .modal-content p { color: rgba(255,255,255,.74); line-height: 1.8; max-width: 690px; }
-    .close-modal {
+
+    .lightbox-media {
+      min-height: 72vh;
+      background:
+        var(--modal-image),
+        linear-gradient(135deg, rgba(255,54,215,.95), rgba(36,77,255,.95), rgba(47,255,240,.72));
+      background-size: cover;
+      background-position: center;
+    }
+
+    .lightbox-copy {
+      padding: clamp(24px, 4vw, 46px);
+      display: grid;
+      align-content: center;
+    }
+
+    .lightbox-copy h3 {
+      font-size: clamp(2.1rem, 4vw, 4.5rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+      margin-bottom: 16px;
+    }
+
+    .lightbox-copy p {
+      color: rgba(255,255,255,.70);
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+
+    .close-lightbox {
       position: absolute;
       top: 18px;
       right: 18px;
-      z-index: 5;
-      width: 42px;
-      height: 42px;
+      z-index: 210;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(0,0,0,.36);
-      color: white;
-      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+      color: #fff;
       font-size: 1.3rem;
+      cursor: pointer;
     }
 
-    .reveal { opacity: 0; transform: translateY(28px); }
+    @media (max-width: 1050px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 10px);
+        padding: 12px;
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,.15);
+        background: rgba(2,2,6,.94);
+        backdrop-filter: blur(20px);
+        justify-content: center;
+      }
 
-    @media (max-width: 1060px) {
-      .topbar { border-radius: 28px; align-items: flex-start; }
-      .nav { justify-content: flex-start; }
-      .gallery-room { min-height: 720px; }
-      .frame-field { grid-template-columns: repeat(2, 1fr); inset: 8% 10% 27%; }
-      .art-frame.large { grid-row: span 1; max-width: 276px; height: clamp(150px, 20vw, 220px); }
-      .hero-title-card { bottom: 24px; }
-      .scroll-cue { display: none; }
-      .split, .contact-panel { grid-template-columns: 1fr; }
-      .media-strip, .voice-grid, .collector-grid { grid-template-columns: 1fr 1fr; }
-      .silent-media.wide { grid-column: span 2; }
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .camera-drift {
+        min-height: 82svh;
+        width: min(950px, calc(100% - 22px));
+      }
+
+      .gallery-title {
+        top: 94px;
+      }
+
+      .gallery-title h1 {
+        font-size: clamp(3.8rem, 14vw, 8rem);
+      }
+
+      .art-wall {
+        top: 34%;
+      }
+
+      .hero-art {
+        padding: 8px;
+        border-width: 8px;
+      }
+
+      .art-children { width: 112px; height: 160px; left: 5%; top: 8%; }
+      .art-sports { width: 128px; height: 94px; left: 22%; top: 30%; }
+      .art-music { width: 150px; height: 205px; left: 43%; top: 2%; }
+      .art-icons { width: 122px; height: 168px; left: 66%; top: 19%; }
+      .art-cigar { width: 130px; height: 94px; left: 6%; top: 62%; }
+      .art-faces { width: 104px; height: 146px; left: 78%; top: 56%; }
+      .art-nature { width: 122px; height: 138px; left: 42%; top: 65%; }
+
+      .hero-actions {
+        bottom: 30px;
+      }
+
+      .scroll-cue {
+        display: none;
+      }
+
+      .voice-stage {
+        grid-template-columns: 1fr;
+      }
+
+      .voice-video {
+        min-height: 72vh;
+      }
+
+      .lightbox-inner {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+      }
+
+      .lightbox-media {
+        min-height: 52vh;
+      }
     }
 
     @media (max-width: 720px) {
-      .topbar { position: absolute; top: 12px; width: calc(100% - 20px); flex-direction: column; border-radius: 24px; }
-      .top-cta { width: 100%; }
-      .hero { padding: 178px 12px 28px; }
-      .gallery-room { min-height: 820px; border-radius: 24px; }
-      .gallery-wall { inset: 2% 3% 20%; }
-      .left-wall, .right-wall { display: none; }
-      .frame-field { inset: 5% 5% 34%; grid-template-columns: 1fr; gap: 12px; overflow: auto; align-content: start; }
-      .art-frame, .art-frame.large { height: 132px; max-width: 100%; border-width: 8px; }
-      .hero-title-card { left: 14px; right: 14px; bottom: 16px; width: auto; border-radius: 24px; }
-      .hero-title-card h1 { font-size: 3rem; }
-      section { padding-left: 16px; padding-right: 16px; }
-      .portrait-stack { min-height: 430px; }
-      .media-strip, .voice-grid, .collector-grid { grid-template-columns: 1fr; }
-      .silent-media.wide { grid-column: span 1; }
-      .series-grid { grid-template-columns: repeat(7, 82vw); }
+      .nav {
+        top: 10px;
+        width: calc(100% - 18px);
+        border-radius: 24px;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .gallery-title {
+        top: 84px;
+        left: 18px;
+        width: calc(100% - 36px);
+      }
+
+      .gallery-title h1 {
+        font-size: clamp(3.4rem, 19vw, 6.5rem);
+      }
+
+      .gallery-title p {
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+
+      .camera-drift {
+        min-height: 88svh;
+        margin-top: 64px;
+      }
+
+      .art-wall {
+        top: 39%;
+      }
+
+      .hero-art::after {
+        font-size: .52rem;
+        left: 9px;
+        right: 9px;
+        bottom: 9px;
+        padding: 9px;
+      }
+
+      .art-children { width: 94px; height: 130px; left: 4%; top: 5%; }
+      .art-sports { width: 104px; height: 78px; left: 38%; top: 18%; }
+      .art-music { width: 112px; height: 150px; left: 67%; top: 1%; }
+      .art-icons { width: 104px; height: 140px; left: 8%; top: 45%; }
+      .art-cigar { width: 108px; height: 78px; left: 41%; top: 57%; }
+      .art-faces { width: 90px; height: 124px; left: 72%; top: 51%; }
+      .art-nature { width: 102px; height: 112px; left: 39%; top: 76%; }
+
+      .hero-actions {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .scene {
+        min-height: 96vh;
+        padding: 98px 18px;
+      }
+
+      .scene-content h2,
+      .portal-head h2,
+      .voice-copy h2,
+      .contact-inner h2 {
+        font-size: clamp(3.1rem, 16vw, 5.8rem);
+      }
+
+      .moving-strip {
+        min-height: 64vh;
+      }
+
+      .strip-frame {
+        width: 82vw;
+        height: 58vh;
+      }
+
+      .strip-frame:nth-child(even) {
+        width: 74vw;
+        height: 48vh;
+      }
+
+      .portal-card {
+        min-height: 58vh;
+      }
+
+      .voice-copy {
+        padding: 90px 18px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="site-shell">
-    <header class="topbar">
-      <a href="#gallery" class="brand" aria-label="Donna M. Richardson Gallery Home">
-        <span class="brand-mark"></span>
-        <span>Donna M. Richardson</span>
+  <!-- V6 VISIBILITY REPAIR:
+       - Corrected video filenames to match uploaded GitHub files.
+       - Brightened gallery atmosphere.
+       - Hero wall remains fixed-gallery concept.
+       - Artwork image filenames still must match exact files inside assets/images/artwork.
+  -->
+  <div class="page">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home">
+        <strong>Donna M. Richardson</strong>
+        <span>Cinematic Virtual Gallery</span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#gallery">Gallery</a>
+
+      <button class="menu-btn" type="button" onclick="toggleMenu()">Menu</button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Gallery</a>
         <a href="#series">Series</a>
         <a href="#voice">Voice</a>
-        <a href="#process">Process</a>
-        <a href="#collectors">Collectors</a>
+        <a href="#story">Story</a>
+        <a href="#studio">Studio</a>
         <a href="#contact">Contact</a>
-      </nav>
-      <a class="top-cta" href="#contact">Collector Inquiry</a>
-    </header>
+      </div>
+    </nav>
 
     <main>
-      <section class="hero" id="gallery" aria-label="Realistic fixed-wall virtual gallery entrance">
-        <div class="gallery-stage">
-          <div class="gallery-room" data-depth>
-            <div class="ceiling-glow"></div>
-            <div class="left-wall"></div>
-            <div class="right-wall"></div>
-            <div class="gallery-wall"></div>
-            <div class="spotlight one"></div>
-            <div class="spotlight two"></div>
-            <div class="spotlight three"></div>
+      <section class="section hero-gallery" id="home">
+        <div class="hero-video-layer" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/painting-detail-texture-2.mp4" type="video/mp4" />
+          </video>
+        </div>
 
-            <div class="frame-field" aria-label="Seven framed series entrances">
-              <button class="art-frame" data-series="Children" data-copy="Wonder, innocence, dreaming, flowers, butterflies, and becoming." aria-label="Open Children series">
-                <span class="art-image children"></span>
-                <span class="frame-label"><strong>Children</strong><span>01</span></span>
-              </button>
-              <button class="art-frame large" data-series="Music" data-copy="Jazz, rhythm, memory, sound, icons, and cultural pulse." aria-label="Open Music series">
-                <span class="art-image music"></span>
-                <span class="frame-label"><strong>Music</strong><span>03</span></span>
-              </button>
-              <button class="art-frame" data-series="Sports" data-copy="Motion, discipline, resilience, victory, strength, and triumph." aria-label="Open Sports series">
-                <span class="art-image sports"></span>
-                <span class="frame-label"><strong>Sports</strong><span>02</span></span>
-              </button>
-              <button class="art-frame" data-series="Icons" data-copy="Presence, identity, legacy, cultural memory, and recognition." aria-label="Open Icons series">
-                <span class="art-image icons"></span>
-                <span class="frame-label"><strong>Icons</strong><span>04</span></span>
-              </button>
-              <button class="art-frame" data-series="Cigar" data-copy="Warmth, atmosphere, collector mood, lounges, and luxury spaces." aria-label="Open Cigar series">
-                <span class="art-image cigar"></span>
-                <span class="frame-label"><strong>Cigar</strong><span>05</span></span>
-              </button>
-              <button class="art-frame" data-series="Faces & Figures" data-copy="Expression, dignity, story, human truth, and emotional identity." aria-label="Open Faces and Figures series">
-                <span class="art-image faces"></span>
-                <span class="frame-label"><strong>Faces</strong><span>06</span></span>
-              </button>
-              <button class="art-frame" data-series="Nature" data-copy="Flowers, renewal, softness, color, spirit, and life energy." aria-label="Open Nature series">
-                <span class="art-image nature"></span>
-                <span class="frame-label"><strong>Nature</strong><span>07</span></span>
-              </button>
+        <div class="gallery-room">
+          <div class="gallery-depth-left"></div>
+          <div class="gallery-depth-right"></div>
+          <div class="spotlights"></div>
+
+          <div class="gallery-title reveal">
+            <div class="kicker">Private Digital Exhibition</div>
+            <h1>Enter <span>Donna’s Gallery</span></h1>
+            <p>A cinematic fixed-wall virtual gallery featuring seven worlds of color, culture, memory, spirit, and contemporary fine art.</p>
+          </div>
+
+          <div class="camera-drift">
+            <div class="art-wall" aria-label="Seven Donna Richardson artwork series entrances">
+              <a href="#series" class="hero-art art-children" data-title="Children" data-series="Children"></a>
+              <a href="#series" class="hero-art art-sports" data-title="Sports" data-series="Sports"></a>
+              <a href="#series" class="hero-art art-music" data-title="Music" data-series="Music"></a>
+              <a href="#series" class="hero-art art-icons" data-title="Icons" data-series="Icons"></a>
+              <a href="#series" class="hero-art art-cigar" data-title="Cigar" data-series="Cigar"></a>
+              <a href="#series" class="hero-art art-faces" data-title="Faces & Figures" data-series="Faces & Figures"></a>
+              <a href="#series" class="hero-art art-nature" data-title="Nature" data-series="Nature"></a>
             </div>
+          </div>
 
-            <div class="gallery-floor"></div>
+          <div class="hero-actions reveal">
+            <a class="button primary" href="#series">Explore the Seven Series</a>
+            <a class="button" href="#voice">Hear Donna Speak</a>
+          </div>
 
-            <div class="hero-title-card reveal">
-              <div class="eyebrow">Private Digital Exhibition</div>
-              <h1>Enter Donna’s Gallery</h1>
-              <p>A cinematic fixed-wall virtual gallery experience built for collectors, curators, institutions, and art lovers entering seven worlds of culture, memory, color, spirit, and contemporary fine art.</p>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="#series">Explore the Seven Series</a>
-                <a class="btn btn-secondary" href="#voice">Hear Donna Speak</a>
-              </div>
+          <div class="scroll-cue">Scroll</div>
+        </div>
+      </section>
+
+      <section class="moving-strip" aria-label="Moving artwork and personality cinema strip">
+        <div class="moving-strip-track">
+          <figure class="strip-frame" data-title="Studio Presence">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/artwork-closeup-blue.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/painting-detail-texture-2.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Donna Reflection">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/donna-speaking/donnal-reflection.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Exhibition Motion">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Ocean Freedom">
+            <img src="assets/images/portraits/donna-ocean-freedom.jpg" alt="Donna M. Richardson portrait near the ocean" />
+          </figure>
+          <figure class="strip-frame" data-title="Artwork Detail">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/painting-detail-texture-3.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/painting-detail-texture-2.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Studio Presence">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/artwork-closeup-blue.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/painting-detail-texture-2.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Donna Reflection">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/donna-speaking/donnal-reflection.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Exhibition Motion">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Ocean Freedom">
+            <img src="assets/images/portraits/donna-ocean-freedom.jpg" alt="Donna M. Richardson portrait near the ocean" />
+          </figure>
+          <figure class="strip-frame" data-title="Artwork Detail">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/painting-detail-texture-3.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/painting-detail-texture-2.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </section>
+
+      <section class="scene" id="story">
+        <div class="scene-bg">
+          <img src="assets/images/portraits/donna-ocean-freedom.jpg" alt="Donna M. Richardson ocean portrait" />
+        </div>
+
+        <div class="scene-content reveal">
+          <div class="kicker">The Human Behind the Work</div>
+          <h2>Spirit. Memory. Color. Presence.</h2>
+          <p>Donna’s work is not only viewed — it is felt. Her world carries joy, legacy, cultural memory, reflection, humor, spiritual openness, and a deep relationship with beauty.</p>
+          <a class="button primary" href="#contact">Begin a Collector Inquiry</a>
+        </div>
+
+        <div class="oversized-word">Donna</div>
+      </section>
+
+      <section class="series-portal" id="series">
+        <div class="portal-head reveal">
+          <div class="kicker">Seven Exhibition Rooms</div>
+          <h2>Each series opens a different world.</h2>
+          <p>The seven collections should feel less like categories and more like gallery rooms — each with its own emotional climate, visual rhythm, and collector story.</p>
+        </div>
+
+        <div class="portal-grid reveal">
+          <a class="portal-card" href="#" data-series="Children">
+            <img src="assets/images/artwork/artwork-children.jpg" alt="Children series artwork" />
+            <div>
+              <span>01</span>
+              <h3>Children</h3>
+              <p>Wonder, innocence, dreaming, flowers, butterflies, and becoming.</p>
             </div>
+          </a>
 
-            <div class="scroll-cue">Scroll</div>
+          <a class="portal-card" href="#" data-series="Sports">
+            <img src="assets/images/artwork/artwork-sports.jpg" alt="Sports series artwork" />
+            <div>
+              <span>02</span>
+              <h3>Sports</h3>
+              <p>Motion, discipline, resilience, victory, strength, and triumph.</p>
+            </div>
+          </a>
+
+          <a class="portal-card" href="#" data-series="Music">
+            <img src="assets/images/artwork/artwork-music.jpg" alt="Music series artwork" />
+            <div>
+              <span>03</span>
+              <h3>Music</h3>
+              <p>Jazz, rhythm, memory, sound, icons, and cultural pulse.</p>
+            </div>
+          </a>
+
+          <a class="portal-card" href="#" data-series="Icons">
+            <img src="assets/images/artwork/artwork-icons.jpg" alt="Icons series artwork" />
+            <div>
+              <span>04</span>
+              <h3>Icons</h3>
+              <p>Presence, identity, legacy, cultural memory, and recognition.</p>
+            </div>
+          </a>
+
+          <a class="portal-card" href="#" data-series="Cigar">
+            <img src="assets/images/artwork/artwork-cigar.jpg" alt="Cigar series artwork" />
+            <div>
+              <span>05</span>
+              <h3>Cigar</h3>
+              <p>Warmth, atmosphere, collector mood, lounges, and luxury spaces.</p>
+            </div>
+          </a>
+
+          <a class="portal-card" href="#" data-series="Faces & Figures">
+            <img src="assets/images/artwork/artwork-faces-figures.jpg" alt="Faces and Figures series artwork" />
+            <div>
+              <span>06</span>
+              <h3>Faces & Figures</h3>
+              <p>Expression, dignity, story, human truth, and emotional identity.</p>
+            </div>
+          </a>
+
+          <a class="portal-card" href="#" data-series="Nature">
+            <img src="assets/images/artwork/artwork-nature.jpg" alt="Nature series artwork" />
+            <div>
+              <span>07</span>
+              <h3>Nature</h3>
+              <p>Flowers, renewal, softness, color, spirit, and life energy.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="voice-stage" id="voice">
+        <div class="voice-video">
+          <video id="voiceVideo" controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
+            <source id="voiceSource" src="assets/videos/donna-speaking/donna-smiling-interview.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="voice-copy reveal">
+          <div class="kicker">Donna’s Voice</div>
+          <h2>Let the artist be present.</h2>
+          <p>Speaking moments should have sound. These are not background decoration — they are moments of intimacy, memory, reflection, and connection with the person behind the work.</p>
+
+          <div class="video-selector" aria-label="Choose Donna speaking video">
+            <button type="button" onclick="changeVoiceVideo('assets/videos/donna-speaking/donna-smiling-interview.mp4')">Smiling Interview</button>
+            <button type="button" onclick="changeVoiceVideo('assets/videos/donna-speaking/donna-festival-speaking.mp4')">Festival</button>
+            <button type="button" onclick="changeVoiceVideo('assets/videos/donna-speaking/donna-studio-speaking.mp4')">Studio</button>
+            <button type="button" onclick="changeVoiceVideo('assets/videos/donna-speaking/donnal-reflection.mp4')">Reflection</button>
           </div>
         </div>
       </section>
 
-      <section id="story">
-        <div class="wrap split">
-          <div class="portrait-stack reveal">
-            <div class="portrait-card main">
-              <img src="assets/images/portraits/donna-ocean-portrait.jpg" alt="Donna M. Richardson portrait" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',innerHTML:'Donna Portrait Placeholder'}))">
-            </div>
-            <div class="portrait-card small">
-              <img src="assets/images/personality/donna-smiling.jpg" alt="Donna M. Richardson smiling portrait" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',innerHTML:'Artist Presence'}))">
-            </div>
-          </div>
-          <div class="story-panel reveal">
-            <div class="section-kicker">The Human Behind the Work</div>
-            <h2>Spirit. Memory. Color. Presence.</h2>
-            <p class="section-lead">Donna’s work is not only viewed — it is felt. Her world carries joy, legacy, cultural memory, reflection, humor, spiritual openness, and a deep relationship with beauty. This digital gallery is designed to make the viewer feel the emotional atmosphere before they ever enter a single series.</p>
-            <div class="hero-actions" style="margin-top:28px">
-              <a class="btn btn-primary" href="#contact">Begin a Collector Inquiry</a>
-              <a class="btn btn-secondary" href="#process">See the Process</a>
-            </div>
-          </div>
+      <section class="scene" id="studio">
+        <div class="scene-bg">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/silent-artwork/artwork-closeup-blue.mp4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/painting-detail-texture-3.mp4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/painting-detail-texture-2.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="scene-content right reveal">
+          <div class="kicker">Studio / Process</div>
+          <h2>The work behind the work.</h2>
+          <p>Silent motion belongs here: paint texture, detail closeups, studio movement, gallery pans, and the intimate visual rhythm of making. This is where process becomes part of the exhibition.</p>
+          <a class="button" href="#contact">Ask About Available Work</a>
+        </div>
+
+        <div class="oversized-word">Process</div>
+      </section>
+
+      <section class="moving-strip" aria-label="Exhibition and collector motion strip">
+        <div class="moving-strip-track">
+          <figure class="strip-frame" data-title="Gallery Walkthrough">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Signature Portrait">
+            <img src="assets/images/portraits/donna-signature-portrait.jpg" alt="Donna M. Richardson portrait" />
+          </figure>
+
+          <figure class="strip-frame" data-title="Studio Energy">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/donna-speaking/donna-studio-speaking.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Event Atmosphere">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/painting-detail-2.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Gallery Walkthrough">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Signature Portrait">
+            <img src="assets/images/portraits/donna-signature-portrait.jpg" alt="Donna M. Richardson portrait" />
+          </figure>
+
+          <figure class="strip-frame" data-title="Studio Energy">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/donna-speaking/donna-studio-speaking.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Event Atmosphere">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/painting-detail-2.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
+            </video>
+          </figure>
         </div>
       </section>
 
-      <section class="series-section" id="series">
-        <div class="wrap">
-          <div class="section-kicker reveal">Seven Exhibition Rooms</div>
-          <h2 class="reveal">Each series opens a different world.</h2>
-          <p class="section-lead reveal">The collections should feel less like categories and more like gallery rooms — each with its own emotional climate, visual rhythm, collector story, and future path into available works.</p>
-
-          <div class="series-grid">
-            <article class="series-card reveal" data-series="Children" data-copy="Wonder, innocence, dreaming, flowers, butterflies, and becoming.">
-              <div class="series-art art-image children"></div>
-              <div class="series-copy"><div class="num">01 / Series</div><h3>Children</h3><p>Wonder, innocence, dreaming, flowers, butterflies, and becoming.</p></div>
-            </article>
-            <article class="series-card reveal" data-series="Sports" data-copy="Motion, discipline, resilience, victory, strength, and triumph.">
-              <div class="series-art art-image sports"></div>
-              <div class="series-copy"><div class="num">02 / Series</div><h3>Sports</h3><p>Motion, discipline, resilience, victory, strength, and triumph.</p></div>
-            </article>
-            <article class="series-card reveal" data-series="Music" data-copy="Jazz, rhythm, memory, sound, icons, and cultural pulse.">
-              <div class="series-art art-image music"></div>
-              <div class="series-copy"><div class="num">03 / Series</div><h3>Music</h3><p>Jazz, rhythm, memory, sound, icons, and cultural pulse.</p></div>
-            </article>
-            <article class="series-card reveal" data-series="Icons" data-copy="Presence, identity, legacy, cultural memory, and recognition.">
-              <div class="series-art art-image icons"></div>
-              <div class="series-copy"><div class="num">04 / Series</div><h3>Icons</h3><p>Presence, identity, legacy, cultural memory, and recognition.</p></div>
-            </article>
-            <article class="series-card reveal" data-series="Cigar" data-copy="Warmth, atmosphere, collector mood, lounges, and luxury spaces.">
-              <div class="series-art art-image cigar"></div>
-              <div class="series-copy"><div class="num">05 / Series</div><h3>Cigar</h3><p>Warmth, atmosphere, collector mood, lounges, and luxury spaces.</p></div>
-            </article>
-            <article class="series-card reveal" data-series="Faces & Figures" data-copy="Expression, dignity, story, human truth, and emotional identity.">
-              <div class="series-art art-image faces"></div>
-              <div class="series-copy"><div class="num">06 / Series</div><h3>Faces</h3><p>Expression, dignity, story, human truth, and emotional identity.</p></div>
-            </article>
-            <article class="series-card reveal" data-series="Nature" data-copy="Flowers, renewal, softness, color, spirit, and life energy.">
-              <div class="series-art art-image nature"></div>
-              <div class="series-copy"><div class="num">07 / Series</div><h3>Nature</h3><p>Flowers, renewal, softness, color, spirit, and life energy.</p></div>
-            </article>
-          </div>
+      <section class="scene">
+        <div class="scene-bg">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
+          </video>
         </div>
+
+        <div class="scene-content center reveal">
+          <div class="kicker">For Collectors, Curators, Institutions</div>
+          <h2>This work belongs in serious spaces.</h2>
+          <p>A cinematic presentation builds confidence for collectors, curators, corporate buyers, hospitality spaces, cultural institutions, and museum-minded viewers.</p>
+          <a class="button primary" href="#contact">Start a Conversation</a>
+        </div>
+
+        <div class="oversized-word">Legacy</div>
       </section>
 
-      <section id="process">
-        <div class="wrap">
-          <div class="section-kicker reveal">Cinematic Motion / Silent Artwork</div>
-          <h2 class="reveal">The work behind the work.</h2>
-          <p class="section-lead reveal">Silent motion belongs here: paint texture, detail closeups, studio movement, gallery pans, and intimate visual rhythm. These videos remain muted, smaller, and carefully framed so they support the art instead of overpowering the page.</p>
+      <section class="contact-scene" id="contact">
+        <div class="contact-inner reveal">
+          <div class="kicker">Collector Inquiry</div>
+          <h2>Begin a conversation about Donna’s work.</h2>
+          <p>For collectors, curators, corporate buyers, hospitality spaces, exhibitions, commissions, cultural partnerships, and press.</p>
 
-          <div class="media-strip">
-            <div class="silent-media wide reveal">
-              <video src="assets/videos/silent-artwork/gallery-walkthrough.mp4" autoplay muted loop playsinline preload="metadata"></video>
-              <div class="media-caption"><strong>Gallery Motion</strong><span>Muted Autoplay</span></div>
-            </div>
-            <div class="silent-media reveal">
-              <video src="assets/videos/silent-artwork/artwork-closeup.mp4" autoplay muted loop playsinline preload="metadata"></video>
-              <div class="media-caption"><strong>Texture</strong><span>Muted</span></div>
-            </div>
-            <div class="silent-media reveal">
-              <video src="assets/videos/silent-artwork/studio-process.mp4" autoplay muted loop playsinline preload="metadata"></video>
-              <div class="media-caption"><strong>Studio</strong><span>Muted</span></div>
-            </div>
-            <div class="silent-media wide reveal">
-              <video src="assets/videos/silent-artwork/exhibition-pan.mp4" autoplay muted loop playsinline preload="metadata"></video>
-              <div class="media-caption"><strong>Exhibition Detail</strong><span>Muted Autoplay</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="voice-section" id="voice">
-        <div class="wrap">
-          <div class="section-kicker reveal">Donna’s Voice / Audio Enabled</div>
-          <h2 class="reveal">Let the artist be present.</h2>
-          <p class="section-lead reveal">Speaking moments should have sound. These are not background decoration — they are intimate playback moments where collectors, curators, and viewers can hear Donna’s presence, reflection, humor, memory, and story.</p>
-
-          <div class="voice-grid">
-            <article class="voice-card reveal">
-              <video src="assets/videos/donna-speaking/donna-smiling-interview.mp4" controls preload="metadata" playsinline></video>
-              <div class="voice-copy"><h3>Smiling Interview</h3><p>A warm, human introduction to Donna’s personality and artistic presence.</p></div>
-            </article>
-            <article class="voice-card reveal">
-              <video src="assets/videos/donna-speaking/donna-festival-speaking.mp4" controls preload="metadata" playsinline></video>
-              <div class="voice-copy"><h3>Festival Speaking</h3><p>Donna in a public art environment, speaking from experience and connection.</p></div>
-            </article>
-            <article class="voice-card reveal">
-              <video src="assets/videos/donna-speaking/donna-studio-speaking.mp4" controls preload="metadata" playsinline></video>
-              <div class="voice-copy"><h3>Studio Speaking</h3><p>A closer studio moment, designed to feel personal, reflective, and honest.</p></div>
-            </article>
-            <article class="voice-card reveal">
-              <video src="assets/videos/donna-speaking/donnal-reflection.mp4" controls preload="metadata" playsinline></video>
-              <div class="voice-copy"><h3>Reflection</h3><p>An intimate artist reflection moment with user-controlled audio playback.</p></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="collector-section" id="collectors">
-        <div class="wrap">
-          <div class="section-kicker reveal">For Collectors, Curators, Institutions</div>
-          <h2 class="reveal">This work belongs in serious spaces.</h2>
-          <p class="section-lead reveal">The presentation should build confidence for private collectors, curators, corporate buyers, hospitality spaces, cultural institutions, press, and museum-minded viewers.</p>
-
-          <div class="collector-grid">
-            <article class="collector-card reveal"><span>01</span><h3>Collectors</h3><p>For buyers seeking emotionally rich contemporary work with cultural presence and strong visual identity.</p></article>
-            <article class="collector-card reveal"><span>02</span><h3>Curators</h3><p>For exhibition opportunities, institutional review, public programming, and cultural presentation.</p></article>
-            <article class="collector-card reveal"><span>03</span><h3>Corporate</h3><p>For hospitality, office, lounge, and executive spaces that need art with story and atmosphere.</p></article>
-            <article class="collector-card reveal"><span>04</span><h3>Press</h3><p>For interviews, features, artist statements, storytelling, and deeper public visibility.</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="wrap contact-panel reveal">
-          <div>
-            <div class="section-kicker">Collector Inquiry</div>
-            <h2>Begin a conversation about Donna’s work.</h2>
-            <p class="section-lead">For collectors, curators, corporate buyers, hospitality spaces, exhibitions, commissions, cultural partnerships, and press.</p>
-          </div>
-          <form class="contact-form" name="collector-inquiry" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="collector-inquiry" />
-            <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required /></div>
-            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required /></div>
-            <div class="field"><label for="interest">What are you interested in?</label><select id="interest" name="interest"><option>Available artwork</option><option>Commission inquiry</option><option>Exhibition / curatorial opportunity</option><option>Corporate or hospitality acquisition</option><option>Press / interview</option><option>Other</option></select></div>
-            <div class="field"><label for="message">Message</label><textarea id="message" name="message"></textarea></div>
-            <button class="btn btn-primary" type="submit">Send Inquiry</button>
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you. This demo form is ready to connect to Donna’s inquiry system.');">
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Email address" required />
+            <select name="interest" required>
+              <option value="">What are you interested in?</option>
+              <option>Available artwork</option>
+              <option>Commission inquiry</option>
+              <option>Exhibition / curatorial opportunity</option>
+              <option>Corporate or hospitality acquisition</option>
+              <option>Press / interview</option>
+              <option>Other</option>
+            </select>
+            <textarea name="message" placeholder="Share a few details..."></textarea>
+            <button class="button primary" type="submit">Send Inquiry</button>
           </form>
         </div>
       </section>
@@ -982,120 +1658,138 @@
     </footer>
   </div>
 
-  <div class="modal" id="seriesModal" aria-hidden="true" role="dialog" aria-label="Series room preview">
-    <div class="modal-card">
-      <button class="close-modal" type="button" aria-label="Close series preview">×</button>
-      <div class="modal-visual"><div class="series-art art-image children" id="modalArt"></div></div>
-      <div class="modal-content">
-        <div class="section-kicker">Series Room</div>
-        <h3 id="modalTitle">Series</h3>
-        <p id="modalCopy">This series will open into a deeper exhibition room with Donna’s artwork, story, available works, and collector inquiry path.</p>
-        <div class="hero-actions" style="margin-top:22px">
-          <a class="btn btn-primary" href="#contact">Ask About This Series</a>
-          <button class="btn btn-secondary close-modal-inline" type="button">Return to Gallery</button>
-        </div>
+  <div class="lightbox" id="seriesLightbox" aria-hidden="true">
+    <button class="close-lightbox" type="button" onclick="closeSeries()">×</button>
+
+    <div class="lightbox-inner">
+      <div class="lightbox-media" id="lightboxMedia"></div>
+      <div class="lightbox-copy">
+        <div class="kicker">Series Room</div>
+        <h3 id="lightboxTitle">Series</h3>
+        <p id="lightboxCopy">This series will open into a deeper exhibition room with Donna’s artwork, story, available works, and collector inquiry path.</p>
+        <a class="button primary" href="#contact" onclick="closeSeries()">Ask About This Series</a>
       </div>
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
+    const navLinks = document.getElementById('navLinks');
+
+    function toggleMenu() {
+      navLinks.classList.toggle('open');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('open');
+      });
+    });
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const safeClass = (name) => String(name || '').toLowerCase().replace(/&/g, '').replace(/\s+/g, '-').replace(/[^a-z-]/g, '');
-    const modal = document.getElementById('seriesModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalCopy = document.getElementById('modalCopy');
-    const modalArt = document.getElementById('modalArt');
+    const revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
 
-    function openSeries(el) {
-      const title = el.dataset.series || 'Series';
-      const copy = el.dataset.copy || 'This series will open into a deeper exhibition room with Donna’s artwork, story, available works, and collector inquiry path.';
-      modalTitle.textContent = title;
-      modalCopy.textContent = copy + ' This placeholder opens the future deeper exhibition room for artwork, availability, story, and collector inquiry.';
-      modalArt.className = 'series-art art-image ' + (title === 'Faces & Figures' ? 'faces' : safeClass(title));
-      modal.classList.add('active');
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    function changeVoiceVideo(src) {
+      const video = document.getElementById('voiceVideo');
+      const source = document.getElementById('voiceSource');
+
+      source.src = src;
+      video.load();
+      video.play().catch(function() {});
+    }
+
+    const seriesData = {
+      "Children": {
+        image: "assets/images/artwork/artwork-children.jpg",
+        copy: "Wonder, innocence, imagination, healing, dreaming, and becoming. This series can become one of Donna’s most emotionally resonant exhibition rooms."
+      },
+      "Sports": {
+        image: "assets/images/artwork/artwork-sports.jpg",
+        copy: "Motion, resilience, discipline, strength, victory, and triumph. A strong fit for collectors drawn to energy and movement."
+      },
+      "Music": {
+        image: "assets/images/artwork/artwork-music.jpg",
+        copy: "Jazz, rhythm, cultural memory, sound, and icons. This room should feel like music translated into color."
+      },
+      "Icons": {
+        image: "assets/images/artwork/artwork-icons.jpg",
+        copy: "Presence, legacy, cultural memory, and portraits that carry power. This room should feel bold and reverent."
+      },
+      "Cigar": {
+        image: "assets/images/artwork/artwork-cigar.jpg",
+        copy: "Warmth, luxury atmosphere, collector mood, hospitality placement, lounges, and interior appeal."
+      },
+      "Faces & Figures": {
+        image: "assets/images/artwork/artwork-faces-figures.jpg",
+        copy: "Dignity, identity, emotional truth, story, and human expression. This room should feel intimate and powerful."
+      },
+      "Nature": {
+        image: "assets/images/artwork/artwork-nature.jpg",
+        copy: "Flowers, renewal, softness, spiritual color, and life energy. This room should feel restorative and luminous."
+      }
+    };
+
+    document.querySelectorAll('[data-series]').forEach(function(item) {
+      item.addEventListener('click', function(event) {
+        event.preventDefault();
+        openSeries(item.getAttribute('data-series'));
+      });
+    });
+
+    function openSeries(series) {
+      const data = seriesData[series];
+
+      if (!data) {
+        return;
+      }
+
+      document.getElementById('lightboxTitle').textContent = series;
+      document.getElementById('lightboxCopy').textContent = data.copy;
+      document.getElementById('lightboxMedia').style.setProperty('--modal-image', 'url("' + data.image + '")');
+
+      const modal = document.getElementById('seriesLightbox');
+      modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
     }
 
-    document.querySelectorAll('[data-series]').forEach(el => {
-      el.addEventListener('click', () => openSeries(el));
-    });
-
-    function closeModal() {
-      modal.classList.remove('active');
+    function closeSeries() {
+      const modal = document.getElementById('seriesLightbox');
+      modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
     }
-    document.querySelectorAll('.close-modal, .close-modal-inline').forEach(btn => btn.addEventListener('click', closeModal));
-    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    const room = document.querySelector('[data-depth]');
-    if (room && window.matchMedia('(pointer:fine)').matches) {
-      window.addEventListener('mousemove', e => {
-        const x = (e.clientX / window.innerWidth - .5) * 2;
-        const y = (e.clientY / window.innerHeight - .5) * 2;
-        room.style.transform = `rotateY(${x * 2.2}deg) rotateX(${-y * 1.5}deg)`;
-      });
-    }
-
-    document.querySelectorAll('video').forEach(video => {
-      video.addEventListener('error', () => {
-        const box = document.createElement('div');
-        box.className = 'media-fallback';
-        box.innerHTML = 'Video Placeholder<br><small style="opacity:.7;text-transform:none;letter-spacing:0">Upload matching file to this asset path.</small>';
-        video.replaceWith(box);
-      });
+    window.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeSeries();
+      }
     });
 
-    if (window.gsap) {
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.to('.art-frame', {
-        y: -10,
-        duration: 2.8,
-        ease: 'sine.inOut',
-        stagger: .12,
-        repeat: -1,
-        yoyo: true
+    document.querySelectorAll('.hero-art').forEach(function(item) {
+      item.addEventListener('mousemove', function(event) {
+        const rect = item.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const rotateX = ((y / rect.height) - 0.5) * -6;
+        const rotateY = ((x / rect.width) - 0.5) * 6;
+
+        item.style.transform = 'translateY(-16px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.065)';
       });
-      gsap.utils.toArray('.reveal').forEach((el) => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: .9,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 86%'
-          }
-        });
+
+      item.addEventListener('mouseleave', function() {
+        item.style.transform = '';
       });
-      gsap.to('.gallery-wall', {
-        yPercent: -3,
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-      gsap.to('.hero-title-card', {
-        yPercent: 10,
-        opacity: .82,
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-    } else {
-      document.querySelectorAll('.reveal').forEach(el => {
-        el.style.opacity = 1;
-        el.style.transform = 'none';
-      });
-    }
+    });
   </script>
 </body>
 </html>
