@@ -913,6 +913,50 @@
       gap: 22px;
     }
 
+
+
+    .video-library-grid {
+      width: min(1220px, 100%);
+      margin: 28px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .video-library-grid.speaking {
+      grid-template-columns: repeat(5, minmax(220px, 1fr));
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+    }
+
+    .video-library-grid.silent {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .video-library-grid .video-card {
+      min-height: 330px;
+      scroll-snap-align: start;
+    }
+
+    .video-library-grid.speaking .video-card:first-child {
+      grid-column: span 2;
+      min-height: 390px;
+    }
+
+    .video-library-grid.silent .video-card {
+      min-height: 270px;
+    }
+
+    .video-section-note {
+      width: min(1220px, 100%);
+      margin: 34px auto 0;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      border-left: 1px solid rgba(72,234,255,0.38);
+      padding-left: 20px;
+    }
+
     .event-wall {
       width: min(1240px, 100%);
       margin: 45px auto 0;
@@ -1609,6 +1653,20 @@
       }
 
       .series-room-grid { grid-template-columns: repeat(7, minmax(220px, 1fr)); }
+
+      .video-library-grid,
+      .video-library-grid.silent {
+        grid-template-columns: 1fr;
+      }
+
+      .video-library-grid.speaking {
+        grid-template-columns: repeat(5, minmax(250px, 86vw));
+      }
+
+      .video-library-grid.speaking .video-card:first-child {
+        grid-column: span 1;
+      }
+
       .collector-banner { grid-template-columns: 1fr; }
 
       .collector-stat,
@@ -1651,7 +1709,7 @@
       <section class="section hero" id="home">
         <div class="hero-bg" aria-hidden="true">
           <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/hero-gallery-poster.jpg">
-            <source src="assets/videos/silent-artwork/hero-gallery-motion.mp4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
           </video>
           <div class="fallback-bg"></div>
         </div>
@@ -1870,37 +1928,115 @@
           <p class="lead">This gives the site elegance and emotional rhythm. Most motion stays quiet and cinematic. Donna’s voice becomes special when it appears.</p>
         </div>
 
-        <div class="video-grid reveal">
+        <p class="video-section-note reveal">The cinematic rule is now built in: Donna speaking videos use normal controls with sound available. Artwork and gallery atmosphere videos autoplay silently as elegant moving texture.</p>
+
+        <div class="video-library-grid speaking reveal" aria-label="Donna speaking videos with sound controls">
           <div class="video-card">
             <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
-              <source src="assets/videos/donna-speaking/donna-speaking-feature.mp4" type="video/mp4" />
+              <source src="assets/videos/donna-speaking/donna-smiling-interview.mp4" type="video/mp4" />
             </video>
             <div class="video-label">
               <strong>Sound On</strong>
-              Use for Donna speaking, artist reflections, interviews, exhibition talks, or story moments.
+              Donna speaking directly to visitors. This should feel intimate, personal, and collector-facing.
             </div>
           </div>
 
-          <div class="mini-stack">
-            <div class="video-card small">
-              <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-                <source src="assets/videos/silent-artwork/artwork-motion-loop.mp4" type="video/mp4" />
-              </video>
-              <div class="video-label">
-                <strong>Silent Artwork Loop</strong>
-                Use for art closeups, gallery pans, or texture shots.
-              </div>
+          <div class="video-card">
+            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
+              <source src="assets/videos/donna-speaking/donna-studio-speaking.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label">
+              <strong>Studio Voice</strong>
+              Use for Donna explaining process, meaning, or artistic intention.
             </div>
+          </div>
 
-            <div class="video-card small">
-              <video autoplay muted loop playsinline preload="metadata" poster="assets/images/exhibitions/silent-event-poster.jpg">
-                <source src="assets/videos/silent-artwork/exhibition-motion-loop.mp4" type="video/mp4" />
-              </video>
-              <div class="video-label">
-                <strong>Silent Exhibition Motion</strong>
-                Use for gallery/event atmosphere without distracting sound.
-              </div>
+          <div class="video-card">
+            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
+              <source src="assets/videos/donna-speaking/donna-festival-speaking.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label">
+              <strong>Public Voice</strong>
+              A live-event voice moment for exhibition energy and public presence.
             </div>
+          </div>
+
+          <div class="video-card">
+            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
+              <source src="assets/videos/donna-speaking/donna-donna-overwhelmed-speaking-speaking.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label">
+              <strong>Emotional Moment</strong>
+              A human moment that can help visitors feel Donna’s heart and gratitude.
+            </div>
+          </div>
+
+          <div class="video-card">
+            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
+              <source src="assets/videos/donna-speaking/donnal-reflection.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label">
+              <strong>Reflection</strong>
+              A quieter storytelling moment for depth, legacy, and meaning.
+            </div>
+          </div>
+        </div>
+
+        <div class="video-library-grid silent reveal" aria-label="Silent artwork and gallery atmosphere videos">
+          <div class="video-card">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label"><strong>Silent Gallery Walkthrough</strong>Atmosphere and motion without sound.</div>
+          </div>
+
+          <div class="video-card">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
+              <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label"><strong>Silent Gallery Movement</strong>Use as cinematic room energy.</div>
+          </div>
+
+          <div class="video-card">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
+              <source src="assets/videos/silent-artwork/artwork-closeup-blue.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label"><strong>Artwork Closeup</strong>Texture, color, and brush energy.</div>
+          </div>
+
+          <div class="video-card">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
+              <source src="assets/videos/silent-artwork/artwork-closeup-keys.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label"><strong>Detail Study</strong>Silent movement for visual richness.</div>
+          </div>
+
+          <div class="video-card">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
+              <source src="assets/videos/silent-artwork/painting-detail-2.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label"><strong>Painting Detail</strong>Close-range artwork atmosphere.</div>
+          </div>
+
+          <div class="video-card">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
+              <source src="assets/videos/silent-artwork/painting-detail-texture-2.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label"><strong>Texture Loop</strong>Fine detail and surface movement.</div>
+          </div>
+
+          <div class="video-card">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
+              <source src="assets/videos/silent-artwork/painting-detail-texture-3.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label"><strong>Surface Rhythm</strong>Pattern, dots, and visual rhythm.</div>
+          </div>
+
+          <div class="video-card">
+            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
+              <source src="assets/videos/silent-artwork/painting-detail-texture-4.mp4" type="video/mp4" />
+            </video>
+            <div class="video-label"><strong>Silent Detail</strong>Elegant motion for the exhibition mood.</div>
           </div>
         </div>
       </section>
