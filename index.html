@@ -665,6 +665,14 @@ button{font-family:inherit;color:inherit}
 .exhibition-tile:hover{transform:rotate(0deg) translateY(-8px);border-color:rgba(234,215,162,.45)}
 .exhibition-tile:hover img{transform:scale(1.055)}
 
+/* Donna personality collage should breathe freely — no placard blocking her images */
+.personality-stage{min-height:680px}
+.personality-orbit{filter:drop-shadow(0 34px 70px rgba(0,0,0,.38))}
+.personality-photo{transition:transform .8s ease, filter .8s ease}
+.personality-photo:hover{transform:scale(1.045) rotate(0deg)!important;filter:saturate(1.15) contrast(1.04)}
+.exhibition-tile.missing{display:none}
+.exhibition-grid{grid-auto-flow:dense}
+
 /* collector */
 .collector{
   min-height:70vh;
@@ -942,10 +950,6 @@ footer{
       <figure class="personality-photo p5"><img src="/assets/images/personality/personality-10-donna-blue-ribbon.png" alt="Donna blue ribbon"></figure>
       <figure class="personality-photo p6"><img src="/assets/images/personality/personality-08-donna-field.png" alt="Donna in field"></figure>
     </div>
-    <div class="personality-center">
-      <h2>Joy Is Part Of The <em>Exhibition</em></h2>
-      <p>Donna’s personality should not be hidden behind polite boxes. It should move through the website like music — playful, radiant, human, and unforgettable.</p>
-    </div>
   </div>
 
   <div class="fun-ribbon" aria-label="Moving Donna personality image ribbon">
@@ -969,6 +973,8 @@ footer{
   <h2 class="section-title">Click A Framed Work Above To Enter The <em>Full Series.</em></h2>
   <p class="section-lead">The home page no longer repeats every artwork in every series. The realistic gallery wall is now the portal system: each frame opens its own full series experience.</p>
 </section>
+
+<main class="series-pages" id="seriesPages" aria-label="Full Donna M. Richardson artwork series pages"></main>
 
 <section class="section energy" id="energy">
   <div class="energy-grid">
@@ -1265,9 +1271,14 @@ const personalityImages = [
 const studioImages = Array.from({length:20}, (_,i)=>`donna-studio-${String(i+1).padStart(2,"0")}.png`);
 
 const exhibitionImages = [
-  "exhibition-01.jpg","exhibition-02.jpg","exhibition-03.jpg","exhibition-04.jpg",
-  "exhibition-05.jpg","exhibition-06.jpg","exhibition-07.jpg","exhibition-08.jpg",
-  "exhibitions-01.jpg","exhibitions-02.jpg","events-collectors-01.jpg","events-collectors-02.jpg"
+  // Known exhibition / events / collector filename patterns. Missing files are automatically hidden.
+  ...Array.from({length:30}, (_,i)=>`exhibition-${String(i+1).padStart(2,"0")}.jpg`),
+  ...Array.from({length:30}, (_,i)=>`exhibitions-${String(i+1).padStart(2,"0")}.jpg`),
+  ...Array.from({length:30}, (_,i)=>`events-collectors-${String(i+1).padStart(2,"0")}.jpg`),
+  ...Array.from({length:30}, (_,i)=>`event-collector-${String(i+1).padStart(2,"0")}.jpg`),
+  ...Array.from({length:30}, (_,i)=>`gallery-event-${String(i+1).padStart(2,"0")}.jpg`),
+  ...Array.from({length:30}, (_,i)=>`gallery-opening-${String(i+1).padStart(2,"0")}.jpg`),
+  ...Array.from({length:30}, (_,i)=>`collector-${String(i+1).padStart(2,"0")}.jpg`)
 ];
 
 function folderFor(key){
@@ -1345,15 +1356,26 @@ function buildHighlights(){
 
 function buildExhibitions(){
   const grid = document.getElementById("exhibitionGrid");
+  if(!grid) return;
+  grid.innerHTML = "";
+
   const exhibitionPaths = [
     ...exhibitionImages.map(f => `/assets/images/exhibitions/${f}`),
-    ...personalityImages.slice(1,6).map(f => `/assets/images/personality/${f}`),
-    ...studioImages.slice(0,4).map(f => `/assets/images/studio/${f}`)
+    ...personalityImages.map(f => `/assets/images/personality/${f}`),
+    ...studioImages.map(f => `/assets/images/studio/${f}`)
   ];
-  exhibitionPaths.slice(0,18).forEach((src, idx) => {
+
+  // More exhibition / interaction imagery is allowed to fill the wall naturally.
+  // Broken/missing filenames are hidden automatically so the layout only shows real uploaded files.
+  exhibitionPaths.slice(0,95).forEach((src, idx) => {
     const tile = document.createElement("div");
     tile.className = "exhibition-tile";
-    tile.appendChild(imgEl(src, `Donna M. Richardson exhibition moment ${idx+1}`));
+    const image = imgEl(src, `Donna M. Richardson exhibition, collector, studio, or joyful personality moment ${idx+1}`);
+    image.onerror = function(){
+      tile.classList.add("missing");
+      this.classList.add("missing");
+    };
+    tile.appendChild(image);
     grid.appendChild(tile);
   });
 }
