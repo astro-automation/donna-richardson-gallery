@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Donna M. Richardson | Cinematic Virtual Gallery</title>
-  <meta name="description" content="A bold cinematic virtual gallery experience for Donna M. Richardson — contemporary art, culture, spirit, color, movement, exhibitions, and collector inquiries." />
+  <meta name="description" content="A cinematic fixed-wall virtual gallery experience for Donna M. Richardson — contemporary art, culture, spirit, color, movement, exhibitions, and collector inquiries." />
 
   <style>
     :root {
-      --black: #030307;
-      --deep: #070613;
-      --midnight: #0c0a18;
-      --white: #f8f3ff;
-      --muted: rgba(248, 243, 255, 0.72);
-      --soft: rgba(248, 243, 255, 0.52);
-      --line: rgba(255,255,255,0.16);
-      --lavender: #b99cff;
-      --fuchsia: #ff38d4;
+      --black: #020206;
+      --ink: #050511;
+      --deep: #09071a;
+      --white: #fff8ff;
+      --muted: rgba(255, 248, 255, 0.74);
+      --soft: rgba(255, 248, 255, 0.52);
+      --line: rgba(255,255,255,0.18);
+      --lavender: #bda4ff;
+      --fuchsia: #ff36d7;
       --cyan: #48eaff;
-      --turquoise: #31ffd4;
+      --turquoise: #2ffff0;
       --cobalt: #244dff;
       --ocean: #0bb7ff;
-      --sun: #ffcf6b;
-      --rose: #ff85d8;
-      --shadow: 0 36px 120px rgba(0, 0, 0, 0.58);
+      --gold: #ffcf6b;
+      --rose: #ff86d8;
       --serif: Georgia, "Times New Roman", serif;
       --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --ease: cubic-bezier(.22,1,.36,1);
     }
 
     * {
@@ -42,11 +42,7 @@
       margin: 0;
       font-family: var(--sans);
       color: var(--white);
-      background:
-        radial-gradient(circle at 18% 10%, rgba(255, 56, 212, 0.18), transparent 30%),
-        radial-gradient(circle at 82% 22%, rgba(72, 234, 255, 0.15), transparent 32%),
-        radial-gradient(circle at 50% 90%, rgba(36, 77, 255, 0.22), transparent 38%),
-        linear-gradient(180deg, #020205 0%, #080616 45%, #020205 100%);
+      background: #020206;
       overflow-x: hidden;
     }
 
@@ -54,26 +50,36 @@
       content: "";
       position: fixed;
       inset: 0;
-      pointer-events: none;
       z-index: 0;
-      opacity: 0.16;
+      pointer-events: none;
       background:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 76px 76px;
-      mask-image: radial-gradient(circle at 50% 30%, #000, transparent 78%);
+        radial-gradient(circle at 20% 0%, rgba(255,54,215,.16), transparent 28%),
+        radial-gradient(circle at 88% 14%, rgba(72,234,255,.14), transparent 32%),
+        radial-gradient(circle at 50% 96%, rgba(36,77,255,.20), transparent 42%),
+        linear-gradient(180deg, #020206 0%, #070616 42%, #020206 100%);
     }
 
     body::after {
       content: "";
       position: fixed;
       inset: 0;
+      z-index: 2;
       pointer-events: none;
-      z-index: 0;
-      background:
-        radial-gradient(circle at 50% -10%, rgba(255,255,255,0.13), transparent 24%),
-        linear-gradient(90deg, rgba(255, 56, 212, 0.08), transparent 30%, transparent 70%, rgba(72, 234, 255, 0.08));
-      mix-blend-mode: screen;
+      opacity: .11;
+      mix-blend-mode: overlay;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.26) 0 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,.18) 0 1px, transparent 1px);
+      background-size: 160px 160px, 230px 230px;
+      animation: grain 9s steps(6) infinite;
+    }
+
+    @keyframes grain {
+      0% { transform: translate3d(0,0,0); }
+      25% { transform: translate3d(-1.5%,1%,0); }
+      50% { transform: translate3d(1%,-1.5%,0); }
+      75% { transform: translate3d(-1%,1.5%,0); }
+      100% { transform: translate3d(0,0,0); }
     }
 
     a {
@@ -90,98 +96,99 @@
     .page {
       position: relative;
       z-index: 1;
+      min-height: 100vh;
     }
 
-    .top-nav {
+    .nav {
       position: fixed;
-      z-index: 80;
+      z-index: 100;
       top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(1180px, calc(100% - 28px));
+      width: min(1220px, calc(100% - 28px));
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 16px;
-      padding: 12px 14px 12px 18px;
+      padding: 12px 13px 12px 18px;
+      border: 1px solid rgba(255,255,255,.16);
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(3, 3, 7, 0.66);
-      backdrop-filter: blur(22px);
-      box-shadow: 0 20px 80px rgba(0,0,0,0.45);
+      background: rgba(2,2,6,.58);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 20px 80px rgba(0,0,0,.42);
     }
 
     .brand {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 2px;
       line-height: 1;
     }
 
     .brand strong {
       font-family: var(--serif);
-      font-size: clamp(1rem, 2vw, 1.28rem);
       font-weight: 500;
-      letter-spacing: -0.02em;
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      letter-spacing: -.02em;
       white-space: nowrap;
     }
 
     .brand span {
-      font-size: 0.65rem;
+      font-size: .65rem;
+      letter-spacing: .24em;
       text-transform: uppercase;
-      letter-spacing: 0.24em;
-      color: rgba(255,255,255,0.52);
+      color: rgba(255,255,255,.52);
       white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
-      gap: 3px;
+      justify-content: flex-end;
+      gap: 4px;
       flex-wrap: wrap;
     }
 
     .nav-links a {
-      padding: 10px 11px;
       border-radius: 999px;
-      color: rgba(255,255,255,0.68);
-      font-size: 0.7rem;
+      padding: 10px 11px;
+      color: rgba(255,255,255,.70);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .13em;
       text-transform: uppercase;
-      letter-spacing: 0.13em;
-      transition: 220ms ease;
+      transition: .24s var(--ease);
     }
 
     .nav-links a:hover {
       color: #fff;
-      background: rgba(255,255,255,0.09);
-      box-shadow: 0 0 30px rgba(255,56,212,0.22);
+      background: rgba(255,255,255,.09);
+      box-shadow: 0 0 34px rgba(72,234,255,.20);
     }
 
-    .menu-button {
+    .menu-btn {
       display: none;
+      border: 1px solid rgba(255,255,255,.16);
       color: #fff;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,.08);
       border-radius: 999px;
       padding: 9px 12px;
-      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      font-weight: 900;
+      letter-spacing: .14em;
+      cursor: pointer;
     }
 
     .section {
       position: relative;
-      overflow: hidden;
       min-height: 100vh;
-      padding: 118px max(22px, 5vw);
+      overflow: hidden;
     }
 
     .kicker {
       color: var(--cyan);
-      font-size: 0.74rem;
       font-weight: 900;
-      letter-spacing: 0.26em;
+      font-size: .74rem;
+      letter-spacing: .26em;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
@@ -194,62 +201,47 @@
       margin: 0;
     }
 
-    h2 {
-      font-size: clamp(2.65rem, 6.4vw, 7.3rem);
-      line-height: 0.88;
-      letter-spacing: -0.065em;
-      margin-bottom: 24px;
-    }
-
     .lead {
-      font-size: clamp(1.05rem, 1.5vw, 1.28rem);
-      line-height: 1.82;
       color: var(--muted);
-      margin: 0 0 24px;
-    }
-
-    .copy {
-      color: rgba(255,255,255,0.62);
-      line-height: 1.78;
-      font-size: 0.98rem;
-      margin: 0 0 22px;
+      line-height: 1.82;
+      font-size: clamp(1.02rem, 1.45vw, 1.24rem);
+      margin: 0;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 14px 20px;
+      min-height: 50px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.20);
-      background: rgba(255,255,255,0.075);
+      border: 1px solid rgba(255,255,255,.20);
       color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-weight: 900;
-      font-size: 0.74rem;
-      transition: 240ms ease;
+      background: rgba(255,255,255,.075);
       backdrop-filter: blur(18px);
+      padding: 14px 20px;
+      font-size: .72rem;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
       cursor: pointer;
+      transition: .24s var(--ease);
     }
 
     .button.primary {
-      border-color: rgba(255,255,255,0.32);
-      background: linear-gradient(135deg, rgba(255,56,212,0.95), rgba(36,77,255,0.95) 48%, rgba(49,255,212,0.80));
-      box-shadow: 0 18px 52px rgba(255,56,212,0.20), 0 0 60px rgba(72,234,255,0.13);
+      background: linear-gradient(135deg, rgba(255,54,215,.96), rgba(36,77,255,.95) 52%, rgba(47,255,240,.78));
+      box-shadow: 0 22px 70px rgba(255,54,215,.20), 0 0 70px rgba(72,234,255,.13);
+      border-color: rgba(255,255,255,.34);
     }
 
     .button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 22px 70px rgba(0,0,0,0.35), 0 0 34px rgba(72,234,255,0.20);
+      box-shadow: 0 24px 74px rgba(0,0,0,.45), 0 0 36px rgba(72,234,255,.20);
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(26px);
-      transition: 780ms ease;
+      transform: translateY(34px);
+      transition: .95s var(--ease);
     }
 
     .reveal.visible {
@@ -257,844 +249,883 @@
       transform: translateY(0);
     }
 
-    .hero {
+    /* ============================================================
+       HERO: ORIGINAL FIXED-WALL REALISTIC GALLERY CONCEPT
+    ============================================================ */
+
+    .hero-gallery {
       min-height: 100svh;
-      padding: 0;
       display: grid;
       place-items: center;
       isolation: isolate;
+      padding: 0;
+      background: #020206;
     }
 
-    .hero-bg {
+    .hero-video-layer {
+      position: absolute;
+      inset: 0;
+      z-index: -8;
+      opacity: .34;
+      overflow: hidden;
+    }
+
+    .hero-video-layer video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.15) contrast(1.05);
+      transform: scale(1.05);
+    }
+
+    .hero-video-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.86), rgba(0,0,0,.18) 45%, rgba(0,0,0,.82)),
+        linear-gradient(180deg, rgba(0,0,0,.48), rgba(0,0,0,.12) 42%, rgba(0,0,0,.88));
+    }
+
+    .gallery-room {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      perspective: 1400px;
+    }
+
+    .gallery-room::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 16% 8%, rgba(255,255,255,.20), transparent 13%),
+        radial-gradient(circle at 50% 6%, rgba(255,255,255,.30), transparent 16%),
+        radial-gradient(circle at 84% 8%, rgba(255,255,255,.20), transparent 13%),
+        linear-gradient(90deg, rgba(4,4,10,.94), rgba(31,29,45,.46) 18%, rgba(245,241,255,.20) 50%, rgba(31,29,45,.46) 82%, rgba(4,4,10,.94)),
+        linear-gradient(180deg, rgba(11,9,24,.98) 0%, rgba(228,222,243,.40) 35%, rgba(12,10,24,.96) 100%);
+      z-index: -6;
+    }
+
+    .gallery-room::after {
+      content: "";
+      position: absolute;
+      left: -15%;
+      right: -15%;
+      bottom: -22%;
+      height: 42%;
+      z-index: -2;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(0,0,0,.82)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 100px);
+      transform: rotateX(62deg);
+      transform-origin: top;
+      opacity: .95;
+    }
+
+    .gallery-depth-left,
+    .gallery-depth-right {
+      position: absolute;
+      top: 0;
+      bottom: 16%;
+      width: 26%;
+      z-index: -3;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.76)),
+        linear-gradient(90deg, rgba(0,0,0,.78), rgba(255,255,255,.08));
+      opacity: .82;
+      filter: blur(.2px);
+    }
+
+    .gallery-depth-left {
+      left: -4%;
+      transform: skewY(4deg);
+      transform-origin: right center;
+    }
+
+    .gallery-depth-right {
+      right: -4%;
+      transform: skewY(-4deg) scaleX(-1);
+      transform-origin: left center;
+    }
+
+    .spotlights {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 16% 24%, rgba(255,255,255,.27), transparent 15%),
+        radial-gradient(ellipse at 33% 24%, rgba(255,255,255,.24), transparent 14%),
+        radial-gradient(ellipse at 50% 22%, rgba(255,255,255,.30), transparent 16%),
+        radial-gradient(ellipse at 67% 24%, rgba(255,255,255,.24), transparent 14%),
+        radial-gradient(ellipse at 84% 24%, rgba(255,255,255,.27), transparent 15%);
+      mix-blend-mode: screen;
+      animation: galleryLight 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes galleryLight {
+      from { opacity: .58; transform: translateY(-4px) scale(1); }
+      to { opacity: .96; transform: translateY(3px) scale(1.02); }
+    }
+
+    .camera-drift {
+      width: min(1320px, calc(100% - 28px));
+      min-height: 76svh;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: cameraDrift 12s ease-in-out infinite alternate;
+      margin-top: 72px;
+    }
+
+    @keyframes cameraDrift {
+      from { transform: translate3d(-8px, 0, 0) rotateY(.8deg); }
+      to { transform: translate3d(8px, -4px, 0) rotateY(-.8deg); }
+    }
+
+    .gallery-title {
+      position: absolute;
+      z-index: 12;
+      left: clamp(18px, 4vw, 58px);
+      top: clamp(90px, 12vh, 130px);
+      width: min(680px, 92vw);
+      pointer-events: none;
+    }
+
+    .gallery-title h1 {
+      font-size: clamp(4rem, 11.5vw, 12.7rem);
+      line-height: .75;
+      letter-spacing: -.095em;
+      text-shadow: 0 18px 76px rgba(0,0,0,.80);
+      margin-bottom: 22px;
+    }
+
+    .gallery-title h1 span {
+      display: block;
+      background: linear-gradient(135deg, #fff 8%, #ffd8f7 28%, var(--cyan) 56%, #fff 88%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .gallery-title p {
+      width: min(620px, 100%);
+      color: rgba(255,255,255,.82);
+      line-height: 1.66;
+      font-size: clamp(1.05rem, 1.6vw, 1.36rem);
+      margin: 0;
+      text-shadow: 0 12px 48px rgba(0,0,0,.78);
+    }
+
+    .hero-actions {
+      position: absolute;
+      z-index: 12;
+      left: clamp(18px, 4vw, 58px);
+      bottom: clamp(24px, 7vh, 72px);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .art-wall {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 27%;
+      height: 48%;
+      transform-style: preserve-3d;
+    }
+
+    .hero-art {
+      position: absolute;
+      z-index: 8;
+      display: block;
+      background: #0c0a12;
+      padding: 10px;
+      border: 10px solid #151018;
+      box-shadow:
+        0 26px 80px rgba(0,0,0,.58),
+        0 0 45px rgba(255,255,255,.08);
+      transition: .35s var(--ease);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.34)),
+        var(--art-image),
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,.44), transparent 16%),
+        radial-gradient(circle at 62% 55%, rgba(255,54,215,.64), transparent 25%),
+        radial-gradient(circle at 40% 76%, rgba(72,234,255,.60), transparent 22%),
+        linear-gradient(135deg, rgba(255,54,215,.95), rgba(36,77,255,.95), rgba(47,255,240,.72));
+      background-size: cover;
+      background-position: center;
+      transition: .45s var(--ease);
+    }
+
+    .hero-art::after {
+      content: attr(data-title);
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 3;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.54);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .62rem;
+      font-weight: 950;
+      text-shadow: 0 2px 14px rgba(0,0,0,.65);
+    }
+
+    .hero-art:hover {
+      z-index: 20;
+      transform: translateY(-16px) scale(1.065) rotateZ(0deg) !important;
+      box-shadow:
+        0 40px 120px rgba(0,0,0,.72),
+        0 0 60px rgba(72,234,255,.18),
+        0 0 44px rgba(255,54,215,.17);
+    }
+
+    .hero-art:hover::before {
+      transform: scale(1.08);
+      filter: saturate(1.15) contrast(1.06);
+    }
+
+    .art-children {
+      --art-image: url("assets/images/artwork/artwork-children.jpg");
+      width: 148px;
+      height: 214px;
+      left: 8%;
+      top: 20%;
+      transform: rotateY(11deg) rotateZ(-2deg);
+    }
+
+    .art-sports {
+      --art-image: url("assets/images/artwork/artwork-sports.jpg");
+      width: 178px;
+      height: 132px;
+      left: 22%;
+      top: 33%;
+      transform: rotateY(6deg) rotateZ(1deg);
+    }
+
+    .art-music {
+      --art-image: url("assets/images/artwork/artwork-music.jpg");
+      width: 218px;
+      height: 288px;
+      left: 38%;
+      top: 3%;
+      transform: translateZ(38px) rotateZ(-1deg);
+    }
+
+    .art-icons {
+      --art-image: url("assets/images/artwork/artwork-icons.jpg");
+      width: 174px;
+      height: 230px;
+      left: 57%;
+      top: 19%;
+      transform: rotateY(-5deg) rotateZ(1.5deg);
+    }
+
+    .art-cigar {
+      --art-image: url("assets/images/artwork/artwork-cigar.jpg");
+      width: 190px;
+      height: 136px;
+      left: 71%;
+      top: 32%;
+      transform: rotateY(-8deg) rotateZ(-1deg);
+    }
+
+    .art-faces {
+      --art-image: url("assets/images/artwork/artwork-faces-figures.jpg");
+      width: 132px;
+      height: 178px;
+      left: 85%;
+      top: 23%;
+      transform: rotateY(-13deg) rotateZ(2deg);
+    }
+
+    .art-nature {
+      --art-image: url("assets/images/artwork/artwork-nature.jpg");
+      width: 146px;
+      height: 166px;
+      left: 49%;
+      top: 61%;
+      transform: translateZ(50px) rotateZ(1deg);
+    }
+
+    .floor-reflection {
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      bottom: 2%;
+      height: 22%;
+      z-index: 5;
+      opacity: .36;
+      filter: blur(10px);
+      transform: scaleY(-1);
+      pointer-events: none;
+    }
+
+    .floor-reflection .hero-art {
+      box-shadow: none;
+      opacity: .42;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      z-index: 14;
+      right: clamp(18px, 4vw, 58px);
+      bottom: clamp(24px, 7vh, 72px);
+      display: grid;
+      gap: 8px;
+      color: rgba(255,255,255,.68);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 1px;
+      height: 82px;
+      background: linear-gradient(180deg, #fff, transparent);
+      margin: 12px auto 0;
+      animation: scrollPulse 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes scrollPulse {
+      from { opacity: .25; transform: scaleY(.75); }
+      to { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ============================================================
+       FULL-BLEED CINEMATIC SCENES — NOT BOXES
+    ============================================================ */
+
+    .scene {
+      min-height: 110vh;
+      display: grid;
+      align-items: center;
+      padding: 120px max(22px, 5vw);
+      isolation: isolate;
+    }
+
+    .scene-bg {
       position: absolute;
       inset: 0;
       z-index: -4;
       overflow: hidden;
     }
 
-    .hero-bg video,
-    .hero-bg .fallback-bg {
+    .scene-bg video,
+    .scene-bg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background:
-        radial-gradient(circle at 50% 16%, rgba(255,255,255,0.25), transparent 18%),
-        linear-gradient(135deg, rgba(255,56,212,0.35), rgba(36,77,255,0.32), rgba(49,255,212,0.18)),
-        #050510;
+      filter: saturate(1.08) contrast(1.04);
+      transform: scale(1.04);
     }
 
-    .hero-bg::after {
+    .scene-bg::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,0.88), rgba(0,0,0,0.26) 45%, rgba(0,0,0,0.78)),
-        linear-gradient(180deg, rgba(0,0,0,0.50), rgba(0,0,0,0.10) 44%, rgba(0,0,0,0.90)),
-        radial-gradient(circle at 65% 22%, rgba(255,56,212,0.18), transparent 26%),
-        radial-gradient(circle at 32% 72%, rgba(72,234,255,0.18), transparent 26%);
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.24) 54%, rgba(0,0,0,.74)),
+        linear-gradient(180deg, rgba(0,0,0,.54), rgba(0,0,0,.12), rgba(0,0,0,.80));
     }
 
-    .hero-inner {
+    .scene-content {
+      width: min(760px, 100%);
       position: relative;
-      z-index: 3;
-      width: min(1240px, calc(100% - 36px));
-      display: grid;
-      grid-template-columns: 0.88fr 1.12fr;
-      gap: clamp(34px, 5vw, 72px);
-      align-items: center;
-      padding-top: 86px;
+      z-index: 4;
     }
 
-    .hero-copy {
-      max-width: 610px;
+    .scene-content.right {
+      margin-left: auto;
     }
 
-    .hero-copy .kicker {
-      color: #fff;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      display: inline-flex;
-      padding: 9px 12px;
-      border-radius: 999px;
-      backdrop-filter: blur(16px);
-    }
-
-    .hero h1 {
-      font-size: clamp(4.4rem, 11vw, 11.4rem);
-      line-height: 0.78;
-      letter-spacing: -0.09em;
-      margin-bottom: 28px;
-      text-shadow: 0 16px 70px rgba(0,0,0,0.78);
-    }
-
-    .hero h1 span {
-      display: block;
-      background: linear-gradient(135deg, #fff 12%, #ffd7fb 34%, var(--cyan) 60%, #fff 88%);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.1rem, 1.7vw, 1.45rem);
-      color: rgba(255,255,255,0.82);
-      line-height: 1.65;
-      max-width: 620px;
-      margin: 0 0 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .hero-gallery-stage {
-      position: relative;
-      min-height: 630px;
-      perspective: 1200px;
-    }
-
-    .stage-glow {
-      position: absolute;
-      inset: 10% 0 0 0;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(255,56,212,0.28), transparent 36%),
-        radial-gradient(circle at 70% 68%, rgba(72,234,255,0.20), transparent 30%);
-      filter: blur(18px);
-      opacity: 0.8;
-      animation: pulseGlow 5s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseGlow {
-      from {
-        opacity: 0.52;
-        transform: scale(0.98);
-      }
-      to {
-        opacity: 0.95;
-        transform: scale(1.02);
-      }
-    }
-
-    @keyframes floatFrame {
-      from {
-        translate: 0 0;
-      }
-      to {
-        translate: 0 -18px;
-      }
-    }
-
-    .floating-frame {
-      position: absolute;
-      width: 42%;
-      min-width: 260px;
-      aspect-ratio: 0.78;
-      border: 11px solid rgba(8,8,14,0.94);
-      padding: 10px;
-      background: linear-gradient(145deg, #fff, #cdefff 42%, #ffe0fb);
-      box-shadow: 0 30px 95px rgba(0,0,0,0.62), 0 0 44px rgba(255,56,212,0.18);
-      overflow: hidden;
-      transform-style: preserve-3d;
-      animation: floatFrame 8s ease-in-out infinite alternate;
-    }
-
-    .floating-frame::before {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      background:
-        radial-gradient(circle at 25% 22%, rgba(255,255,255,0.6), transparent 13%),
-        radial-gradient(circle at 68% 42%, rgba(255,56,212,0.7), transparent 20%),
-        radial-gradient(circle at 42% 72%, rgba(72,234,255,0.66), transparent 22%),
-        repeating-radial-gradient(circle at center, rgba(255,255,255,0.12) 0 2px, transparent 2px 11px),
-        linear-gradient(135deg, rgba(255,56,212,0.95), rgba(36,77,255,0.95), rgba(49,255,212,0.76));
-      filter: saturate(1.15);
-    }
-
-    .floating-frame::after {
-      content: attr(data-title);
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
-      z-index: 2;
-      padding: 13px 14px;
-      border-radius: 18px;
-      background: rgba(0,0,0,0.54);
-      backdrop-filter: blur(12px);
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.68rem;
-      font-weight: 900;
+    .scene-content.center {
+      margin-inline: auto;
       text-align: center;
     }
 
-    .frame-one {
-      right: 14%;
-      top: 3%;
-      z-index: 3;
-      transform: rotate(-5deg) translateZ(70px);
+    .scene-content h2 {
+      font-size: clamp(3.5rem, 8.4vw, 10rem);
+      line-height: .82;
+      letter-spacing: -.085em;
+      text-shadow: 0 20px 90px rgba(0,0,0,.78);
+      margin-bottom: 22px;
     }
 
-    .frame-two {
-      left: 1%;
-      top: 27%;
-      z-index: 2;
-      width: 34%;
-      animation-delay: -2s;
-      transform: rotate(7deg) translateZ(20px);
+    .scene-content p {
+      color: rgba(255,255,255,.76);
+      line-height: 1.8;
+      font-size: clamp(1.04rem, 1.5vw, 1.28rem);
+      text-shadow: 0 10px 44px rgba(0,0,0,.62);
+      max-width: 650px;
+      margin: 0 0 26px;
     }
 
-    .frame-three {
-      right: 2%;
-      bottom: 2%;
-      z-index: 4;
-      width: 36%;
-      aspect-ratio: 1.08;
-      animation-delay: -4s;
-      transform: rotate(4deg) translateZ(80px);
+    .scene-content.center p {
+      margin-inline: auto;
     }
 
-    .hero-marquee {
+    .oversized-word {
       position: absolute;
-      z-index: 6;
-      left: 0;
-      right: 0;
-      bottom: 26px;
-      display: flex;
-      overflow: hidden;
-      border-block: 1px solid rgba(255,255,255,0.11);
-      background: rgba(0,0,0,0.24);
-      backdrop-filter: blur(14px);
-    }
-
-    .marquee-track {
-      display: flex;
-      min-width: max-content;
-      animation: marquee 26s linear infinite;
-    }
-
-    .marquee-track span {
-      padding: 14px 24px;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.74rem;
-      color: rgba(255,255,255,0.70);
+      z-index: -1;
+      left: -4vw;
+      bottom: 2vh;
+      font-family: var(--serif);
+      font-size: clamp(7rem, 22vw, 24rem);
+      line-height: .72;
+      letter-spacing: -.11em;
+      color: rgba(255,255,255,.045);
+      pointer-events: none;
       white-space: nowrap;
     }
 
-    @keyframes marquee {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    .section-head {
-      width: min(1060px, 100%);
-      margin: 0 auto 44px;
-      text-align: center;
-    }
-
-    .section-head .lead {
-      width: min(780px, 100%);
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .wide-slider {
+    .moving-strip {
       position: relative;
-      width: min(1320px, 100%);
-      margin: 0 auto;
-      min-height: 560px;
-      border-radius: 38px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.045);
-      box-shadow: var(--shadow);
-    }
-
-    .slides {
-      display: flex;
-      height: 100%;
-      min-height: 560px;
-      transition: transform 700ms cubic-bezier(.22,1,.36,1);
-    }
-
-    .slide {
-      min-width: 100%;
-      min-height: 560px;
-      position: relative;
-      display: grid;
-      align-items: end;
-      padding: clamp(28px, 5vw, 68px);
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(255,56,212,0.85), rgba(36,77,255,0.82), rgba(49,255,212,0.50));
-    }
-
-    .slide::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 22% 20%, rgba(255,255,255,0.30), transparent 14%),
-        repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0 2px, transparent 2px 10px),
-        linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.70));
-    }
-
-    .slide:nth-child(2) {
-      background: linear-gradient(135deg, #08132f, #244dff, #ff38d4);
-    }
-
-    .slide:nth-child(3) {
-      background: linear-gradient(135deg, #190a1b, #ff38d4, #ffcf6b);
-    }
-
-    .slide:nth-child(4) {
-      background: linear-gradient(135deg, #071d1b, #31ffd4, #b99cff);
-    }
-
-    .slide-content {
-      position: relative;
-      z-index: 2;
-      width: min(640px, 100%);
-    }
-
-    .slide-content h3 {
-      font-size: clamp(2.6rem, 6vw, 6rem);
-      line-height: 0.9;
-      letter-spacing: -0.06em;
-      margin-bottom: 18px;
-    }
-
-    .slide-content p {
-      color: rgba(255,255,255,0.78);
-      line-height: 1.7;
-      font-size: 1.05rem;
-      margin: 0;
-    }
-
-    .slider-controls {
-      position: absolute;
-      right: 24px;
-      bottom: 24px;
-      z-index: 5;
-      display: flex;
-      gap: 10px;
-    }
-
-    .slider-controls button {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.20);
-      background: rgba(0,0,0,0.48);
-      color: #fff;
-      font-size: 1.35rem;
-      cursor: pointer;
-      transition: 220ms ease;
-      backdrop-filter: blur(12px);
-    }
-
-    .slider-controls button:hover {
-      background: rgba(255,255,255,0.14);
-      transform: translateY(-2px);
-    }
-
-    .gallery-room-section {
-      min-height: 120vh;
+      min-height: 80vh;
       display: grid;
       align-items: center;
+      overflow: hidden;
+      background: #020206;
+      border-block: 1px solid rgba(255,255,255,.10);
     }
 
-    .real-room {
+    .moving-strip-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      animation: cinematicTrack 42s linear infinite;
+      padding: 8vh 0;
+    }
+
+    .moving-strip:nth-of-type(even) .moving-strip-track {
+      animation-direction: reverse;
+    }
+
+    @keyframes cinematicTrack {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .strip-frame {
       position: relative;
-      width: min(1320px, 100%);
-      min-height: 740px;
-      margin: 0 auto;
-      border-radius: 38px;
+      flex: 0 0 auto;
+      width: min(56vw, 580px);
+      height: min(68vh, 640px);
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: var(--shadow), 0 0 90px rgba(72,234,255,0.10);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06) 22%, rgba(255,255,255,0.10) 64%, rgba(0,0,0,0.52) 65%, rgba(0,0,0,0.94)),
-        linear-gradient(90deg, #11101d, #ece8f6 23%, #f7f5ff 50%, #e1e2ee 76%, #10101d);
-      perspective: 1400px;
+      background: #111;
+      box-shadow: 0 42px 130px rgba(0,0,0,.58);
+      transform: rotate(-1.2deg);
+      border: 1px solid rgba(255,255,255,.14);
     }
 
-    .real-room::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 16% 5%, rgba(255,255,255,0.44), transparent 12%),
-        radial-gradient(circle at 50% 4%, rgba(255,255,255,0.58), transparent 14%),
-        radial-gradient(circle at 84% 5%, rgba(255,255,255,0.44), transparent 12%),
-        linear-gradient(90deg, rgba(0,0,0,0.56), transparent 18%, transparent 82%, rgba(0,0,0,0.56));
-      z-index: 2;
-      pointer-events: none;
+    .strip-frame:nth-child(even) {
+      width: min(46vw, 480px);
+      height: min(58vh, 540px);
+      transform: translateY(8vh) rotate(1.6deg);
     }
 
-    .real-room::after {
-      content: "";
-      position: absolute;
-      left: -7%;
-      right: -7%;
-      bottom: -16%;
-      height: 38%;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.86)),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 94px);
-      transform: rotateX(62deg);
-      transform-origin: top;
-      z-index: 3;
-      opacity: 0.92;
-    }
-
-    .room-copy {
-      position: absolute;
-      z-index: 5;
-      top: 48px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: min(780px, calc(100% - 40px));
-      color: #151225;
-      text-align: center;
-      text-shadow: 0 1px 14px rgba(255,255,255,0.4);
-    }
-
-    .room-copy .kicker {
-      color: rgba(21,18,37,0.62);
-    }
-
-    .room-copy h2 {
-      font-size: clamp(2.2rem, 5vw, 5.2rem);
-      margin-bottom: 14px;
-    }
-
-    .room-copy p {
-      color: rgba(21,18,37,0.72);
-      font-weight: 600;
-      line-height: 1.6;
-      margin: 0 auto;
-      max-width: 600px;
-    }
-
-    .wall-piece {
-      position: absolute;
-      z-index: 4;
-      border: 10px solid #17131c;
-      padding: 9px;
-      background: linear-gradient(145deg, #fff, #e0f7ff 45%, #ffe3fb);
-      box-shadow: 0 28px 80px rgba(0,0,0,0.42);
-      transition: 320ms ease;
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .wall-piece:hover {
-      transform: translateY(-8px) scale(1.028);
-      z-index: 8;
-      box-shadow: 0 35px 105px rgba(0,0,0,0.52), 0 0 40px rgba(255,56,212,0.24);
-    }
-
-    .wall-piece > div {
+    .strip-frame img,
+    .strip-frame video {
       width: 100%;
       height: 100%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      background:
-        radial-gradient(circle at 24% 20%, rgba(255,255,255,0.52), transparent 13%),
-        radial-gradient(circle at 66% 55%, rgba(255,56,212,0.72), transparent 24%),
-        radial-gradient(circle at 40% 78%, rgba(72,234,255,0.72), transparent 22%),
-        repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.10) 0 2px, transparent 2px 10px),
-        linear-gradient(135deg, rgba(255,56,212,0.95), rgba(36,77,255,0.95), rgba(49,255,212,0.70));
-      color: #fff;
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.45);
-    }
-
-    .wall-piece.p1 {
-      width: 150px;
-      height: 205px;
-      left: 6%;
-      top: 39%;
-    }
-
-    .wall-piece.p2 {
-      width: 190px;
-      height: 138px;
-      left: 22%;
-      top: 45%;
-    }
-
-    .wall-piece.p3 {
-      width: 190px;
-      height: 242px;
-      left: 40%;
-      top: 35%;
-    }
-
-    .wall-piece.p4 {
-      width: 155px;
-      height: 205px;
-      left: 59%;
-      top: 40%;
-    }
-
-    .wall-piece.p5 {
-      width: 185px;
-      height: 138px;
-      left: 74%;
-      top: 46%;
-    }
-
-    .wall-piece.p6 {
-      width: 130px;
-      height: 178px;
-      left: 88%;
-      top: 39%;
-    }
-
-    .wall-piece.p7 {
-      width: 126px;
-      height: 155px;
-      left: 49%;
-      top: 66%;
-    }
-
-    .split {
-      width: min(1180px, 100%);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 6vw, 86px);
-      align-items: center;
-    }
-
-    .media-card {
-      min-height: 610px;
-      border-radius: 42px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.16);
-      box-shadow: var(--shadow);
-      position: relative;
-      background:
-        radial-gradient(circle at 28% 16%, rgba(255,255,255,0.28), transparent 13%),
-        radial-gradient(circle at 70% 60%, rgba(255,56,212,0.28), transparent 26%),
-        radial-gradient(circle at 30% 75%, rgba(72,234,255,0.22), transparent 24%),
-        linear-gradient(135deg, rgba(255,56,212,0.34), rgba(36,77,255,0.32), rgba(49,255,212,0.18)),
-        #11101b;
-    }
-
-    .media-card.image-beach {
-      background-image:
-        linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.70)),
-        url("assets/images/portraits/donna-ocean-freedom.jpg");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .media-card.image-portrait {
-      background-image:
-        linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.70)),
-        url("assets/images/portraits/donna-signature-portrait.jpg");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .media-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 10%, rgba(255,255,255,0.18), transparent 16%),
-        linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.72));
-    }
-
-    .caption {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      z-index: 2;
-      padding: 20px;
-      border-radius: 24px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(255,255,255,0.14);
-      backdrop-filter: blur(16px);
-    }
-
-    .caption strong {
-      display: block;
-      font-family: var(--serif);
-      font-size: 1.55rem;
-      font-weight: 500;
-      margin-bottom: 7px;
-    }
-
-    .caption span {
-      color: rgba(255,255,255,0.68);
-      line-height: 1.6;
-      font-size: 0.92rem;
-    }
-
-    .video-grid {
-      width: min(1220px, 100%);
-      margin: 44px auto 0;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 22px;
-    }
-
-    .video-card {
-      position: relative;
-      min-height: 520px;
-      border-radius: 34px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: #11101b;
-      box-shadow: var(--shadow);
-    }
-
-    .video-card.small {
-      min-height: 250px;
-    }
-
-    .video-card video {
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
       object-fit: cover;
-      background:
-        radial-gradient(circle at 35% 20%, rgba(255,255,255,0.22), transparent 14%),
-        radial-gradient(circle at 68% 60%, rgba(255,56,212,0.32), transparent 25%),
-        linear-gradient(135deg, rgba(36,77,255,0.38), rgba(49,255,212,0.22)),
-        #11101b;
+      filter: saturate(1.1) contrast(1.03);
+      transition: .45s var(--ease);
     }
 
-    .video-label {
+    .strip-frame:hover img,
+    .strip-frame:hover video {
+      transform: scale(1.06);
+    }
+
+    .strip-frame::after {
+      content: attr(data-title);
       position: absolute;
       left: 18px;
-      right: 18px;
       bottom: 18px;
       z-index: 2;
-      padding: 16px 18px;
-      border-radius: 22px;
-      background: rgba(0,0,0,0.58);
-      border: 1px solid rgba(255,255,255,0.14);
-      backdrop-filter: blur(15px);
-      color: rgba(255,255,255,0.70);
-      line-height: 1.55;
-      font-size: 0.88rem;
-    }
-
-    .video-label strong {
-      display: block;
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.56);
+      backdrop-filter: blur(12px);
       color: #fff;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.68rem;
-      margin-bottom: 7px;
+      letter-spacing: .13em;
+      font-weight: 950;
+      font-size: .66rem;
     }
 
-    .mini-stack {
+    .series-portal {
+      min-height: 115vh;
+      padding: 118px max(18px, 4vw);
       display: grid;
+      align-items: center;
+      background:
+        radial-gradient(circle at 20% 16%, rgba(255,54,215,.17), transparent 32%),
+        radial-gradient(circle at 78% 72%, rgba(72,234,255,.12), transparent 32%),
+        #020206;
+    }
+
+    .portal-head {
+      width: min(1050px, 100%);
+      margin: 0 auto 54px;
+      text-align: center;
+    }
+
+    .portal-head h2 {
+      font-size: clamp(3rem, 7.8vw, 8.8rem);
+      line-height: .84;
+      letter-spacing: -.08em;
+      margin-bottom: 20px;
+    }
+
+    .portal-head p {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      color: rgba(255,255,255,.68);
+      line-height: 1.8;
+      font-size: 1.08rem;
+    }
+
+    .portal-grid {
+      width: min(1320px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(220px, 1fr));
       gap: 22px;
-    }
-
-
-
-    .video-library-grid {
-      width: min(1220px, 100%);
-      margin: 28px auto 0;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .video-library-grid.speaking {
-      grid-template-columns: repeat(5, minmax(220px, 1fr));
       overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 8px;
+      padding: 4px 6px 36px;
+      scrollbar-color: rgba(255,255,255,.24) transparent;
     }
 
-    .video-library-grid.silent {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .video-library-grid .video-card {
-      min-height: 330px;
-      scroll-snap-align: start;
-    }
-
-    .video-library-grid.speaking .video-card:first-child {
-      grid-column: span 2;
-      min-height: 390px;
-    }
-
-    .video-library-grid.silent .video-card {
-      min-height: 270px;
-    }
-
-    .video-section-note {
-      width: min(1220px, 100%);
-      margin: 34px auto 0;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.7;
-      border-left: 1px solid rgba(72,234,255,0.38);
-      padding-left: 20px;
-    }
-
-    .event-wall {
-      width: min(1240px, 100%);
-      margin: 45px auto 0;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-    }
-
-    .event-card {
-      min-height: 260px;
-      border-radius: 28px;
+    .portal-card {
+      min-height: 68vh;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.14);
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.20), transparent 15%),
-        linear-gradient(135deg, rgba(255,56,212,0.35), rgba(36,77,255,0.35), rgba(49,255,212,0.20)),
-        #12101c;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.34);
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 36px 110px rgba(0,0,0,.45);
+      background: #111;
+      transition: .34s var(--ease);
     }
 
-    .event-card::after {
+    .portal-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.06);
+      transition: .48s var(--ease);
+    }
+
+    .portal-card::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        repeating-radial-gradient(circle at center, rgba(255,255,255,0.07) 0 2px, transparent 2px 12px),
-        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.75));
+        linear-gradient(180deg, transparent 20%, rgba(0,0,0,.78)),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.26), transparent 22%);
+      z-index: 1;
     }
 
-    .event-card.big {
-      grid-column: span 7;
-      min-height: 430px;
-    }
-
-    .event-card.mid {
-      grid-column: span 5;
-      min-height: 430px;
-    }
-
-    .event-card.small {
-      grid-column: span 4;
-    }
-
-    .event-card div {
+    .portal-card div {
       position: absolute;
-      z-index: 2;
       left: 20px;
       right: 20px;
       bottom: 20px;
+      z-index: 3;
     }
 
-    .event-card h3 {
-      font-size: 1.7rem;
-      line-height: 1;
+    .portal-card span {
+      display: block;
+      color: var(--cyan);
+      font-weight: 950;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .68rem;
+      margin-bottom: 11px;
+    }
+
+    .portal-card h3 {
+      font-size: clamp(1.7rem, 2.6vw, 2.65rem);
+      line-height: .95;
       margin-bottom: 8px;
     }
 
-    .event-card p {
-      margin: 0;
-      color: rgba(255,255,255,0.66);
+    .portal-card p {
+      color: rgba(255,255,255,.68);
       line-height: 1.55;
-      font-size: 0.9rem;
+      font-size: .9rem;
+      margin: 0;
     }
 
-    .press-strip {
-      width: min(1100px, 100%);
-      margin: 45px auto 0;
-      border-block: 1px solid rgba(255,255,255,0.15);
-      padding: 22px 0;
+    .portal-card:hover {
+      transform: translateY(-12px) scale(1.015);
+      box-shadow: 0 50px 140px rgba(0,0,0,.66), 0 0 56px rgba(72,234,255,.15);
+    }
+
+    .portal-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .voice-stage {
+      min-height: 120vh;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      background: #020206;
+      border-block: 1px solid rgba(255,255,255,.10);
+    }
+
+    .voice-video {
+      position: relative;
+      min-height: 120vh;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .voice-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .voice-video::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(0,0,0,.68) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.62));
+    }
+
+    .voice-copy {
+      display: grid;
+      align-content: center;
+      padding: 120px max(24px, 5vw);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .voice-copy::before {
+      content: "VOICE";
+      position: absolute;
+      right: -7vw;
+      top: 8vh;
+      font-family: var(--serif);
+      font-size: clamp(7rem, 17vw, 19rem);
+      letter-spacing: -.1em;
+      color: rgba(255,255,255,.045);
+      line-height: .8;
+    }
+
+    .voice-copy h2 {
+      font-size: clamp(3.1rem, 7vw, 7.7rem);
+      line-height: .84;
+      letter-spacing: -.075em;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .voice-copy p {
+      color: rgba(255,255,255,.70);
+      line-height: 1.82;
+      font-size: 1.06rem;
+      margin: 0 0 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .video-selector {
       display: flex;
+      gap: 10px;
       flex-wrap: wrap;
-      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .video-selector button {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.07);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 13px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 950;
+      font-size: .62rem;
+      cursor: pointer;
+      transition: .22s var(--ease);
+    }
+
+    .video-selector button:hover {
+      background: rgba(255,255,255,.15);
+      transform: translateY(-2px);
+    }
+
+    .contact-scene {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 118px max(22px, 5vw);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,54,215,.20), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(72,234,255,.16), transparent 32%),
+        #020206;
+    }
+
+    .contact-inner {
+      width: min(1060px, 100%);
+      text-align: center;
+    }
+
+    .contact-inner h2 {
+      font-size: clamp(3.3rem, 8.5vw, 9.5rem);
+      line-height: .82;
+      letter-spacing: -.085em;
+      margin-bottom: 24px;
+    }
+
+    .contact-inner p {
+      width: min(760px, 100%);
+      margin: 0 auto 28px;
+      color: rgba(255,255,255,.70);
+      line-height: 1.82;
+      font-size: 1.08rem;
+    }
+
+    .contact-form {
+      width: min(760px, 100%);
+      margin: 38px auto 0;
+      display: grid;
       gap: 12px;
     }
 
-    .press-pill {
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.055);
-      color: rgba(255,255,255,0.70);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 0.72rem;
-      font-weight: 900;
-    }
-
-    .contact-panel {
-      width: min(1120px, 100%);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 0.92fr;
-      gap: 30px;
-      align-items: center;
-      border-radius: 42px;
-      padding: clamp(28px, 5vw, 60px);
-      background:
-        radial-gradient(circle at 10% 8%, rgba(255,56,212,0.22), transparent 25%),
-        radial-gradient(circle at 88% 86%, rgba(72,234,255,0.17), transparent 32%),
-        rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.16);
-      box-shadow: var(--shadow);
-    }
-
-    .form {
-      display: grid;
-      gap: 13px;
-    }
-
-    .form input,
-    .form select,
-    .form textarea {
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
       width: 100%;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 18px;
-      background: rgba(0,0,0,0.24);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 0;
+      background: rgba(255,255,255,.05);
       color: #fff;
-      padding: 15px 16px;
-      outline: none;
+      padding: 17px 18px;
       font: inherit;
+      outline: none;
+      backdrop-filter: blur(14px);
     }
 
-    .form textarea {
+    .contact-form textarea {
       min-height: 130px;
       resize: vertical;
     }
 
-    .form input::placeholder,
-    .form textarea::placeholder {
-      color: rgba(255,255,255,0.42);
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(255,255,255,.44);
     }
 
     footer {
-      padding: 40px 22px 70px;
+      padding: 36px 22px 64px;
       text-align: center;
-      color: rgba(255,255,255,0.46);
-      font-size: 0.84rem;
+      color: rgba(255,255,255,.46);
+      background: #020206;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: .84rem;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.86);
+      backdrop-filter: blur(18px);
+      padding: 24px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      width: min(1120px, 100%);
+      max-height: 86vh;
+      display: grid;
+      grid-template-columns: 1fr .42fr;
+      background: rgba(8,8,14,.96);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 44px 140px rgba(0,0,0,.72);
+      overflow: hidden;
+    }
+
+    .lightbox-media {
+      min-height: 72vh;
+      background:
+        var(--modal-image),
+        linear-gradient(135deg, rgba(255,54,215,.95), rgba(36,77,255,.95), rgba(47,255,240,.72));
+      background-size: cover;
+      background-position: center;
+    }
+
+    .lightbox-copy {
+      padding: clamp(24px, 4vw, 46px);
+      display: grid;
+      align-content: center;
+    }
+
+    .lightbox-copy h3 {
+      font-size: clamp(2.1rem, 4vw, 4.5rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+      margin-bottom: 16px;
+    }
+
+    .lightbox-copy p {
+      color: rgba(255,255,255,.70);
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 210;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
     }
 
     @media (max-width: 1050px) {
@@ -1104,10 +1135,10 @@
         left: 0;
         right: 0;
         top: calc(100% + 10px);
-        border: 1px solid rgba(255,255,255,0.15);
-        border-radius: 24px;
         padding: 12px;
-        background: rgba(3,3,7,0.94);
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,.15);
+        background: rgba(2,2,6,.94);
         backdrop-filter: blur(20px);
         justify-content: center;
       }
@@ -1116,69 +1147,68 @@
         display: flex;
       }
 
-      .menu-button {
+      .menu-btn {
         display: inline-flex;
       }
 
-      .hero-inner,
-      .split,
-      .video-grid,
-      .contact-panel {
+      .camera-drift {
+        min-height: 82svh;
+        width: min(950px, calc(100% - 22px));
+      }
+
+      .gallery-title {
+        top: 94px;
+      }
+
+      .gallery-title h1 {
+        font-size: clamp(3.8rem, 14vw, 8rem);
+      }
+
+      .art-wall {
+        top: 34%;
+      }
+
+      .hero-art {
+        padding: 8px;
+        border-width: 8px;
+      }
+
+      .art-children { width: 112px; height: 160px; left: 5%; top: 8%; }
+      .art-sports { width: 128px; height: 94px; left: 22%; top: 30%; }
+      .art-music { width: 150px; height: 205px; left: 43%; top: 2%; }
+      .art-icons { width: 122px; height: 168px; left: 66%; top: 19%; }
+      .art-cigar { width: 130px; height: 94px; left: 6%; top: 62%; }
+      .art-faces { width: 104px; height: 146px; left: 78%; top: 56%; }
+      .art-nature { width: 122px; height: 138px; left: 42%; top: 65%; }
+
+      .hero-actions {
+        bottom: 30px;
+      }
+
+      .scroll-cue {
+        display: none;
+      }
+
+      .voice-stage {
         grid-template-columns: 1fr;
       }
 
-      .hero-gallery-stage {
-        min-height: 520px;
+      .voice-video {
+        min-height: 72vh;
       }
 
-      .event-card.big,
-      .event-card.mid,
-      .event-card.small {
-        grid-column: span 12;
+      .lightbox-inner {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
       }
 
-      .wall-piece.p1 {
-        left: 5%;
-        top: 38%;
-      }
-
-      .wall-piece.p2 {
-        left: 28%;
-        top: 44%;
-      }
-
-      .wall-piece.p3 {
-        left: 53%;
-        top: 36%;
-      }
-
-      .wall-piece.p4 {
-        left: 74%;
-        top: 41%;
-      }
-
-      .wall-piece.p5 {
-        left: 8%;
-        top: 65%;
-      }
-
-      .wall-piece.p6 {
-        left: 36%;
-        top: 64%;
-      }
-
-      .wall-piece.p7 {
-        left: 62%;
-        top: 66%;
+      .lightbox-media {
+        min-height: 52vh;
       }
     }
 
     @media (max-width: 720px) {
-      .section {
-        padding: 100px 18px;
-      }
-
-      .top-nav {
+      .nav {
         top: 10px;
         width: calc(100% - 18px);
         border-radius: 24px;
@@ -1188,1002 +1218,419 @@
         display: none;
       }
 
-      .hero h1 {
-        font-size: clamp(4rem, 20vw, 7rem);
+      .gallery-title {
+        top: 84px;
+        left: 18px;
+        width: calc(100% - 36px);
       }
 
-      .hero-inner {
-        padding-top: 92px;
+      .gallery-title h1 {
+        font-size: clamp(3.4rem, 19vw, 6.5rem);
       }
 
-      .hero-gallery-stage {
-        min-height: 460px;
+      .gallery-title p {
+        font-size: 1rem;
+        line-height: 1.55;
       }
 
-      .floating-frame {
-        min-width: 160px;
-        border-width: 8px;
+      .camera-drift {
+        min-height: 88svh;
+        margin-top: 64px;
       }
 
-      .frame-one {
-        right: 2%;
-        top: 6%;
+      .art-wall {
+        top: 39%;
       }
 
-      .frame-two {
-        left: 0;
-        top: 35%;
+      .hero-art::after {
+        font-size: .52rem;
+        left: 9px;
+        right: 9px;
+        bottom: 9px;
+        padding: 9px;
       }
 
-      .frame-three {
-        right: 4%;
-        bottom: 5%;
+      .art-children { width: 94px; height: 130px; left: 4%; top: 5%; }
+      .art-sports { width: 104px; height: 78px; left: 38%; top: 18%; }
+      .art-music { width: 112px; height: 150px; left: 67%; top: 1%; }
+      .art-icons { width: 104px; height: 140px; left: 8%; top: 45%; }
+      .art-cigar { width: 108px; height: 78px; left: 41%; top: 57%; }
+      .art-faces { width: 90px; height: 124px; left: 72%; top: 51%; }
+      .art-nature { width: 102px; height: 112px; left: 39%; top: 76%; }
+
+      .hero-actions {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
       }
 
-      .wide-slider,
-      .slides,
-      .slide {
-        min-height: 560px;
+      .button {
+        width: 100%;
       }
 
-      .real-room {
-        min-height: 810px;
+      .scene {
+        min-height: 96vh;
+        padding: 98px 18px;
       }
 
-      .room-copy {
-        top: 32px;
+      .scene-content h2,
+      .portal-head h2,
+      .voice-copy h2,
+      .contact-inner h2 {
+        font-size: clamp(3.1rem, 16vw, 5.8rem);
       }
 
-      .wall-piece {
-        border-width: 7px;
-        padding: 7px;
+      .moving-strip {
+        min-height: 64vh;
       }
 
-      .wall-piece.p1 {
-        width: 112px;
-        height: 150px;
-        left: 6%;
-        top: 34%;
+      .strip-frame {
+        width: 82vw;
+        height: 58vh;
       }
 
-      .wall-piece.p2 {
-        width: 122px;
-        height: 92px;
-        left: 54%;
-        top: 36%;
+      .strip-frame:nth-child(even) {
+        width: 74vw;
+        height: 48vh;
       }
 
-      .wall-piece.p3 {
-        width: 130px;
-        height: 166px;
-        left: 18%;
-        top: 55%;
+      .portal-card {
+        min-height: 58vh;
       }
 
-      .wall-piece.p4 {
-        width: 116px;
-        height: 150px;
-        left: 58%;
-        top: 56%;
-      }
-
-      .wall-piece.p5 {
-        width: 122px;
-        height: 92px;
-        left: 6%;
-        top: 78%;
-      }
-
-      .wall-piece.p6 {
-        width: 96px;
-        height: 130px;
-        left: 43%;
-        top: 78%;
-      }
-
-      .wall-piece.p7 {
-        width: 94px;
-        height: 118px;
-        left: 72%;
-        top: 78%;
-      }
-
-      .media-card {
-        min-height: 500px;
+      .voice-copy {
+        padding: 90px 18px;
       }
     }
-  
-    /* V3 CINEMATIC MAGIC LAYER */
-    .cinema-grain {
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      opacity: 0.12;
-      mix-blend-mode: overlay;
-      background-image:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18) 0 1px, transparent 1px),
-        radial-gradient(circle at 70% 40%, rgba(255,255,255,0.12) 0 1px, transparent 1px),
-        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.12) 0 1px, transparent 1px);
-      background-size: 140px 140px, 190px 190px, 230px 230px;
-      animation: grainShift 11s steps(6) infinite;
-    }
-
-    @keyframes grainShift {
-      0% { transform: translate3d(0,0,0); }
-      20% { transform: translate3d(-2%,1%,0); }
-      40% { transform: translate3d(1%,-2%,0); }
-      60% { transform: translate3d(-1%,2%,0); }
-      80% { transform: translate3d(2%,1%,0); }
-      100% { transform: translate3d(0,0,0); }
-    }
-
-    .light-sweep {
-      position: fixed;
-      inset: -20%;
-      z-index: 1;
-      pointer-events: none;
-      background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.06) 42%, transparent 58%);
-      transform: translateX(-80%);
-      animation: lightSweep 9s ease-in-out infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes lightSweep {
-      0%, 38% { transform: translateX(-85%); opacity: 0; }
-      52% { opacity: 0.7; }
-      70%, 100% { transform: translateX(85%); opacity: 0; }
-    }
-
-    .hero-orbit {
-      position: absolute;
-      inset: 14% 8%;
-      z-index: 0;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 50%;
-      animation: orbitPulse 7s ease-in-out infinite alternate;
-    }
-
-    .hero-orbit::before,
-    .hero-orbit::after {
-      content: "";
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 28px var(--cyan);
-    }
-
-    .hero-orbit::before { left: 12%; top: 18%; }
-    .hero-orbit::after { right: 18%; bottom: 15%; background: var(--fuchsia); box-shadow: 0 0 28px var(--fuchsia); }
-
-    @keyframes orbitPulse {
-      from { transform: rotate(-3deg) scale(0.96); opacity: 0.35; }
-      to { transform: rotate(5deg) scale(1.04); opacity: 0.72; }
-    }
-
-    .artwork-ribbon {
-      position: relative;
-      z-index: 4;
-      width: 100%;
-      overflow: hidden;
-      border-block: 1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.28);
-      backdrop-filter: blur(14px);
-      padding: 18px 0;
-    }
-
-    .artwork-ribbon-track {
-      display: flex;
-      gap: 18px;
-      width: max-content;
-      animation: ribbonMove 38s linear infinite;
-    }
-
-    .artwork-ribbon:hover .artwork-ribbon-track { animation-play-state: paused; }
-
-    @keyframes ribbonMove {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    .ribbon-piece {
-      width: 210px;
-      height: 270px;
-      flex: 0 0 auto;
-      border-radius: 22px;
-      border: 8px solid rgba(8,8,14,0.92);
-      background:
-        radial-gradient(circle at 25% 20%, rgba(255,255,255,0.38), transparent 14%),
-        radial-gradient(circle at 65% 55%, rgba(255,56,212,0.68), transparent 24%),
-        radial-gradient(circle at 42% 78%, rgba(72,234,255,0.62), transparent 22%),
-        repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.10) 0 2px, transparent 2px 10px),
-        linear-gradient(135deg, rgba(255,56,212,0.95), rgba(36,77,255,0.95), rgba(49,255,212,0.74));
-      box-shadow: 0 22px 70px rgba(0,0,0,0.45);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ribbon-piece::after {
-      content: attr(data-title);
-      position: absolute;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      padding: 12px;
-      border-radius: 15px;
-      background: rgba(0,0,0,0.58);
-      backdrop-filter: blur(12px);
-      text-align: center;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 900;
-      font-size: 0.64rem;
-    }
-
-    .series-room-grid {
-      width: min(1260px, 100%);
-      margin: 52px auto 0;
-      display: grid;
-      grid-template-columns: repeat(7, minmax(210px, 1fr));
-      gap: 18px;
-      overflow-x: auto;
-      padding: 8px 4px 28px;
-      scrollbar-color: rgba(255,255,255,0.25) transparent;
-    }
-
-    .series-room-card {
-      min-height: 430px;
-      border-radius: 32px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.16);
-      background:
-        radial-gradient(circle at 25% 18%, rgba(255,255,255,0.30), transparent 15%),
-        linear-gradient(145deg, rgba(255,56,212,0.74), rgba(36,77,255,0.78), rgba(49,255,212,0.50));
-      box-shadow: 0 28px 85px rgba(0,0,0,0.42);
-      transition: 280ms ease;
-      isolation: isolate;
-    }
-
-    .series-room-card:nth-child(2) { background: linear-gradient(145deg, rgba(36,77,255,0.9), rgba(255,207,107,0.65)); }
-    .series-room-card:nth-child(3) { background: linear-gradient(145deg, rgba(18,9,48,0.96), rgba(255,56,212,0.76), rgba(72,234,255,0.58)); }
-    .series-room-card:nth-child(4) { background: linear-gradient(145deg, rgba(4,4,8,0.92), rgba(255,56,212,0.76), rgba(255,207,107,0.58)); }
-    .series-room-card:nth-child(5) { background: linear-gradient(145deg, rgba(38,18,9,0.96), rgba(255,207,107,0.68), rgba(120,50,28,0.84)); }
-    .series-room-card:nth-child(6) { background: linear-gradient(145deg, rgba(18,14,36,0.96), rgba(185,156,255,0.76), rgba(49,255,212,0.48)); }
-    .series-room-card:nth-child(7) { background: linear-gradient(145deg, rgba(5,42,38,0.96), rgba(49,255,212,0.62), rgba(255,133,216,0.56)); }
-
-    .series-room-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.26), transparent 13%),
-        repeating-radial-gradient(circle at 50% 48%, rgba(255,255,255,0.07) 0 2px, transparent 2px 13px),
-        linear-gradient(180deg, transparent 38%, rgba(0,0,0,0.76));
-      transition: 280ms ease;
-    }
-
-    .series-room-card:hover {
-      transform: translateY(-9px);
-      box-shadow: 0 38px 110px rgba(0,0,0,0.55), 0 0 48px rgba(255,56,212,0.20);
-    }
-
-    .series-room-card-content {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-      z-index: 2;
-    }
-
-    .series-room-card-content .number {
-      display: inline-flex;
-      margin-bottom: 14px;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.22);
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(12px);
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: 0.08em;
-      font-size: 0.75rem;
-    }
-
-    .series-room-card-content h3 {
-      font-size: 2rem;
-      line-height: 0.95;
-      margin-bottom: 10px;
-    }
-
-    .series-room-card-content p {
-      margin: 0;
-      color: rgba(255,255,255,0.70);
-      line-height: 1.55;
-      font-size: 0.9rem;
-    }
-
-    .statement-band {
-      position: relative;
-      min-height: 78vh;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(255,56,212,0.24), transparent 28%),
-        radial-gradient(circle at 62% 50%, rgba(72,234,255,0.18), transparent 28%),
-        linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.76));
-      border-block: 1px solid rgba(255,255,255,0.10);
-    }
-
-    .statement-band-inner {
-      width: min(940px, 100%);
-      margin: 0 auto;
-    }
-
-    .statement-band blockquote {
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(2.15rem, 5.4vw, 5.8rem);
-      line-height: 1;
-      letter-spacing: -0.055em;
-      color: #fff;
-      text-shadow: 0 16px 80px rgba(0,0,0,0.48);
-    }
-
-    .statement-band p {
-      width: min(640px, 100%);
-      margin: 24px auto 0;
-      color: rgba(255,255,255,0.68);
-      line-height: 1.75;
-      font-size: 1.04rem;
-    }
-
-    .magazine-grid {
-      width: min(1260px, 100%);
-      margin: 52px auto 0;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr 1fr;
-      gap: 18px;
-    }
-
-    .magazine-card {
-      min-height: 360px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background:
-        radial-gradient(circle at 22% 18%, rgba(255,255,255,0.22), transparent 15%),
-        radial-gradient(circle at 70% 55%, rgba(255,56,212,0.22), transparent 26%),
-        linear-gradient(135deg, rgba(36,77,255,0.30), rgba(49,255,212,0.18)),
-        #12101c;
-      box-shadow: 0 26px 76px rgba(0,0,0,0.36);
-    }
-
-    .magazine-card.tall { min-height: 560px; }
-
-    .magazine-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-radial-gradient(circle at center, rgba(255,255,255,0.06) 0 2px, transparent 2px 13px),
-        linear-gradient(180deg, transparent 36%, rgba(0,0,0,0.80));
-    }
-
-    .magazine-card-content {
-      position: absolute;
-      z-index: 2;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-    }
-
-    .magazine-card-content h3 {
-      font-size: 1.75rem;
-      line-height: 0.96;
-      margin-bottom: 9px;
-    }
-
-    .magazine-card-content p {
-      margin: 0;
-      color: rgba(255,255,255,0.68);
-      line-height: 1.55;
-      font-size: 0.9rem;
-    }
-
-    .collector-banner {
-      width: min(1180px, 100%);
-      margin: 54px auto 0;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 32px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.045);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 26px 90px rgba(0,0,0,0.30);
-    }
-
-    .collector-stat {
-      padding: 28px 22px;
-      border-right: 1px solid rgba(255,255,255,0.10);
-    }
-
-    .collector-stat:last-child { border-right: 0; }
-
-    .collector-stat strong {
-      display: block;
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1;
-      font-weight: 500;
-      color: #fff;
-      margin-bottom: 9px;
-    }
-
-    .collector-stat span {
-      color: rgba(255,255,255,0.58);
-      line-height: 1.55;
-      font-size: 0.86rem;
-    }
-
-    @media (max-width: 1050px) {
-      .magazine-grid { grid-template-columns: 1fr; }
-      .collector-banner { grid-template-columns: 1fr 1fr; }
-      .collector-stat:nth-child(2) { border-right: 0; }
-      .series-room-grid { grid-template-columns: repeat(7, minmax(230px, 1fr)); }
-    }
-
-    @media (max-width: 720px) {
-      .cinema-grain,
-      .light-sweep { opacity: 0.08; }
-
-      .ribbon-piece {
-        width: 160px;
-        height: 215px;
-      }
-
-      .series-room-grid { grid-template-columns: repeat(7, minmax(220px, 1fr)); }
-
-      .video-library-grid,
-      .video-library-grid.silent {
-        grid-template-columns: 1fr;
-      }
-
-      .video-library-grid.speaking {
-        grid-template-columns: repeat(5, minmax(250px, 86vw));
-      }
-
-      .video-library-grid.speaking .video-card:first-child {
-        grid-column: span 1;
-      }
-
-      .collector-banner { grid-template-columns: 1fr; }
-
-      .collector-stat,
-      .collector-stat:nth-child(2) {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255,255,255,0.10);
-      }
-
-      .collector-stat:last-child { border-bottom: 0; }
-    }
-
   </style>
 </head>
 
 <body>
-  <div class="cinema-grain" aria-hidden="true"></div>
-  <div class="light-sweep" aria-hidden="true"></div>
-
   <div class="page">
-    <nav class="top-nav" aria-label="Main navigation">
+    <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="#home">
         <strong>Donna M. Richardson</strong>
         <span>Cinematic Virtual Gallery</span>
       </a>
 
-      <button class="menu-button" type="button" onclick="toggleMenu()">Menu</button>
+      <button class="menu-btn" type="button" onclick="toggleMenu()">Menu</button>
 
       <div class="nav-links" id="navLinks">
-        <a href="#gallery">Gallery</a>
+        <a href="#home">Gallery</a>
         <a href="#series">Series</a>
-        <a href="#bio">Bio</a>
         <a href="#voice">Voice</a>
+        <a href="#story">Story</a>
         <a href="#studio">Studio</a>
-        <a href="#exhibitions">Exhibitions</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
 
     <main>
-      <section class="section hero" id="home">
-        <div class="hero-bg" aria-hidden="true">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/hero-gallery-poster.jpg">
-            <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
+      <section class="section hero-gallery" id="home">
+        <div class="hero-video-layer" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/silent-artwork/gallery-walkthrough.MP4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/artwork-motion-loop.mp4" type="video/mp4" />
           </video>
-          <div class="fallback-bg"></div>
         </div>
 
-        <div class="hero-inner">
-          <div class="hero-copy reveal">
-            <div class="kicker">Bold • Living • Collector-Focused</div>
-            <h1>Enter <span>Donna’s World</span></h1>
-            <p class="hero-subtitle">A cinematic virtual gallery where color, spirit, culture, memory, joy, and contemporary fine art move together.</p>
-            <div class="hero-actions">
-              <a class="button primary" href="#gallery">Enter the Gallery</a>
-              <a class="button" href="#voice">Hear Donna’s Voice</a>
+        <div class="gallery-room">
+          <div class="gallery-depth-left"></div>
+          <div class="gallery-depth-right"></div>
+          <div class="spotlights"></div>
+
+          <div class="gallery-title reveal">
+            <div class="kicker">Private Digital Exhibition</div>
+            <h1>Enter <span>Donna’s Gallery</span></h1>
+            <p>A cinematic fixed-wall virtual gallery featuring seven worlds of color, culture, memory, spirit, and contemporary fine art.</p>
+          </div>
+
+          <div class="camera-drift">
+            <div class="art-wall" aria-label="Seven Donna Richardson artwork series entrances">
+              <a href="#series" class="hero-art art-children" data-title="Children" data-series="Children"></a>
+              <a href="#series" class="hero-art art-sports" data-title="Sports" data-series="Sports"></a>
+              <a href="#series" class="hero-art art-music" data-title="Music" data-series="Music"></a>
+              <a href="#series" class="hero-art art-icons" data-title="Icons" data-series="Icons"></a>
+              <a href="#series" class="hero-art art-cigar" data-title="Cigar" data-series="Cigar"></a>
+              <a href="#series" class="hero-art art-faces" data-title="Faces & Figures" data-series="Faces & Figures"></a>
+              <a href="#series" class="hero-art art-nature" data-title="Nature" data-series="Nature"></a>
             </div>
           </div>
 
-          <div class="hero-gallery-stage reveal" aria-label="Floating artwork preview">
-            <div class="stage-glow"></div>
-            <div class="hero-orbit" aria-hidden="true"></div>
-            <div class="floating-frame frame-one" data-title="Icons & Culture"></div>
-            <div class="floating-frame frame-two" data-title="Children & Wonder"></div>
-            <div class="floating-frame frame-three" data-title="Color & Spirit"></div>
+          <div class="hero-actions reveal">
+            <a class="button primary" href="#series">Explore the Seven Series</a>
+            <a class="button" href="#voice">Hear Donna Speak</a>
           </div>
-        </div>
 
-        <div class="hero-marquee">
-          <div class="marquee-track">
-            <span>Children</span>
-            <span>Sports</span>
-            <span>Music</span>
-            <span>Icons</span>
-            <span>Cigar</span>
-            <span>Faces & Figures</span>
-            <span>Nature</span>
-            <span>Children</span>
-            <span>Sports</span>
-            <span>Music</span>
-            <span>Icons</span>
-            <span>Cigar</span>
-            <span>Faces & Figures</span>
-            <span>Nature</span>
-          </div>
+          <div class="scroll-cue">Scroll</div>
         </div>
       </section>
 
-      <div class="artwork-ribbon" aria-label="Moving artwork preview ribbon">
-        <div class="artwork-ribbon-track">
-          <div class="ribbon-piece" data-title="Billie Holiday"></div>
-          <div class="ribbon-piece" data-title="Prince"></div>
-          <div class="ribbon-piece" data-title="Miles Davis"></div>
-          <div class="ribbon-piece" data-title="Riley"></div>
-          <div class="ribbon-piece" data-title="Cigar Series"></div>
-          <div class="ribbon-piece" data-title="Nature"></div>
-          <div class="ribbon-piece" data-title="Faces"></div>
-          <div class="ribbon-piece" data-title="Sports"></div>
-          <div class="ribbon-piece" data-title="Billie Holiday"></div>
-          <div class="ribbon-piece" data-title="Prince"></div>
-          <div class="ribbon-piece" data-title="Miles Davis"></div>
-          <div class="ribbon-piece" data-title="Riley"></div>
-          <div class="ribbon-piece" data-title="Cigar Series"></div>
-          <div class="ribbon-piece" data-title="Nature"></div>
-          <div class="ribbon-piece" data-title="Faces"></div>
-          <div class="ribbon-piece" data-title="Sports"></div>
-        </div>
-      </div>
-
-      <section class="section" id="series">
-        <div class="section-head reveal">
-          <div class="kicker">A Living Exhibition</div>
-          <h2>Seven worlds. One powerful artistic spirit.</h2>
-          <p class="lead">Donna’s work should feel bold and alive — not static. This slider becomes a powerful visual doorway into her series, her color language, and her collector appeal.</p>
-        </div>
-
-        <div class="wide-slider reveal" data-slider="main">
-          <div class="slides">
-            <article class="slide">
-              <div class="slide-content">
-                <div class="kicker">Music & Icons</div>
-                <h3>Rhythm made visible.</h3>
-                <p>Jazz, legends, cultural memory, and portraits that feel like sound moving through color.</p>
-              </div>
-            </article>
-
-            <article class="slide">
-              <div class="slide-content">
-                <div class="kicker">Children & Wonder</div>
-                <h3>Hope, innocence, becoming.</h3>
-                <p>A world of imagination, flowers, butterflies, protection, dreaming, and spiritual softness.</p>
-              </div>
-            </article>
-
-            <article class="slide">
-              <div class="slide-content">
-                <div class="kicker">Cigar & Collector Mood</div>
-                <h3>Warmth. Luxury. Presence.</h3>
-                <p>Bold works with hospitality, lounge, corporate, private collector, and interior placement power.</p>
-              </div>
-            </article>
-
-            <article class="slide">
-              <div class="slide-content">
-                <div class="kicker">Nature & Spirit</div>
-                <h3>Beauty in motion.</h3>
-                <p>Floral energy, memory, renewal, cosmic patterns, and emotional light.</p>
-              </div>
-            </article>
-          </div>
-
-          <div class="slider-controls">
-            <button type="button" onclick="moveSlider('main', -1)" aria-label="Previous slide">‹</button>
-            <button type="button" onclick="moveSlider('main', 1)" aria-label="Next slide">›</button>
-          </div>
-        </div>
-
-        <div class="series-room-grid reveal" aria-label="Seven Donna Richardson series rooms">
-          <article class="series-room-card">
-            <div class="series-room-card-content">
-              <span class="number">01</span>
-              <h3>Children</h3>
-              <p>Wonder, innocence, imagination, healing, dreaming, and becoming.</p>
-            </div>
-          </article>
-          <article class="series-room-card">
-            <div class="series-room-card-content">
-              <span class="number">02</span>
-              <h3>Sports</h3>
-              <p>Movement, resilience, strength, discipline, victory, and triumph.</p>
-            </div>
-          </article>
-          <article class="series-room-card">
-            <div class="series-room-card-content">
-              <span class="number">03</span>
-              <h3>Music</h3>
-              <p>Jazz, rhythm, culture, memory, sound, and iconic creative force.</p>
-            </div>
-          </article>
-          <article class="series-room-card">
-            <div class="series-room-card-content">
-              <span class="number">04</span>
-              <h3>Icons</h3>
-              <p>Presence, legacy, cultural memory, and portraits that carry power.</p>
-            </div>
-          </article>
-          <article class="series-room-card">
-            <div class="series-room-card-content">
-              <span class="number">05</span>
-              <h3>Cigar</h3>
-              <p>Warmth, confidence, luxury atmosphere, collector mood, and interior appeal.</p>
-            </div>
-          </article>
-          <article class="series-room-card">
-            <div class="series-room-card-content">
-              <span class="number">06</span>
-              <h3>Faces & Figures</h3>
-              <p>Dignity, identity, expression, emotion, story, and human truth.</p>
-            </div>
-          </article>
-          <article class="series-room-card">
-            <div class="series-room-card-content">
-              <span class="number">07</span>
-              <h3>Nature</h3>
-              <p>Flowers, renewal, softness, beauty, spiritual color, and life energy.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section gallery-room-section" id="gallery">
-        <div class="real-room reveal">
-          <div class="room-copy">
-            <div class="kicker">Fixed-Wall Gallery Experience</div>
-            <h2>A private gallery room for Donna’s seven series.</h2>
-            <p>Each framed entrance will later be replaced with Donna’s actual artwork and open into a dedicated room.</p>
-          </div>
-
-          <a class="wall-piece p1" href="#series"><div>Children</div></a>
-          <a class="wall-piece p2" href="#series"><div>Sports</div></a>
-          <a class="wall-piece p3" href="#series"><div>Music</div></a>
-          <a class="wall-piece p4" href="#series"><div>Icons</div></a>
-          <a class="wall-piece p5" href="#series"><div>Cigar</div></a>
-          <a class="wall-piece p6" href="#series"><div>Faces</div></a>
-          <a class="wall-piece p7" href="#series"><div>Nature</div></a>
-        </div>
-      </section>
-
-      <section class="section statement-band" id="artist-statement">
-        <div class="statement-band-inner reveal">
-          <div class="kicker">Artist Statement</div>
-          <blockquote>Color becomes memory. Portraiture becomes presence. The work becomes a room you can feel.</blockquote>
-          <p>This section is designed as a powerful cinematic pause — a place for Donna’s philosophy, poetic voice, and emotional truth to breathe before the visitor enters the personal story.</p>
-        </div>
-      </section>
-
-      <section class="section" id="bio">
-        <div class="split">
-          <div class="media-card image-portrait reveal">
-            <div class="caption">
-              <strong>Presence, warmth, joy, and artistic identity.</strong>
-              <span>Replace with Donna’s strongest portrait or gallery image.</span>
-            </div>
-          </div>
-
-          <div class="reveal">
-            <div class="kicker">Meet Donna</div>
-            <h2>The soul behind the work.</h2>
-            <p class="lead">Donna’s website should show the full being: the artist, the joy, the humor, the cultural memory, the spiritual presence, the family roots, and the powerful contemporary visual voice.</p>
-            <p class="copy">This section will become Donna’s refined artist story — not cold biography, but a warm collector-facing narrative that makes visitors understand why the work matters.</p>
-            <a class="button primary" href="#contact">Begin a Collector Inquiry</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="voice">
-        <div class="section-head reveal">
-          <div class="kicker">Video Strategy</div>
-          <h2>Donna speaking has sound. The artwork moves silently.</h2>
-          <p class="lead">This gives the site elegance and emotional rhythm. Most motion stays quiet and cinematic. Donna’s voice becomes special when it appears.</p>
-        </div>
-
-        <p class="video-section-note reveal">The cinematic rule is now built in: Donna speaking videos use normal controls with sound available. Artwork and gallery atmosphere videos autoplay silently as elegant moving texture.</p>
-
-        <div class="video-library-grid speaking reveal" aria-label="Donna speaking videos with sound controls">
-          <div class="video-card">
-            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
-              <source src="assets/videos/donna-speaking/donna-smiling-interview.mp4" type="video/mp4" />
+      <section class="moving-strip" aria-label="Moving artwork and personality cinema strip">
+        <div class="moving-strip-track">
+          <figure class="strip-frame" data-title="Studio Presence">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/artwork-detail-closeup.MP4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/artwork-motion-loop.mp4" type="video/mp4" />
             </video>
-            <div class="video-label">
-              <strong>Sound On</strong>
-              Donna speaking directly to visitors. This should feel intimate, personal, and collector-facing.
-            </div>
-          </div>
-
-          <div class="video-card">
-            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
-              <source src="assets/videos/donna-speaking/donna-studio-speaking.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label">
-              <strong>Studio Voice</strong>
-              Use for Donna explaining process, meaning, or artistic intention.
-            </div>
-          </div>
-
-          <div class="video-card">
-            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
-              <source src="assets/videos/donna-speaking/donna-festival-speaking.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label">
-              <strong>Public Voice</strong>
-              A live-event voice moment for exhibition energy and public presence.
-            </div>
-          </div>
-
-          <div class="video-card">
-            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
-              <source src="assets/videos/donna-speaking/donna-donna-overwhelmed-speaking-speaking.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label">
-              <strong>Emotional Moment</strong>
-              A human moment that can help visitors feel Donna’s heart and gratitude.
-            </div>
-          </div>
-
-          <div class="video-card">
-            <video controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
+          </figure>
+          <figure class="strip-frame" data-title="Donna Reflection">
+            <video autoplay muted loop playsinline preload="metadata">
               <source src="assets/videos/donna-speaking/donnal-reflection.mp4" type="video/mp4" />
             </video>
-            <div class="video-label">
-              <strong>Reflection</strong>
-              A quieter storytelling moment for depth, legacy, and meaning.
-            </div>
-          </div>
+          </figure>
+          <figure class="strip-frame" data-title="Exhibition Motion">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/exhibition-motion-loop.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/gallery-walkthrough.MP4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Ocean Freedom">
+            <img src="assets/images/portraits/donna-ocean-freedom.jpg" alt="Donna M. Richardson portrait near the ocean" />
+          </figure>
+          <figure class="strip-frame" data-title="Artwork Detail">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/painting-detail-texture.MP4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/artwork-motion-loop.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Studio Presence">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/artwork-detail-closeup.MP4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/artwork-motion-loop.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Donna Reflection">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/donna-speaking/donnal-reflection.mp4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Exhibition Motion">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/exhibition-motion-loop.mp4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/gallery-walkthrough.MP4" type="video/mp4" />
+            </video>
+          </figure>
+          <figure class="strip-frame" data-title="Ocean Freedom">
+            <img src="assets/images/portraits/donna-ocean-freedom.jpg" alt="Donna M. Richardson portrait near the ocean" />
+          </figure>
+          <figure class="strip-frame" data-title="Artwork Detail">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/painting-detail-texture.MP4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/artwork-motion-loop.mp4" type="video/mp4" />
+            </video>
+          </figure>
+        </div>
+      </section>
+
+      <section class="scene" id="story">
+        <div class="scene-bg">
+          <img src="assets/images/portraits/donna-ocean-freedom.jpg" alt="Donna M. Richardson ocean portrait" />
         </div>
 
-        <div class="video-library-grid silent reveal" aria-label="Silent artwork and gallery atmosphere videos">
-          <div class="video-card">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-              <source src="assets/videos/silent-artwork/gallery-walkthrough-01.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label"><strong>Silent Gallery Walkthrough</strong>Atmosphere and motion without sound.</div>
-          </div>
+        <div class="scene-content reveal">
+          <div class="kicker">The Human Behind the Work</div>
+          <h2>Spirit. Memory. Color. Presence.</h2>
+          <p>Donna’s work is not only viewed — it is felt. Her world carries joy, legacy, cultural memory, reflection, humor, spiritual openness, and a deep relationship with beauty.</p>
+          <a class="button primary" href="#contact">Begin a Collector Inquiry</a>
+        </div>
 
-          <div class="video-card">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-              <source src="assets/videos/silent-artwork/gallery-walkthrough-02.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label"><strong>Silent Gallery Movement</strong>Use as cinematic room energy.</div>
-          </div>
+        <div class="oversized-word">Donna</div>
+      </section>
 
-          <div class="video-card">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-              <source src="assets/videos/silent-artwork/artwork-closeup-blue.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label"><strong>Artwork Closeup</strong>Texture, color, and brush energy.</div>
-          </div>
+      <section class="series-portal" id="series">
+        <div class="portal-head reveal">
+          <div class="kicker">Seven Exhibition Rooms</div>
+          <h2>Each series opens a different world.</h2>
+          <p>The seven collections should feel less like categories and more like gallery rooms — each with its own emotional climate, visual rhythm, and collector story.</p>
+        </div>
 
-          <div class="video-card">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-              <source src="assets/videos/silent-artwork/artwork-closeup-keys.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label"><strong>Detail Study</strong>Silent movement for visual richness.</div>
-          </div>
+        <div class="portal-grid reveal">
+          <a class="portal-card" href="#" data-series="Children">
+            <img src="assets/images/artwork/artwork-children.jpg" alt="Children series artwork" />
+            <div>
+              <span>01</span>
+              <h3>Children</h3>
+              <p>Wonder, innocence, dreaming, flowers, butterflies, and becoming.</p>
+            </div>
+          </a>
 
-          <div class="video-card">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-              <source src="assets/videos/silent-artwork/painting-detail-2.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label"><strong>Painting Detail</strong>Close-range artwork atmosphere.</div>
-          </div>
+          <a class="portal-card" href="#" data-series="Sports">
+            <img src="assets/images/artwork/artwork-sports.jpg" alt="Sports series artwork" />
+            <div>
+              <span>02</span>
+              <h3>Sports</h3>
+              <p>Motion, discipline, resilience, victory, strength, and triumph.</p>
+            </div>
+          </a>
 
-          <div class="video-card">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-              <source src="assets/videos/silent-artwork/painting-detail-texture-2.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label"><strong>Texture Loop</strong>Fine detail and surface movement.</div>
-          </div>
+          <a class="portal-card" href="#" data-series="Music">
+            <img src="assets/images/artwork/artwork-music.jpg" alt="Music series artwork" />
+            <div>
+              <span>03</span>
+              <h3>Music</h3>
+              <p>Jazz, rhythm, memory, sound, icons, and cultural pulse.</p>
+            </div>
+          </a>
 
-          <div class="video-card">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-              <source src="assets/videos/silent-artwork/painting-detail-texture-3.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label"><strong>Surface Rhythm</strong>Pattern, dots, and visual rhythm.</div>
-          </div>
+          <a class="portal-card" href="#" data-series="Icons">
+            <img src="assets/images/artwork/artwork-icons.jpg" alt="Icons series artwork" />
+            <div>
+              <span>04</span>
+              <h3>Icons</h3>
+              <p>Presence, identity, legacy, cultural memory, and recognition.</p>
+            </div>
+          </a>
 
-          <div class="video-card">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/images/artwork/silent-artwork-poster.jpg">
-              <source src="assets/videos/silent-artwork/painting-detail-texture-4.mp4" type="video/mp4" />
-            </video>
-            <div class="video-label"><strong>Silent Detail</strong>Elegant motion for the exhibition mood.</div>
+          <a class="portal-card" href="#" data-series="Cigar">
+            <img src="assets/images/artwork/artwork-cigar.jpg" alt="Cigar series artwork" />
+            <div>
+              <span>05</span>
+              <h3>Cigar</h3>
+              <p>Warmth, atmosphere, collector mood, lounges, and luxury spaces.</p>
+            </div>
+          </a>
+
+          <a class="portal-card" href="#" data-series="Faces & Figures">
+            <img src="assets/images/artwork/artwork-faces-figures.jpg" alt="Faces and Figures series artwork" />
+            <div>
+              <span>06</span>
+              <h3>Faces & Figures</h3>
+              <p>Expression, dignity, story, human truth, and emotional identity.</p>
+            </div>
+          </a>
+
+          <a class="portal-card" href="#" data-series="Nature">
+            <img src="assets/images/artwork/artwork-nature.jpg" alt="Nature series artwork" />
+            <div>
+              <span>07</span>
+              <h3>Nature</h3>
+              <p>Flowers, renewal, softness, color, spirit, and life energy.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="voice-stage" id="voice">
+        <div class="voice-video">
+          <video id="voiceVideo" controls preload="metadata" poster="assets/images/portraits/donna-video-poster.jpg">
+            <source id="voiceSource" src="assets/videos/donna-speaking/donna-smiling-interview.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="voice-copy reveal">
+          <div class="kicker">Donna’s Voice</div>
+          <h2>Let the artist be present.</h2>
+          <p>Speaking moments should have sound. These are not background decoration — they are moments of intimacy, memory, reflection, and connection with the person behind the work.</p>
+
+          <div class="video-selector" aria-label="Choose Donna speaking video">
+            <button type="button" onclick="changeVoiceVideo('assets/videos/donna-speaking/donna-smiling-interview.mp4')">Smiling Interview</button>
+            <button type="button" onclick="changeVoiceVideo('assets/videos/donna-speaking/donna-festival-speaking.mp4')">Festival</button>
+            <button type="button" onclick="changeVoiceVideo('assets/videos/donna-speaking/donna-studio-speaking.mp4')">Studio</button>
+            <button type="button" onclick="changeVoiceVideo('assets/videos/donna-speaking/donnal-reflection.mp4')">Reflection</button>
           </div>
         </div>
       </section>
 
-      <section class="section" id="studio">
-        <div class="split">
-          <div class="reveal">
-            <div class="kicker">Inside the Studio</div>
-            <h2>The work behind the work.</h2>
-            <p class="lead">Studio images, process photos, macro textures, paint details, unfinished pieces, and Donna working should become one of the most dynamic parts of the site.</p>
-            <p class="copy">This section will eventually become a moving visual wall or horizontal slider using Donna’s working/studio images.</p>
-          </div>
-
-          <div class="media-card reveal">
-            <div class="caption">
-              <strong>Process. Texture. Transformation.</strong>
-              <span>Replace with Donna working, painting, or detailed studio imagery.</span>
-            </div>
-          </div>
+      <section class="scene" id="studio">
+        <div class="scene-bg">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/silent-artwork/artwork-detail-closeup.MP4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/painting-detail-texture.MP4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/artwork-motion-loop.mp4" type="video/mp4" />
+          </video>
         </div>
 
-        <div class="magazine-grid reveal">
-          <article class="magazine-card tall">
-            <div class="magazine-card-content">
-              <h3>Hands at work</h3>
-              <p>Use Donna painting, building surfaces, shaping details, and creating in the studio.</p>
-            </div>
-          </article>
-          <article class="magazine-card">
-            <div class="magazine-card-content">
-              <h3>Texture closeups</h3>
-              <p>Use dots, patterns, brushwork, color fields, and detail photography.</p>
-            </div>
-          </article>
-          <article class="magazine-card tall">
-            <div class="magazine-card-content">
-              <h3>Becoming</h3>
-              <p>Use unfinished works and process images to show transformation.</p>
-            </div>
-          </article>
+        <div class="scene-content right reveal">
+          <div class="kicker">Studio / Process</div>
+          <h2>The work behind the work.</h2>
+          <p>Silent motion belongs here: paint texture, detail closeups, studio movement, gallery pans, and the intimate visual rhythm of making. This is where process becomes part of the exhibition.</p>
+          <a class="button" href="#contact">Ask About Available Work</a>
+        </div>
+
+        <div class="oversized-word">Process</div>
+      </section>
+
+      <section class="moving-strip" aria-label="Exhibition and collector motion strip">
+        <div class="moving-strip-track">
+          <figure class="strip-frame" data-title="Gallery Walkthrough">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/gallery-walkthrough.MP4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/exhibition-motion-loop.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Signature Portrait">
+            <img src="assets/images/portraits/donna-signature-portrait.jpg" alt="Donna M. Richardson portrait" />
+          </figure>
+
+          <figure class="strip-frame" data-title="Studio Energy">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/donna-speaking/donna-studio-speaking.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Event Atmosphere">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/public-art-installation.MP4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/exhibition-motion-loop.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Gallery Walkthrough">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/gallery-walkthrough.MP4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/exhibition-motion-loop.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Signature Portrait">
+            <img src="assets/images/portraits/donna-signature-portrait.jpg" alt="Donna M. Richardson portrait" />
+          </figure>
+
+          <figure class="strip-frame" data-title="Studio Energy">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/donna-speaking/donna-studio-speaking.mp4" type="video/mp4" />
+            </video>
+          </figure>
+
+          <figure class="strip-frame" data-title="Event Atmosphere">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/videos/silent-artwork/public-art-installation.MP4" type="video/mp4" />
+              <source src="assets/videos/silent-artwork/exhibition-motion-loop.mp4" type="video/mp4" />
+            </video>
+          </figure>
         </div>
       </section>
 
-      <section class="section" id="exhibitions">
-        <div class="section-head reveal">
-          <div class="kicker">Exhibitions • Events • Collectors</div>
-          <h2>Proof that the work lives in the world.</h2>
-          <p class="lead">Donna’s gallery, collector, event, award, and joyful personality photos should appear as bold moving sections — giving credibility, warmth, and human connection.</p>
+      <section class="scene">
+        <div class="scene-bg">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/silent-artwork/exhibition-motion-loop.mp4" type="video/mp4" />
+            <source src="assets/videos/silent-artwork/gallery-walkthrough.MP4" type="video/mp4" />
+          </video>
         </div>
 
-        <div class="event-wall reveal">
-          <article class="event-card big">
-            <div>
-              <h3>Gallery Presence</h3>
-              <p>Use Donna standing with artwork, white-wall installations, and exhibition views.</p>
-            </div>
-          </article>
-
-          <article class="event-card mid">
-            <div>
-              <h3>Collector Energy</h3>
-              <p>Use photos of visitors, clients, viewers, and people engaging with her work.</p>
-            </div>
-          </article>
-
-          <article class="event-card small">
-            <div>
-              <h3>Recognition</h3>
-              <p>Awards, ribbons, exhibition moments, and public credibility.</p>
-            </div>
-          </article>
-
-          <article class="event-card small">
-            <div>
-              <h3>Joy</h3>
-              <p>Donna’s humor, personality, warmth, and delightful life moments.</p>
-            </div>
-          </article>
-
-          <article class="event-card small">
-            <div>
-              <h3>Legacy</h3>
-              <p>Family, memory, roots, and the deeper human story behind the work.</p>
-            </div>
-          </article>
+        <div class="scene-content center reveal">
+          <div class="kicker">For Collectors, Curators, Institutions</div>
+          <h2>This work belongs in serious spaces.</h2>
+          <p>A cinematic presentation builds confidence for collectors, curators, corporate buyers, hospitality spaces, cultural institutions, and museum-minded viewers.</p>
+          <a class="button primary" href="#contact">Start a Conversation</a>
         </div>
 
-        <div class="press-strip reveal">
-          <div class="press-pill">Exhibitions</div>
-          <div class="press-pill">Collectors</div>
-          <div class="press-pill">Culture</div>
-          <div class="press-pill">Fine Art</div>
-          <div class="press-pill">Public Engagement</div>
-          <div class="press-pill">Artist Voice</div>
-        </div>
-
-        <div class="collector-banner reveal">
-          <div class="collector-stat">
-            <strong>Gallery</strong>
-            <span>Designed to support exhibitions, events, installations, and public presentations.</span>
-          </div>
-          <div class="collector-stat">
-            <strong>Collector</strong>
-            <span>Built to help serious buyers emotionally connect with Donna’s world.</span>
-          </div>
-          <div class="collector-stat">
-            <strong>Culture</strong>
-            <span>Rooted in joy, history, memory, identity, rhythm, and human presence.</span>
-          </div>
-          <div class="collector-stat">
-            <strong>Voice</strong>
-            <span>Donna speaking moments remain sound-enabled. Artwork movement remains elegant and silent.</span>
-          </div>
-        </div>
+        <div class="oversized-word">Legacy</div>
       </section>
 
-      <section class="section" id="soul">
-        <div class="split">
-          <div class="media-card image-beach reveal">
-            <div class="caption">
-              <strong>The artist soul moment.</strong>
-              <span>This is the perfect placement for the ocean/freedom image of Donna.</span>
-            </div>
-          </div>
+      <section class="contact-scene" id="contact">
+        <div class="contact-inner reveal">
+          <div class="kicker">Collector Inquiry</div>
+          <h2>Begin a conversation about Donna’s work.</h2>
+          <p>For collectors, curators, corporate buyers, hospitality spaces, exhibitions, commissions, cultural partnerships, and press.</p>
 
-          <div class="reveal">
-            <div class="kicker">The Human Behind the Work</div>
-            <h2>Freedom, spirit, joy, and presence.</h2>
-            <p class="lead">This is where Donna’s personality shines — not as decoration, but as emotional truth. The site should let visitors feel the person behind the art.</p>
-            <p class="copy">Her joy, warmth, humor, curiosity, family moments, and spiritual openness are not separate from the art. They are part of the world the art comes from.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="contact-panel reveal">
-          <div>
-            <div class="kicker">Collector Inquiry</div>
-            <h2>Begin a conversation about Donna’s work.</h2>
-            <p class="lead">For collectors, curators, corporate buyers, hospitality spaces, exhibitions, commissions, cultural partnerships, and press.</p>
-            <p class="copy">This form is ready to connect later to email, CRM, or Donna’s collector acquisition workflow.</p>
-          </div>
-
-          <form class="form" onsubmit="event.preventDefault(); alert('Thank you. This demo form is ready to connect to Donna’s inquiry system.');">
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you. This demo form is ready to connect to Donna’s inquiry system.');">
             <input type="text" name="name" placeholder="Your name" required />
             <input type="email" name="email" placeholder="Email address" required />
-
             <select name="interest" required>
               <option value="">What are you interested in?</option>
               <option>Available artwork</option>
@@ -2193,7 +1640,6 @@
               <option>Press / interview</option>
               <option>Other</option>
             </select>
-
             <textarea name="message" placeholder="Share a few details..."></textarea>
             <button class="button primary" type="submit">Send Inquiry</button>
           </form>
@@ -2204,6 +1650,20 @@
     <footer>
       © <span id="year"></span> Donna M. Richardson. Cinematic virtual gallery experience.
     </footer>
+  </div>
+
+  <div class="lightbox" id="seriesLightbox" aria-hidden="true">
+    <button class="close-lightbox" type="button" onclick="closeSeries()">×</button>
+
+    <div class="lightbox-inner">
+      <div class="lightbox-media" id="lightboxMedia"></div>
+      <div class="lightbox-copy">
+        <div class="kicker">Series Room</div>
+        <h3 id="lightboxTitle">Series</h3>
+        <p id="lightboxCopy">This series will open into a deeper exhibition room with Donna’s artwork, story, available works, and collector inquiry path.</p>
+        <a class="button primary" href="#contact" onclick="closeSeries()">Ask About This Series</a>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -2228,45 +1688,96 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.16 });
+    }, { threshold: 0.14 });
 
     document.querySelectorAll('.reveal').forEach(function(el) {
       revealObserver.observe(el);
     });
 
-    const sliderState = {};
+    function changeVoiceVideo(src) {
+      const video = document.getElementById('voiceVideo');
+      const source = document.getElementById('voiceSource');
 
-    function moveSlider(name, direction) {
-      const slider = document.querySelector('[data-slider="' + name + '"]');
+      source.src = src;
+      video.load();
+      video.play().catch(function() {});
+    }
 
-      if (!slider) {
+    const seriesData = {
+      "Children": {
+        image: "assets/images/artwork/artwork-children.jpg",
+        copy: "Wonder, innocence, imagination, healing, dreaming, and becoming. This series can become one of Donna’s most emotionally resonant exhibition rooms."
+      },
+      "Sports": {
+        image: "assets/images/artwork/artwork-sports.jpg",
+        copy: "Motion, resilience, discipline, strength, victory, and triumph. A strong fit for collectors drawn to energy and movement."
+      },
+      "Music": {
+        image: "assets/images/artwork/artwork-music.jpg",
+        copy: "Jazz, rhythm, cultural memory, sound, and icons. This room should feel like music translated into color."
+      },
+      "Icons": {
+        image: "assets/images/artwork/artwork-icons.jpg",
+        copy: "Presence, legacy, cultural memory, and portraits that carry power. This room should feel bold and reverent."
+      },
+      "Cigar": {
+        image: "assets/images/artwork/artwork-cigar.jpg",
+        copy: "Warmth, luxury atmosphere, collector mood, hospitality placement, lounges, and interior appeal."
+      },
+      "Faces & Figures": {
+        image: "assets/images/artwork/artwork-faces-figures.jpg",
+        copy: "Dignity, identity, emotional truth, story, and human expression. This room should feel intimate and powerful."
+      },
+      "Nature": {
+        image: "assets/images/artwork/artwork-nature.jpg",
+        copy: "Flowers, renewal, softness, spiritual color, and life energy. This room should feel restorative and luminous."
+      }
+    };
+
+    document.querySelectorAll('[data-series]').forEach(function(item) {
+      item.addEventListener('click', function(event) {
+        event.preventDefault();
+        openSeries(item.getAttribute('data-series'));
+      });
+    });
+
+    function openSeries(series) {
+      const data = seriesData[series];
+
+      if (!data) {
         return;
       }
 
-      const slides = slider.querySelector('.slides');
-      const total = slides.children.length;
+      document.getElementById('lightboxTitle').textContent = series;
+      document.getElementById('lightboxCopy').textContent = data.copy;
+      document.getElementById('lightboxMedia').style.setProperty('--modal-image', 'url("' + data.image + '")');
 
-      if (typeof sliderState[name] === 'undefined') {
-        sliderState[name] = 0;
-      }
-
-      sliderState[name] = (sliderState[name] + direction + total) % total;
-      slides.style.transform = 'translateX(-' + (sliderState[name] * 100) + '%)';
+      const modal = document.getElementById('seriesLightbox');
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
     }
 
-    setInterval(function() {
-      moveSlider('main', 1);
-    }, 5200);
+    function closeSeries() {
+      const modal = document.getElementById('seriesLightbox');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
 
-    document.querySelectorAll('.wall-piece, .floating-frame, .event-card').forEach(function(item) {
+    window.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeSeries();
+      }
+    });
+
+    document.querySelectorAll('.hero-art').forEach(function(item) {
       item.addEventListener('mousemove', function(event) {
         const rect = item.getBoundingClientRect();
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
-        const rotateX = ((y / rect.height) - 0.5) * -5;
-        const rotateY = ((x / rect.width) - 0.5) * 5;
+        const rotateX = ((y / rect.height) - 0.5) * -6;
+        const rotateY = ((x / rect.width) - 0.5) * 6;
 
-        item.style.transform = 'translateY(-8px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
+        item.style.transform = 'translateY(-16px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.065)';
       });
 
       item.addEventListener('mouseleave', function() {
