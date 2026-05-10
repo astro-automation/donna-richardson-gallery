@@ -1578,7 +1578,7 @@ const media = {
     gateway: "/assets/images/seven-series/artwork-sports.jpg",
     fallback: "/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg",
     works: [
-      ["sports-series-01-in-th-flo.jpg","In the Flo", ["sports-series-01-in-the-flo.jpg", "artwork-in-the-flo.jpg"]],
+      ["sports-series-01-in-the-flo.jpg","In the Flo", ["sports-series-01-in-th-flo.jpg", "artwork-in-the-flo.jpg"]],
       ["sports-series-02-jackie-robinson.jpg","Jackie Robinson", ["artwork-jackie-robinson.jpg"]],
       ["sports-series-03-the-greatest.jpg","The Greatest"]
     ]
@@ -1602,12 +1602,10 @@ const media = {
     gateway: "/assets/images/seven-series/artwork-cigar.png",
     fallback: "/assets/images/artwork/cigar/artwork-cigar-2.png",
     works: [
-      ["artwork-cigar-2.png","Cigar Series Gateway II"],
-      ["cigar-series-01.jpg","Cigar Series I"],
-      ["cigar-series-02.jpg","Cigar Series II"],
-      ["cigar-series-03.jpg","Cigar Series III"],
-      ["cigar-series-04.jpg","Cigar Series IV"],
-      ["cigar-series-05.jpg","Cigar Series V"]
+      ["cigar-series-01-.png","Cigar Series I"],
+      ["cigar-series-02.png","Cigar Series II"],
+      ["cigar-series-03.png","Cigar Series III"],
+      ["cigar-series-04.png","Cigar Series IV"]
     ]
   },
   faces: {
@@ -1977,13 +1975,16 @@ function buildSeriesPages(){
       <div class="series-page-grid"></div>
     `;
     const grid = section.querySelector(".series-page-grid");
-    s.works.forEach(([file,title]) => {
+    s.works.forEach((item) => {
+      const [file,title] = item;
       const art = document.createElement("div");
       art.className = "series-page-art";
       art.dataset.title = title;
-      const src = pathFor(key,file);
-      art.appendChild(imgEl(src,title));
-      art.addEventListener("click", () => openLightbox(src,title));
+      const sources = workSourcesFor(key, item);
+      const fallback = s.fallback || sources[0];
+      const image = imgElCandidates(sources, title, fallback);
+      art.appendChild(image);
+      art.addEventListener("click", () => openLightbox(image.currentSrc || image.src || sources[0], title));
       grid.appendChild(art);
     });
     holder.appendChild(section);
