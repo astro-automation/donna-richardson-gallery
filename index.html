@@ -249,34 +249,63 @@ button{font-family:inherit;color:inherit}
   z-index:5;
   display:block;
   overflow:hidden;
-  background:#12070d;
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.65),0 12px 26px rgba(0,0,0,.28);
+  background:#160d10;
+  border-radius:2px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,232,174,.18),
+    inset 0 0 18px rgba(0,0,0,.58),
+    0 10px 24px rgba(0,0,0,.30);
   cursor:pointer;
   transition:transform .5s cubic-bezier(.18,.85,.24,1), filter .5s ease, box-shadow .5s ease;
+}
+.hero-art-link::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.16),transparent 26%,transparent 63%,rgba(255,255,255,.07)),
+    radial-gradient(circle at 50% 0%,rgba(255,231,176,.14),transparent 45%);
+  mix-blend-mode:screen;
+  opacity:.58;
+}
+.hero-art-link::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  box-shadow:inset 0 0 0 3px rgba(18,9,8,.62), inset 0 0 0 5px rgba(231,190,103,.18);
 }
 .hero-art-link img{
   width:100%;height:100%;
   object-fit:cover;
   object-position:center center;
-  filter:saturate(1.04) contrast(1.02);
-  transition:transform 1.1s ease;
+  filter:saturate(1.03) contrast(1.02) brightness(.96);
+  transform:scale(1.002);
+  transition:transform 1.1s ease, filter .75s ease;
 }
 .hero-art-link:hover{
   transform:translateY(-4px) scale(1.018);
   filter:brightness(1.08);
-  box-shadow:inset 0 0 0 1px rgba(255,226,160,.4),0 22px 46px rgba(0,0,0,.48),0 0 40px rgba(198,167,102,.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,226,160,.42),
+    inset 0 0 18px rgba(0,0,0,.50),
+    0 22px 46px rgba(0,0,0,.48),
+    0 0 40px rgba(198,167,102,.18);
 }
-.hero-art-link:hover img{transform:scale(1.035)}
+.hero-art-link:hover img{transform:scale(1.04);filter:saturate(1.08) contrast(1.04) brightness(1.02)}
 .hero-art-link:focus-visible{outline:2px solid var(--gold-soft);outline-offset:4px}
 .hero-art-link span{position:absolute;left:-9999px}
 /* Exact frame-image interiors mapped to the supplied mockup image. */
-.hero-children{left:19.75%;top:24.25%;width:9.55%;height:16.35%}
-.hero-sports{left:32.80%;top:24.25%;width:9.85%;height:16.35%}
-.hero-music{left:46.35%;top:24.25%;width:9.85%;height:16.35%}
-.hero-icons{left:59.88%;top:24.25%;width:9.85%;height:16.35%}
-.hero-cigar{left:73.22%;top:24.25%;width:9.85%;height:16.35%}
-.hero-faces{left:34.25%;top:51.62%;width:14.28%;height:12.92%}
-.hero-nature{left:52.65%;top:51.62%;width:14.38%;height:12.92%}
+.hero-children{left:20.48%;top:25.07%;width:8.35%;height:14.62%}
+.hero-sports{left:33.55%;top:25.07%;width:8.50%;height:14.62%}
+.hero-music{left:47.08%;top:25.07%;width:8.50%;height:14.62%}
+.hero-icons{left:60.62%;top:25.07%;width:8.50%;height:14.62%}
+.hero-cigar{left:73.95%;top:25.07%;width:8.50%;height:14.62%}
+.hero-faces{left:35.05%;top:52.52%;width:12.75%;height:10.70%}
+.hero-nature{left:53.45%;top:52.52%;width:12.85%;height:10.70%}
 .hero-enter{
   position:absolute;
   right:4.7%;top:2.6%;
@@ -902,31 +931,31 @@ footer{
     <a class="hero-enter" href="#series-children">Enter The Experience</a>
 
     <a class="hero-art-link hero-children" href="#series-children" data-series="children" aria-label="Open Children series">
-      <img src="/assets/images/artwork/children/artwork-children.png" alt="Children series gateway artwork" onerror="this.src='/assets/images/artwork/children/children-series-01-daisy.jpg'">
+      <img src="/assets/images/seven-series/artwork-children.png" alt="Children series gateway artwork" onerror="this.src='/assets/images/artwork/children/children-series-01-daisy.jpg'">
       <span>Children</span>
     </a>
     <a class="hero-art-link hero-sports" href="#series-sports" data-series="sports" aria-label="Open Sports series">
-      <img src="/assets/images/artwork/sports/artwork-sports.jpg" alt="Sports series gateway artwork" onerror="this.src='/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg'">
+      <img src="/assets/images/seven-series/artwork-sports.jpg" alt="Sports series gateway artwork" onerror="this.src='/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg'">
       <span>Sports</span>
     </a>
     <a class="hero-art-link hero-music" href="#series-music" data-series="music" aria-label="Open Music series">
-      <img src="/assets/images/artwork/music/artwork-music.jpg" alt="Music series gateway artwork" onerror="this.src='/assets/images/artwork/music/music-series-08-miles-davis.jpg'">
+      <img src="/assets/images/seven-series/artwork-music.jpg" alt="Music series gateway artwork" onerror="this.src='/assets/images/artwork/music/music-series-08-miles-davis.jpg'">
       <span>Music</span>
     </a>
     <a class="hero-art-link hero-icons" href="#series-icons" data-series="icons" aria-label="Open Icons series">
-      <img src="/assets/images/artwork/icons/artwork-icons.jpg" alt="Icons series gateway artwork" onerror="this.src='/assets/images/artwork/icons/icons-series-01-frederick-douglass.jpg'">
+      <img src="/assets/images/seven-series/artwork-icons.jpg" alt="Icons series gateway artwork" onerror="this.src='/assets/images/artwork/icons/icons-series-01-frederick-douglass.jpg'">
       <span>Icons</span>
     </a>
     <a class="hero-art-link hero-cigar" href="#series-cigar" data-series="cigar" aria-label="Open Cigar series">
-      <img src="/assets/images/artwork/cigar/artwork-cigar.png" alt="Cigar series gateway artwork" onerror="this.src='/assets/images/artwork/cigar/artwork-cigar-2.png'">
+      <img src="/assets/images/seven-series/artwork-cigar.png" alt="Cigar series gateway artwork" onerror="this.src='/assets/images/seven-series/artwork-cigar.png'">
       <span>Cigar</span>
     </a>
     <a class="hero-art-link hero-faces" href="#series-faces" data-series="faces" aria-label="Open Faces and Figures series">
-      <img src="/assets/images/artwork/faces-figures/artwork-faces-figures.png" alt="Faces and Figures series gateway artwork" onerror="this.src='/assets/images/artwork/faces-figures/faces-figures-series-08-the-gaze.jpg'">
+      <img src="/assets/images/seven-series/artwork-faces-figures.png" alt="Faces and Figures series gateway artwork" onerror="this.src='/assets/images/artwork/faces-figures/faces-figures-series-08-the-gaze.jpg'">
       <span>Faces & Figures</span>
     </a>
     <a class="hero-art-link hero-nature" href="#series-nature" data-series="nature" aria-label="Open Nature series">
-      <img src="/assets/images/artwork/nature/artwork-nature.jpg" alt="Nature series gateway artwork" onerror="this.src='/assets/images/artwork/nature/nature-series-01-dragon-fly.jpg'">
+      <img src="/assets/images/seven-series/artwork-nature.jpg" alt="Nature series gateway artwork" onerror="this.src='/assets/images/artwork/nature/nature-series-01-dragon-fly.jpg'">
       <span>Nature</span>
     </a>
 
@@ -1116,7 +1145,7 @@ const media = {
   children: {
     label: "Children",
     mood: "Innocence, imagination, protection, memory, and wonder.",
-    gateway: "/assets/images/artwork/children/artwork-children.png",
+    gateway: "/assets/images/seven-series/artwork-children.png",
     fallback: "/assets/images/artwork/children/children-series-01-daisy.jpg",
     works: [
       ["children-series-01-daisy.jpg","Daisy"],
@@ -1133,11 +1162,9 @@ const media = {
   music: {
     label: "Music",
     mood: "Rhythm, soul, voice, blue notes, memory, and movement.",
-    gateway: "/assets/images/artwork/music/artwork-music.jpg",
+    gateway: "/assets/images/seven-series/artwork-music.jpg",
     fallback: "/assets/images/artwork/music/music-series-08-miles-davis.jpg",
     works: [
-      ["artwork-music.jpg","Music Series Gateway"],
-      ["artwork-music-2.jpg","Music Series Gateway II"],
       ["music-series-01-santana.jpg","Santana"],
       ["music-series-02-billie-holiday.jpg","Billie Holiday"],
       ["music-series-03-bob-marley.jpeg","Bob Marley"],
@@ -1157,10 +1184,9 @@ const media = {
   icons: {
     label: "Icons",
     mood: "Cultural memory, reverence, ancestral presence, and historical force.",
-    gateway: "/assets/images/artwork/icons/artwork-icons.jpg",
-    fallback: "/assets/images/artwork/icons/artwork-icons.jpg",
+    gateway: "/assets/images/seven-series/artwork-icons.jpg",
+    fallback: "/assets/images/seven-series/artwork-icons.jpg",
     works: [
-      ["artwork-icons.jpg","Icons Series Gateway"],
       ["icons-series-01-frederick-douglass.jpg","Frederick Douglass"],
       ["icons-series-02-prayers-to-heaven.jpg","Prayers to Heaven"],
       ["icons-series-03-grace-jones.jpg","Grace Jones"],
@@ -1178,10 +1204,9 @@ const media = {
   sports: {
     label: "Sports",
     mood: "Force, discipline, legacy, endurance, and human mythology.",
-    gateway: "/assets/images/artwork/sports/artwork-sports.jpg",
+    gateway: "/assets/images/seven-series/artwork-sports.jpg",
     fallback: "/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg",
     works: [
-      ["artwork-sports.jpg","Sports Series Gateway"],
       ["sports-series-01-in-th-flo.jpg","In th Flo"],
       ["sports-series-02-jackie-robinson.jpg","Jackie Robinson"],
       ["sports-series-03-the-greatest.jpg","The Greatest"],
@@ -1192,10 +1217,9 @@ const media = {
   nature: {
     label: "Nature",
     mood: "Breath, spirit, animals, dream-state color, and elemental wonder.",
-    gateway: "/assets/images/artwork/nature/artwork-nature.jpg",
+    gateway: "/assets/images/seven-series/artwork-nature.jpg",
     fallback: "/assets/images/artwork/nature/nature-series-01-dragon-fly.jpg",
     works: [
-      ["artwork-nature.jpg","Nature Series Gateway"],
       ["nature-series-01-dragon-fly.jpg","Dragon Fly"],
       ["nature-series-02-koi.jpg","Koi"],
       ["nature-series-03-koko-and-her-kitten.jpg","Koko and Her Kitten"],
@@ -1207,10 +1231,9 @@ const media = {
   cigar: {
     label: "Cigar",
     mood: "Atmosphere, ritual, intimacy, smoke, conversation, and collector culture.",
-    gateway: "/assets/images/artwork/cigar/artwork-cigar.png",
+    gateway: "/assets/images/seven-series/artwork-cigar.png",
     fallback: "/assets/images/artwork/cigar/artwork-cigar-2.png",
     works: [
-      ["artwork-cigar.png","Cigar Series Gateway"],
       ["artwork-cigar-2.png","Cigar Series Gateway II"],
       ["cigar-series-01.jpg","Cigar Series I"],
       ["cigar-series-02.jpg","Cigar Series II"],
@@ -1223,8 +1246,8 @@ const media = {
     label: "Faces & Figures",
     mood: "Identity, spirit portraits, feminine power, humanity, and emotional gravity.",
     folder: "faces-figures",
-    gateway: "/assets/images/artwork/faces-figures/artwork-faces-figures.png",
-    fallback: "/assets/images/artwork/faces-figures/artwork-faces-figures.png",
+    gateway: "/assets/images/seven-series/artwork-faces-figures.png",
+    fallback: "/assets/images/seven-series/artwork-faces-figures.png",
     works: [
       ["artwork-faces-figures.png","Faces & Figures Gateway"],
       ["faces-figures-series-01-crystal-her-hat.jpg","Crystal Her Hat"],
