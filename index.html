@@ -743,6 +743,14 @@ button{font-family:inherit;color:inherit}
 .exhibition-tile:nth-child(5){grid-column:span 4;grid-row:span 4;border-radius:48px 18px 48px 18px;--tilt:-1.4deg}
 .exhibition-tile:nth-child(6){grid-column:span 4;grid-row:span 3;border-radius:28px;--tilt:.9deg}
 .exhibition-tile:nth-child(n+7){grid-column:span 3;grid-row:span 3;border-radius:30px;}
+.exhibition-tile:nth-child(8){grid-column:span 5;grid-row:span 3;border-radius:56px 24px 56px 24px;}
+.exhibition-tile:nth-child(9){grid-column:span 3;grid-row:span 4;border-radius:24px 56px 24px 56px;}
+.exhibition-tile:nth-child(10){grid-column:span 4;grid-row:span 3;border-radius:42px;}
+.exhibition-tile:nth-child(11){grid-column:span 5;grid-row:span 4;border-radius:22px 52px 52px 22px;}
+.exhibition-tile:nth-child(12){grid-column:span 3;grid-row:span 3;border-radius:50%;}
+.exhibition-tile:nth-child(13){grid-column:span 4;grid-row:span 5;border-radius:48px 18px;}
+.exhibition-tile:nth-child(14){grid-column:span 4;grid-row:span 3;border-radius:18px 48px;}
+.exhibition-tile:nth-child(15){grid-column:span 6;grid-row:span 4;border-radius:54px;}
 .exhibition-tile img{width:100%;height:100%;object-fit:cover;transition:1s ease}
 .exhibition-tile:hover{transform:rotate(0deg) translateY(-8px);border-color:rgba(234,215,162,.45)}
 .exhibition-tile:hover img{transform:scale(1.055)}
@@ -754,6 +762,13 @@ button{font-family:inherit;color:inherit}
 .personality-photo:hover{transform:scale(1.045) rotate(0deg)!important;filter:saturate(1.15) contrast(1.04)}
 .exhibition-tile.missing{display:none}
 .exhibition-grid{grid-auto-flow:dense}
+
+.exhibition-grid.expanded-proof-wall{align-items:stretch}
+.exhibition-tile:nth-child(16){grid-column:span 6;grid-row:span 3;border-radius:28px 58px 28px 58px;}
+.exhibition-tile:nth-child(17){grid-column:span 3;grid-row:span 4;border-radius:50px 18px 50px 18px;}
+.exhibition-tile:nth-child(18){grid-column:span 5;grid-row:span 4;border-radius:18px 52px;}
+.exhibition-tile:nth-child(19){grid-column:span 4;grid-row:span 3;border-radius:44px;}
+.exhibition-tile:nth-child(20){grid-column:span 4;grid-row:span 5;border-radius:24px 64px 24px 64px;}
 
 /* collector */
 .collector{
@@ -1463,7 +1478,7 @@ footer{
     <h2 class="section-title">Proof of Presence, <em>Not Decoration</em></h2>
     <p class="section-lead">The exhibition layer gives collectors, curators, and institutional buyers a sense of scale, credibility, and lived cultural context.</p>
   </div>
-  <div class="exhibition-grid" id="exhibitionGrid"></div>
+  <div class="exhibition-grid expanded-proof-wall" id="exhibitionGrid"></div>
 </section>
 
 <section class="section collector" id="collector">
@@ -1572,11 +1587,9 @@ const media = {
     gateway: "/assets/images/seven-series/artwork-sports.jpg",
     fallback: "/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg",
     works: [
-      ["sports-series-01-in-th-flo.jpg","In th Flo"],
+      ["sports-series-01-in-the-flo.jpg","In the Flo"],
       ["sports-series-02-jackie-robinson.jpg","Jackie Robinson"],
-      ["sports-series-03-the-greatest.jpg","The Greatest"],
-      ["artwork-jackie-robinson.jpg","Jackie Robinson"],
-      ["artwork-in-the-flo.jpg","In the Flo"]
+      ["sports-series-03-the-greatest.jpg","The Greatest"]
     ]
   },
   nature: {
@@ -1658,15 +1671,55 @@ const personalityImages = [
 
 const studioImages = Array.from({length:20}, (_,i)=>`donna-studio-${String(i+1).padStart(2,"0")}.png`);
 
+const exhibitionImageBases = [
+  "exhibition",
+  "exhibitions",
+  "event",
+  "events",
+  "events-collectors",
+  "event-collector",
+  "gallery-event",
+  "gallery-opening",
+  "collector",
+  "collectors",
+  "client",
+  "clients",
+  "artist-talk",
+  "gallery",
+  "opening"
+];
+
 const exhibitionImages = [
-  // Known exhibition / events / collector filename patterns. Missing files are automatically hidden.
-  ...Array.from({length:30}, (_,i)=>`exhibition-${String(i+1).padStart(2,"0")}.jpg`),
-  ...Array.from({length:30}, (_,i)=>`exhibitions-${String(i+1).padStart(2,"0")}.jpg`),
-  ...Array.from({length:30}, (_,i)=>`events-collectors-${String(i+1).padStart(2,"0")}.jpg`),
-  ...Array.from({length:30}, (_,i)=>`event-collector-${String(i+1).padStart(2,"0")}.jpg`),
-  ...Array.from({length:30}, (_,i)=>`gallery-event-${String(i+1).padStart(2,"0")}.jpg`),
-  ...Array.from({length:30}, (_,i)=>`gallery-opening-${String(i+1).padStart(2,"0")}.jpg`),
-  ...Array.from({length:30}, (_,i)=>`collector-${String(i+1).padStart(2,"0")}.jpg`)
+  // Verified Group 4 — Events / Clients / Collectors images in GitHub.
+  // These are loaded first so the Proof of Presence section shows the real exhibition folder.
+  ...Array.from({length:20}, (_,i)=>`exhibition-${String(i+1).padStart(2,"0")}.png`),
+
+  // Optional fallback naming support for future uploads. Missing files auto-hide.
+  ...exhibitionImageBases.flatMap(base =>
+    Array.from({length:40}, (_,i) => {
+      const n = String(i+1).padStart(2,"0");
+      return [
+        `${base}-${n}.jpg`,
+        `${base}-${n}.jpeg`,
+        `${base}-${n}.png`,
+        `${base}-${n}.webp`
+      ];
+    }).flat()
+  ),
+  "the-bishop-gallery.jpg",
+  "the-bishop-gallery.png",
+  "fortune-favors-the-curious.jpg",
+  "fortune-favors-the-curious.png",
+  "donna-exhibition.jpg",
+  "donna-exhibition.png",
+  "donna-gallery.jpg",
+  "donna-gallery.png",
+  "donna-collector.jpg",
+  "donna-collector.png",
+  "donna-event.jpg",
+  "donna-event.png",
+  "donna-with-collectors.jpg",
+  "donna-with-collectors.png"
 ];
 
 function folderFor(key){
@@ -1747,23 +1800,22 @@ function buildExhibitions(){
   if(!grid) return;
   grid.innerHTML = "";
 
-  const exhibitionPaths = [
-    ...exhibitionImages.map(f => `/assets/images/exhibitions/${f}`),
-    ...personalityImages.map(f => `/assets/images/personality/${f}`),
-    ...studioImages.map(f => `/assets/images/studio/${f}`)
-  ];
+  const exhibitionPaths = [...new Set(exhibitionImages.map(f => `/assets/images/exhibitions/${f}`))];
 
-  // More exhibition / interaction imagery is allowed to fill the wall naturally.
-  // Broken/missing filenames are hidden automatically so the layout only shows real uploaded files.
-  exhibitionPaths.slice(0,95).forEach((src, idx) => {
-    const tile = document.createElement("div");
+  // Pull directly from Group 4 / Exhibitions only so this section is true exhibition, collector,
+  // client, and event proof-of-presence — not recycled studio/personality filler.
+  exhibitionPaths.slice(0,120).forEach((src, idx) => {
+    const tile = document.createElement("button");
     tile.className = "exhibition-tile";
-    const image = imgEl(src, `Donna M. Richardson exhibition, collector, studio, or joyful personality moment ${idx+1}`);
+    tile.type = "button";
+    tile.setAttribute("aria-label", `Open exhibition moment ${idx+1}`);
+    const image = imgEl(src, `Donna M. Richardson exhibition, collector, client, studio, or joyful personality moment ${idx+1}`);
     image.onerror = function(){
       tile.classList.add("missing");
       this.classList.add("missing");
     };
     tile.appendChild(image);
+    tile.addEventListener("click", () => openLightbox(src, "Donna M. Richardson Exhibition Moment"));
     grid.appendChild(tile);
   });
 }
