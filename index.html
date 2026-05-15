@@ -928,6 +928,7 @@ footer{
     linear-gradient(135deg,#19151c,#070707);
 }
 .missing{display:none!important}
+.hero-art-link.missing,.series-card.missing{display:none!important}
 
 /* responsive */
 @media (max-width:1100px){
@@ -1289,7 +1290,11 @@ footer{
   .hero-art-link span{bottom:-38px!important;height:25px!important;font-size:8px!important;min-width:92px!important}
 }
 
-/* V27 Meet Donna signature portrait refinement */
+/* V32 CURRENT GITHUB ASSET REFRESH
+   Older/stale alternate image references are intentionally ignored by STRICT_CURRENT_ASSETS.
+   This prevents deleted/replaced GitHub files from reappearing as fallback artwork after refresh.
+*/
+
 .portrait-main img{object-position:center center;}
 .story .portrait-main{box-shadow:0 34px 110px rgba(0,0,0,.68),0 0 70px rgba(198,167,102,.10);}
 .series-page-art.missing,.modal-art.missing,.art-tile.missing{display:none!important;}
@@ -1386,31 +1391,31 @@ footer{
     <a class="hero-enter" href="#series-children">Enter The Experience</a>
 
     <a class="hero-art-link hero-children" href="#series-children" data-series="children" aria-label="Open Children series">
-      <img src="/assets/images/seven-series/artwork-children.png" alt="Children series gateway artwork" onerror="this.src='/assets/images/artwork/children/children-series-01-daisy.jpg'">
+      <img src="/assets/images/seven-series/artwork-children.png?v=2026-05-10-current-github-refresh-v32" alt="Children series gateway artwork" onerror="this.closest(\'a.hero-art-link\').classList.add(\'missing\')">
       <span>Children</span>
     </a>
     <a class="hero-art-link hero-sports" href="#series-sports" data-series="sports" aria-label="Open Sports series">
-      <img src="/assets/images/seven-series/artwork-sports.jpg" alt="Sports series gateway artwork" onerror="this.src='/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg'">
+      <img src="/assets/images/seven-series/artwork-sports.jpg?v=2026-05-10-current-github-refresh-v32" alt="Sports series gateway artwork" onerror="this.closest(\'a.hero-art-link\').classList.add(\'missing\')">
       <span>Sports</span>
     </a>
     <a class="hero-art-link hero-music" href="#series-music" data-series="music" aria-label="Open Music series">
-      <img src="/assets/images/seven-series/artwork-music.jpg" alt="Music series gateway artwork" onerror="this.src='/assets/images/artwork/music/music-series-08-miles-davis.jpg'">
+      <img src="/assets/images/seven-series/artwork-music.jpg?v=2026-05-10-current-github-refresh-v32" alt="Music series gateway artwork" onerror="this.closest(\'a.hero-art-link\').classList.add(\'missing\')">
       <span>Music</span>
     </a>
     <a class="hero-art-link hero-icons" href="#series-icons" data-series="icons" aria-label="Open Icons series">
-      <img src="/assets/images/seven-series/artwork-icons.jpg" alt="Icons series gateway artwork" onerror="this.src='/assets/images/artwork/icons/icons-series-01-frederick-douglass.jpg'">
+      <img src="/assets/images/seven-series/artwork-icons.jpg?v=2026-05-10-current-github-refresh-v32" alt="Icons series gateway artwork" onerror="this.closest(\'a.hero-art-link\').classList.add(\'missing\')">
       <span>Icons</span>
     </a>
     <a class="hero-art-link hero-cigar" href="#series-cigar" data-series="cigar" aria-label="Open Cigar series">
-      <img src="/assets/images/seven-series/artwork-cigar.png" alt="Cigar series gateway artwork" onerror="this.src='/assets/images/seven-series/artwork-cigar.png'">
+      <img src="/assets/images/seven-series/artwork-cigar.png?v=2026-05-10-current-github-refresh-v32" alt="Cigar series gateway artwork" onerror="this.closest(\'a.hero-art-link\').classList.add(\'missing\')">
       <span>Cigar</span>
     </a>
     <a class="hero-art-link hero-faces" href="#series-faces" data-series="faces" aria-label="Open Faces and Figures series">
-      <img src="/assets/images/seven-series/artwork-faces-figures.png" alt="Faces and Figures series gateway artwork" onerror="this.src='/assets/images/artwork/faces-figures/faces-figures-series-20-the gaze.jpg'">
+      <img src="/assets/images/seven-series/artwork-faces-figures.png?v=2026-05-10-current-github-refresh-v32" alt="Faces and Figures series gateway artwork" onerror="this.closest(\'a.hero-art-link\').classList.add(\'missing\')">
       <span>Faces & Figures</span>
     </a>
     <a class="hero-art-link hero-nature" href="#series-nature" data-series="nature" aria-label="Open Nature series">
-      <img src="/assets/images/seven-series/artwork-nature.jpg" alt="Nature series gateway artwork" onerror="this.src='/assets/images/artwork/nature/nature-series-01-dragon-fly.jpg'">
+      <img src="/assets/images/seven-series/artwork-nature.jpg?v=2026-05-10-current-github-refresh-v32" alt="Nature series gateway artwork" onerror="this.closest(\'a.hero-art-link\').classList.add(\'missing\')">
       <span>Nature</span>
     </a>
 
@@ -1598,6 +1603,9 @@ footer{
 */
 
 
+const ASSET_VERSION = "2026-05-10-current-github-refresh-v32";
+const STRICT_CURRENT_ASSETS = true;
+
 const artworkMeta = {
   "Daisy": {medium:"Mixed Media", size:"30x24"},
   "Spree": {medium:"Mixed Media", size:"24x48", wide:true, focus:"center center"},
@@ -1655,7 +1663,7 @@ const artworkMeta = {
 };
 
 function W(title, file, alternates=[], opts={}){
-  return { title, file, alternates, ...artworkMeta[title], ...opts };
+  return { title, file, alternates: STRICT_CURRENT_ASSETS ? [] : alternates, ...artworkMeta[title], ...opts };
 }
 
 const media = {
@@ -1836,7 +1844,15 @@ const exhibitionImages = [
 ];
 
 function encodePath(path){
-  return String(path || "").split("/").map((part, idx) => idx === 0 ? part : encodeURIComponent(part).replace(/%2F/g,"/")).join("/");
+  const raw = String(path || "");
+  if(!raw) return "";
+  const [base, hashPart] = raw.split("#");
+  const [clean, queryPart] = base.split("?");
+  const encoded = clean.split("/").map((part, idx) => idx === 0 ? part : encodeURIComponent(part).replace(/%2F/g,"/")).join("/");
+  if(!encoded.startsWith("/assets/")) return raw;
+  const params = new URLSearchParams(queryPart || "");
+  params.set("v", ASSET_VERSION);
+  return encoded + "?" + params.toString() + (hashPart ? "#" + hashPart : "");
 }
 function folderFor(key){
   return media[key].folder || key;
@@ -1857,7 +1873,8 @@ function artworkDetailText(item){
 
 function imgElCandidates(sources, alt, fallback, onFinalMissing){
   const img = document.createElement("img");
-  const list = unique([...(Array.isArray(sources) ? sources : [sources]), fallback]);
+  const baseSources = Array.isArray(sources) ? sources : [sources];
+  const list = unique(STRICT_CURRENT_ASSETS ? baseSources : [...baseSources, fallback]);
   let index = 0;
   img.alt = alt || "";
   img.loading = "lazy";
@@ -1875,7 +1892,7 @@ function imgElCandidates(sources, alt, fallback, onFinalMissing){
 }
 
 function workSourcesFor(key, item){
-  const names = [item.file, ...(Array.isArray(item.alternates) ? item.alternates : [])];
+  const names = STRICT_CURRENT_ASSETS ? [item.file] : [item.file, ...(Array.isArray(item.alternates) ? item.alternates : [])];
   return names.map(name => pathFor(key, name, item));
 }
 
@@ -1904,7 +1921,7 @@ function buildSeriesGrid(){
     card.dataset.series = key;
     card.setAttribute("aria-label", `Open ${s.label} series`);
     card.innerHTML = `
-      <img src="${encodePath(s.gateway)}" alt="${s.label} series gateway" onerror="this.src='${encodePath(s.fallback)}'">
+      <img src="${encodePath(s.gateway)}" alt="${s.label} series gateway" onerror="this.closest(\'.series-card\').classList.add(\'missing\')">
       <div class="series-card-info">
         <div class="tiny-caps">Series Room</div>
         <h3>${s.label}</h3>
