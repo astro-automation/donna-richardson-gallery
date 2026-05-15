@@ -1294,6 +1294,74 @@ footer{
 .story .portrait-main{box-shadow:0 34px 110px rgba(0,0,0,.68),0 0 70px rgba(198,167,102,.10);}
 .series-page-art.missing,.modal-art.missing,.art-tile.missing{display:none!important;}
 
+
+
+/* =========================================================
+   V31 COLLECTOR REVISION PASS — current master only
+   - natural gallery wall background
+   - thinner museum frame treatment
+   - adaptive focal cropping / wide artwork support
+   - artwork metadata shown when clicked
+   - expanded series groups
+   ========================================================= */
+:root{
+  --gallery-wall-natural:#d8ccbd;
+  --gallery-wall-shadow:#8f7d6a;
+  --thin-frame:#d5b66e;
+  --thin-frame-dark:#5a3716;
+}
+.hero-gallery-scene{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.18) 9%,rgba(0,0,0,.025) 24%,rgba(0,0,0,0) 50%,rgba(0,0,0,.025) 76%,rgba(0,0,0,.18) 91%,rgba(0,0,0,.45) 100%),
+    radial-gradient(circle at 24% 28%,rgba(255,246,221,.52),transparent 13%),
+    radial-gradient(circle at 37% 28%,rgba(255,246,221,.48),transparent 12%),
+    radial-gradient(circle at 50% 28%,rgba(255,246,221,.50),transparent 12%),
+    radial-gradient(circle at 63% 28%,rgba(255,246,221,.47),transparent 12%),
+    radial-gradient(circle at 76% 28%,rgba(255,246,221,.47),transparent 12%),
+    radial-gradient(ellipse at 41% 56%,rgba(255,246,221,.35),transparent 16%),
+    radial-gradient(ellipse at 59% 56%,rgba(255,246,221,.32),transparent 16%),
+    linear-gradient(180deg,#21140f 0%,#34231b 9.8%,#d6cab8 10.1%,#cfc1ae 66.8%,#5a493d 67.1%,#18110f 72.3%,#67411e 72.6%,#98672f 100%)!important;
+}
+.hero-art-link{
+  background:rgba(255,255,255,.72)!important;
+  padding:0!important;
+  box-shadow:
+    0 18px 28px rgba(0,0,0,.34),
+    inset 0 0 0 1px rgba(255,255,255,.80),
+    inset 0 0 0 5px rgba(235,225,205,.86)!important;
+}
+.hero-art-link::before{
+  inset:-7px!important;
+  background:linear-gradient(135deg,#2c1709 0%,#8a5c20 22%,#e4c06d 48%,#775018 70%,#241207 100%)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,241,194,.44), inset 0 0 0 4px rgba(50,28,12,.58), 10px 14px 22px rgba(0,0,0,.38)!important;
+}
+.hero-art-link::after{inset:5.5%!important;box-shadow:inset 0 0 0 1px rgba(36,20,9,.72), inset 0 0 14px rgba(0,0,0,.20)!important}
+.hero-art-link img{inset:5.5%!important;width:89%!important;height:89%!important;object-fit:cover!important;background:#efe8dc!important}
+.hero-faces img,.hero-nature img{object-fit:cover!important}
+.hero-art-link span{bottom:-44px!important}
+.series-page-grid{grid-template-columns:repeat(auto-fill,minmax(255px,1fr));align-items:start}
+.series-page-art{height:410px;background:transparent;border:1px solid rgba(255,255,255,.18)}
+.series-page-art.is-wide{grid-column:span 2;height:330px}
+.series-page-art img{object-position:var(--focus, center center)}
+.series-page-art[data-fit="contain"] img{object-fit:contain;background:#14061c}
+.series-page-art.is-wide img{object-fit:cover;object-position:var(--focus, center center)}
+.modal-art.is-wide{grid-column:span 2;height:360px}
+.modal-art img{object-position:var(--focus, center center)}
+.modal-art[data-fit="contain"] img{object-fit:contain;background:#14061c}
+.artwork-caption{
+  position:absolute;left:0;right:0;bottom:0;z-index:4;padding:18px 18px 16px;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.72));
+}
+.artwork-caption strong{display:block;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:white;margin-bottom:4px}
+.artwork-caption span{display:block;font-size:12px;color:rgba(245,236,223,.74);letter-spacing:.04em}
+.lightbox{flex-direction:column;gap:18px}
+.lightbox-caption{max-width:min(920px,94vw);width:100%;text-align:left;color:var(--cream)}
+.lightbox-caption h3{font-family:var(--serif);font-size:clamp(30px,4vw,54px);font-weight:400;line-height:1;color:white}
+.lightbox-caption p{margin-top:8px;color:rgba(245,236,223,.78);font-size:15px;letter-spacing:.03em}
+.series-card:nth-child(n+8){min-height:320px}
+@media(max-width:900px){.series-page-art.is-wide,.modal-art.is-wide{grid-column:span 1;height:340px}.series-page-grid{grid-template-columns:1fr}.modal-art.is-wide{height:320px}}
+@media(max-width:680px){.hero-art-link::before{inset:-6px!important}.hero-art-link img{inset:5%!important;width:90%!important;height:90%!important}.series-page-art,.series-page-art.is-wide{height:360px}}
+
 </style>
 </head>
 
@@ -1385,9 +1453,9 @@ footer{
 </section>
 
 <section class="section series-intent" id="series">
-  <div class="eyebrow">Seven Gallery Entrances</div>
-  <h2 class="section-title">Click A Framed Work Above To Enter The <em>Full Series.</em></h2>
-  <p class="section-lead">The home page no longer repeats every artwork in every series. The realistic gallery wall is now the portal system: each frame opens its own full series experience.</p>
+  <div class="eyebrow">Expanded Gallery Entrances</div>
+  <h2 class="section-title">Click A Gallery Work Above To Enter The <em>Full Series.</em></h2>
+  <p class="section-lead">The home page now behaves like a collector portal: each gallery entrance opens a full series room with clean artwork metadata, current image references, and fewer repeated works.</p>
 </section>
 
 <main class="series-pages" id="seriesPages" aria-label="Full Donna M. Richardson artwork series pages"></main>
@@ -1516,6 +1584,7 @@ footer{
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <button id="lightboxClose" aria-label="Close image">×</button>
   <img id="lightboxImg" alt="Artwork enlarged">
+  <div class="lightbox-caption" id="lightboxCaption" aria-live="polite"></div>
 </div>
 
 <script>
@@ -1528,6 +1597,67 @@ footer{
   /assets/videos/{donna-speaking,silent-artwork}/
 */
 
+
+const artworkMeta = {
+  "Daisy": {medium:"Mixed Media", size:"30x24"},
+  "Spree": {medium:"Mixed Media", size:"24x48", wide:true, focus:"center center"},
+  "Iris": {medium:"Mixed Media", size:"24x48", wide:true, focus:"center center"},
+  "Riley In Her Garden": {medium:"Mixed Media", size:"48x60", focus:"center center"},
+  "Riley Manifesting": {medium:"Mixed Media", size:"24x48", wide:true, focus:"center center"},
+  "Rose": {medium:"Mixed Media", size:"30x24"},
+  "The Bluest Eye": {medium:"Mixed Media", size:"30x30"},
+  "Violet": {medium:"Mixed Media", size:"30x24"},
+  "When Donna Maria Loves, The Heavens Obey": {medium:"Mixed Media", size:"38x48"},
+  "In The Flo": {medium:"Mixed Media", size:"24x36", wide:true, focus:"center center"},
+  "Jackie Robinson": {medium:"Mixed Media", size:"36x36"},
+  "The Greatest": {medium:"Mixed Media", size:"36x36"},
+  "Alicia Keys": {medium:"Mixed Media", size:"24x24"},
+  "Billie Holiday": {medium:"Mixed Media", size:"24x20"},
+  "Bob Marley-Frequency of Love": {medium:"Mixed Media", size:"36x36"},
+  "Diana Ross": {medium:"Mixed Media", size:"24x24"},
+  "Dizzy Gilespie": {medium:"Mixed Media", size:"24x24"},
+  "Duke Ellington": {medium:"Mixed Media", size:"24x20"},
+  "Prince": {medium:"Mixed Media", size:"24x20"},
+  "Miles Davis": {medium:"Mixed Media", size:"24x48", wide:true, focus:"center center"},
+  "Nina Simone": {medium:"Mixed Media", size:"20x20"},
+  "Santana": {medium:"Mixed Media", size:"24x20"},
+  "Grace Jones": {medium:"Mixed Media", size:"30x20"},
+  "Jimi Hendrix": {medium:"Mixed Media", size:"48x36", wide:true},
+  "Jamaican Griot-Louise Bennett": {medium:"Mixed Media", size:"36x36"},
+  "If Dali & Frida Had A Baby": {medium:"Mixed Media", size:"24x30"},
+  "Harriet Frees The Cosmos": {medium:"Mixed Media", size:"48x60"},
+  "Native American": {medium:"Mixed Media", size:"30x24"},
+  "Lock & Key: Frederick Douglass": {medium:"Mixed Media", size:"48x36", wide:true},
+  "Cigar Series I": {medium:"Mixed Media", size:"16x22"},
+  "Cigar Series II": {medium:"Mixed Media", size:"16x22"},
+  "Cigar Series III": {medium:"Mixed Media", size:"16x22"},
+  "Cigar Series IV": {medium:"Mixed Media", size:"16x22"},
+  "Crystal & Her Hat": {medium:"Mixed Media", size:"22x29"},
+  "Choosing A Shower Curtain": {medium:"Mixed Media", size:"16x24"},
+  "The Message Above": {medium:"Mixed Media", size:"48x48"},
+  "Elektra Blue": {medium:"Mixed Media", size:"22x33"},
+  "At The End of the Day": {medium:"Mixed Media", size:"22x33"},
+  "Everything": {medium:"Mixed Media", size:"30x40"},
+  "Joey": {medium:"Mixed Media", size:"22x33"},
+  "Joy of the Sun": {medium:"Mixed Media", size:"22x33"},
+  "Miss Duke": {medium:"Mixed Media", size:"22x33"},
+  "Maori Queen": {medium:"Mixed Media", size:"72x48", wide:true},
+  "The Crown": {medium:"Mixed Media", size:"22x33"},
+  "The Gaze": {medium:"Mixed Media", size:"22x33"},
+  "Dragon Fly": {medium:"Mixed Media", size:"22x33"},
+  "Koi": {medium:"Mixed Media", size:"22x33"},
+  "Koko and Her Kitten": {medium:"Mixed Media", size:"38x60"},
+  "Maurice The Albino Tree Frog": {medium:"Mixed Media", size:"22x33"},
+  "The Serpent": {medium:"Mixed Media", size:"22x33"},
+  "Queen Nanny": {medium:"Mixed Media", size:"30x40"},
+  "Prayer To Heaven": {medium:"Mixed Media", size:"22x33"},
+  "Self-Portrait: From the Beginning": {medium:"Mixed Media", size:"48x36", wide:true}
+};
+
+function W(title, file, alternates=[], opts={}){
+  return { title, file, alternates, ...artworkMeta[title], ...opts };
+}
+
 const media = {
   children: {
     label: "Children",
@@ -1535,47 +1665,15 @@ const media = {
     gateway: "/assets/images/seven-series/artwork-children.png",
     fallback: "/assets/images/artwork/children/children-series-01-daisy.jpg",
     works: [
-      ["children-series-01-daisy.jpg","Daisy", ["children-series-01-Daisy.jpg"]],
-      ["children-series-02-spree.jpg","Spree"],
-      ["children-series-03-iris.jpg","Iris", ["children-series-03-Iris.jpg"]],
-      ["children-series-04-riley-in-her-garden.jpg","Riley in Her Garden", ["children-series-04-Riley in her Garden- Donna M Richardson.jpg"]],
-      ["children-series-05-riley-manifesting.jpg","Riley Manifesting", ["children-series-05-RileyManifesting.jpg"]],
-      ["children-series-06-rose.jpg","Rose", ["children-series-06-Rose.jpg"]],
-      ["children-series-07-the-bluest-eye.png","The Bluest Eye", ["children-series-07-The Bluest Eye-Donna M. Richardson.png"]],
-      ["children-series-08-violet.jpg","Violet", ["children-series-08-Violet.jpg"]],
-      ["children-series-09-when-donna-maria-loves-the-heavens-obey.jpg","When Donna Maria Loves, the Heavens Obey"]
-    ]
-  },
-  music: {
-    label: "Music",
-    mood: "Rhythm, soul, voice, blue notes, memory, and movement.",
-    gateway: "/assets/images/seven-series/artwork-music.jpg",
-    fallback: "/assets/images/artwork/music/music-series-08-miles-davis.jpg",
-    works: [
-      ["music-series-01-alicia-keys.jpg","Alicia Keys"],
-      ["music-series-02-billie-holiday.jpg","Billie Holiday"],
-      ["music-series-03-bob-marley.jpeg","Bob Marley", ["music-series-03-bob-marley.jpg"]],
-      ["music-series-04-diana-ross.jpg","Diana Ross"],
-      ["music-series-05-dizzy.jpg","Dizzy"],
-      ["music-series-06-duke-ellington.jpg","Duke Ellington"],
-      ["music-series-07-prince.jpg","Prince"],
-      ["music-series-08-miles-davis.jpg","Miles Davis"],
-      ["music-series-09-nina-simone.jpg","Nina Simone"],
-      ["music-series-10-santana.jpg","Santana"]
-    ]
-  },
-  icons: {
-    label: "Icons",
-    mood: "Cultural memory, reverence, ancestral presence, and historical force.",
-    gateway: "/assets/images/seven-series/artwork-icons.jpg",
-    fallback: "/assets/images/artwork/icons/icons-series-04-lock-and-key-fredrick-douglas.jpg",
-    works: [
-      ["icons-series-01-grace-jones.jpg","Grace Jones"],
-      ["icons-series-02-harriett-frees-the- cosmos.jpg","Harriet Frees the Cosmos", ["icons-series-02-harriett-frees-the-cosmos.jpg", "icons-series-02-harriet-frees-the-cosmos.jpg"]],
-      ["icons-series-03-native-american.jpg","Native American"],
-      ["icons-series-04-lock-and-key-fredrick-douglas.jpg","Frederick Douglass", ["icons-series-04-lock-and-key-frederick-douglass.jpg"]],
-      ["icons-series-05-prayers-to- heaven.jpg","Prayers to Heaven", ["icons-series-05-prayers-to-heaven.jpg"]],
-      ["icons-series-06-jimi-hendrix.jpg","Jimi Hendrix"]
+      W("Daisy", "children-series-01-daisy.jpg", ["children-series-01-Daisy.jpg"]),
+      W("Spree", "children-series-02-spree.jpg"),
+      W("Iris", "children-series-03-iris.jpg", ["children-series-03-Iris.jpg"]),
+      W("Riley In Her Garden", "children-series-04-riley-in-her-garden.jpg", ["children-series-04-Riley in her Garden- Donna M Richardson.jpg"]),
+      W("Riley Manifesting", "children-series-05-riley-manifesting.jpg", ["children-series-05-RileyManifesting.jpg"]),
+      W("Rose", "children-series-06-rose.jpg", ["children-series-06-Rose.jpg"]),
+      W("The Bluest Eye", "children-series-07-the-bluest-eye.png", ["children-series-07-The Bluest Eye-Donna M. Richardson.png"]),
+      W("Violet", "children-series-08-violet.jpg", ["children-series-08-Violet.jpg"]),
+      W("When Donna Maria Loves, The Heavens Obey", "children-series-09-when-donna-maria-loves-the-heavens-obey.jpg")
     ]
   },
   sports: {
@@ -1584,22 +1682,42 @@ const media = {
     gateway: "/assets/images/seven-series/artwork-sports.jpg",
     fallback: "/assets/images/artwork/sports/sports-series-02-jackie-robinson.jpg",
     works: [
-      ["sports-series-01-in-th-flo.jpg","In the Flo", ["sports-series-01-in-the-flo.jpg", "artwork-in-the-flo.jpg", "artwork-in-th-flo.jpg"]],
-      ["sports-series-02-jackie-robinson.jpg","Jackie Robinson", ["artwork-jackie-robinson.jpg"]],
-      ["sports-series-03-the-greatest.jpg","The Greatest"]
+      W("In The Flo", "sports-series-01-in-th-flo.jpg", ["sports-series-01-in-the-flo.jpg", "artwork-in-the-flo.jpg", "artwork-in-th-flo.jpg"], {wide:true, focus:"center center"}),
+      W("Jackie Robinson", "sports-series-02-jackie-robinson.jpg", ["artwork-jackie-robinson.jpg"]),
+      W("The Greatest", "sports-series-03-the-greatest.jpg")
     ]
   },
-  nature: {
-    label: "Nature",
-    mood: "Breath, spirit, animals, dream-state color, and elemental wonder.",
-    gateway: "/assets/images/seven-series/artwork-nature.jpg",
-    fallback: "/assets/images/artwork/nature/nature-series-01-dragon-fly.jpg",
+  music: {
+    label: "Music",
+    mood: "Rhythm, soul, voice, blue notes, memory, and movement.",
+    gateway: "/assets/images/seven-series/artwork-music.jpg",
+    fallback: "/assets/images/artwork/music/music-series-08-miles-davis.jpg",
     works: [
-      ["nature-series-01-dragon-fly.jpg","Dragon Fly"],
-      ["nature-series-02-koi.jpg","Koi"],
-      ["nature-series-03-koko-and-her-kitten.jpg","Koko and Her Kitten"],
-      ["nature-series-04-maurice-the-albino-tree-frog (enhanced).jpg","Maurice the Albino Tree Frog", ["nature-series-04-maurice-the-albino-tree-frog-enhanced.jpg", "nature-series-04-maurice-the-albino-tree-frog.jpg"]],
-      ["nature-series-05-the-Serpent.jpg","The Serpent", ["nature-series-05-the-serpent.jpg"]]
+      W("Alicia Keys", "music-series-01-alicia-keys.jpg"),
+      W("Billie Holiday", "music-series-02-billie-holiday.jpg"),
+      W("Bob Marley-Frequency of Love", "music-series-03-bob-marley.jpeg", ["music-series-03-bob-marley.jpg", "artwork-bob-marley.jpg"]),
+      W("Diana Ross", "music-series-04-diana-ross.jpg", ["artwork-diana.png", "artwork-diana.jpg"]),
+      W("Dizzy Gilespie", "music-series-05-dizzy.jpg", ["music-series-05-dizzy-gillespie.jpg", "music-series-05-dizzy-gilespie.jpg"]),
+      W("Duke Ellington", "music-series-06-duke-ellington.jpg"),
+      W("Prince", "music-series-07-prince.jpg", ["artwork-prince.jpg"]),
+      W("Miles Davis", "music-series-08-miles-davis.jpg", ["artwork-miles-davis.jpg"], {wide:true, focus:"center center"}),
+      W("Nina Simone", "music-series-09-nina-simone.jpg"),
+      W("Santana", "music-series-10-santana.jpg"),
+      W("Grace Jones", "music-series-11-grace-jones.jpg", ["icons-series-01-grace-jones.jpg"]),
+      W("Jimi Hendrix", "music-series-12-jimi-hendrix.jpg", ["icons-series-06-jimi-hendrix.jpg"], {wide:true})
+    ]
+  },
+  icons: {
+    label: "Icons",
+    mood: "Cultural memory, reverence, ancestral presence, and historical force.",
+    gateway: "/assets/images/seven-series/artwork-icons.jpg",
+    fallback: "/assets/images/artwork/icons/icons-series-04-lock-and-key-fredrick-douglas.jpg",
+    works: [
+      W("Jamaican Griot-Louise Bennett", "icons-series-01-jamaican-griot-louise-bennett.jpg", ["faces-figures-series-10-woman.jpg", "music-series-09-nina-simone.jpg"]),
+      W("If Dali & Frida Had A Baby", "icons-series-02-if-dali-frida-had-a-baby.jpg", ["faces-figures-series-03-if-frida-and-dali-had-a-baby.jpg"]),
+      W("Harriet Frees The Cosmos", "icons-series-03-harriet-frees-the-cosmos.jpg", ["icons-series-02-harriett-frees-the- cosmos.jpg", "icons-series-02-harriett-frees-the-cosmos.jpg", "icons-series-02-harriet-frees-the-cosmos.jpg"]),
+      W("Native American", "icons-series-03-native-american.jpg"),
+      W("Lock & Key: Frederick Douglass", "icons-series-04-lock-and-key-fredrick-douglas.jpg", ["icons-series-04-lock-and-key-frederick-douglass.jpg"], {wide:true})
     ]
   },
   cigar: {
@@ -1608,10 +1726,10 @@ const media = {
     gateway: "/assets/images/seven-series/artwork-cigar.png",
     fallback: "/assets/images/seven-series/artwork-cigar.png",
     works: [
-      ["cigar-series-01.png","Cigar Series I", ["cigar-series-01-.png", "artwork-cigar.png"]],
-      ["cigar-series-02.png","Cigar Series II", ["artwork-cigar-2.png"]],
-      ["cigar-series-03.png","Cigar Series III"],
-      ["cigar-series-04.png","Cigar Series IV"]
+      W("Cigar Series I", "cigar-series-01.png", ["cigar-series-01-.png", "artwork-cigar.png"]),
+      W("Cigar Series II", "cigar-series-02.png", ["artwork-cigar-2.png"]),
+      W("Cigar Series III", "cigar-series-03.png"),
+      W("Cigar Series IV", "cigar-series-04.png")
     ]
   },
   faces: {
@@ -1621,26 +1739,59 @@ const media = {
     gateway: "/assets/images/seven-series/artwork-faces-figures.png",
     fallback: "/assets/images/artwork/faces-figures/faces-figures-series-20-the gaze.jpg",
     works: [
-      ["faces-figures-series-01-crystal-her-hat.jpg","Crystal Her Hat"],
-      ["faces-figures-series-02-choosing-a- shower-curtain.png","Choosing a Shower Curtain", ["faces-figures-series-02-choosing-a-shower-curtain.png"]],
-      ["faces-figures-series-03-if-frida-and-dali-had-a-baby.jpg","If Frida and Dali Had a Baby"],
-      ["faces-figures-series-04- strength-of-a- warrior.jpg","Strength of a Warrior", ["faces-figures-series-04-strength-of-a-warrior.jpg", "faces-figures-series-04-strength-of-a- warrior.jpg", "faces-figures-series-04- strength-of-a-warrior.jpg"]],
-      ["faces-figures-series-05-truth- baring-fruit.jpg","Truth Bearing Fruit", ["faces-figures-series-05-truth-bearing-fruit.jpg", "faces-figures-series-05-truth-baring-fruit.jpg", "faces-figures-series-05-truth- bearing-fruit.jpg"]],
-      ["faces-figures-series-06-honey-colored-girl-between-imagination-and-night.jpg","Honey Colored Girl Between Imagination and Night"],
-      ["faces-figures-series-07-jenu.jpg","Jenu"],
-      ["faces-figures-series-08-linda-sher.jpg","Linda Sher"],
-      ["faces-figures-series-09-the-message-above.jpg","The Message Above"],
-      ["faces-figures-series-10-woman.jpg","Woman"],
-      ["faces-figures-series-11-elektra- blue.jpg","Elektra Blue", ["faces-figures-series-11-elektra-blue.jpg"]],
-      ["faces-figures-series-12-end-of- the-day.jpg","End of the Day", ["faces-figures-series-12-end-of-the-day.jpg"]],
-      ["faces-figures-series-13-everything.jpg","Everything"],
-      ["faces-figures-series-14-joey.jpg","Joey"],
-      ["faces-figures-series-15-Joy-of-the-sun.jpg","Joy of the Sun", ["faces-figures-series-15-joy-of-the-sun.jpg"]],
-      ["faces-figures-series-16-keith.jpg","Keith"],
-      ["faces-figures-series-17-maori-queen.jpg","Maori Queen"],
-      ["faces-figures-series-18-miss duke.jpg","Miss Duke", ["faces-figures-series-18-miss-duke.jpg"]],
-      ["faces-figures-series-19-the- crown.jpg","The Crown", ["faces-figures-series-19-the-crown.jpg"]],
-      ["faces-figures-series-20-the gaze.jpg","The Gaze", ["faces-figures-series-20-the-gaze.jpg"]]
+      W("Crystal & Her Hat", "faces-figures-series-01-crystal-her-hat.jpg"),
+      W("Choosing A Shower Curtain", "faces-figures-series-02-choosing-a- shower-curtain.png", ["faces-figures-series-02-choosing-a-shower-curtain.png"]),
+      W("If Dali & Frida Had A Baby", "faces-figures-series-03-if-frida-and-dali-had-a-baby.jpg"),
+      W("The Message Above", "faces-figures-series-09-the-message-above.jpg"),
+      W("Jamaican Griot-Louise Bennett", "faces-figures-series-10-woman.jpg", ["icons-series-01-jamaican-griot-louise-bennett.jpg"]),
+      W("Elektra Blue", "faces-figures-series-11-elektra- blue.jpg", ["faces-figures-series-11-elektra-blue.jpg"]),
+      W("At The End of the Day", "faces-figures-series-12-end-of- the-day.jpg", ["faces-figures-series-12-end-of-the-day.jpg"]),
+      W("Everything", "faces-figures-series-13-everything.jpg"),
+      W("Joey", "faces-figures-series-14-joey.jpg"),
+      W("Joy of the Sun", "faces-figures-series-15-Joy-of-the-sun.jpg", ["faces-figures-series-15-joy-of-the-sun.jpg"]),
+      W("Miss Duke", "faces-figures-series-18-miss duke.jpg", ["faces-figures-series-18-miss-duke.jpg"]),
+      W("Maori Queen", "faces-figures-series-17-maori-queen.jpg", [], {wide:true}),
+      W("The Crown", "faces-figures-series-19-the- crown.jpg", ["faces-figures-series-19-the-crown.jpg"]),
+      W("The Gaze", "faces-figures-series-20-the gaze.jpg", ["faces-figures-series-20-the-gaze.jpg"])
+    ]
+  },
+  nature: {
+    label: "Nature",
+    mood: "Breath, spirit, animals, dream-state color, and elemental wonder.",
+    gateway: "/assets/images/seven-series/artwork-nature.jpg",
+    fallback: "/assets/images/artwork/nature/nature-series-01-dragon-fly.jpg",
+    works: [
+      W("Dragon Fly", "nature-series-01-dragon-fly.jpg"),
+      W("Koi", "nature-series-02-koi.jpg"),
+      W("Koko and Her Kitten", "nature-series-03-koko-and-her-kitten.jpg"),
+      W("Maurice The Albino Tree Frog", "nature-series-04-maurice-the-albino-tree-frog (enhanced).jpg", ["nature-series-04-maurice-the-albino-tree-frog-enhanced.jpg", "nature-series-04-maurice-the-albino-tree-frog.jpg"]),
+      W("The Serpent", "nature-series-05-the-Serpent.jpg", ["nature-series-05-the-serpent.jpg"])
+    ]
+  },
+  jamaicanIcons: {
+    label: "Jamaican Icons",
+    mood: "Jamaican cultural memory, music, resistance, legacy, and ancestral brilliance.",
+    folder: "icons",
+    gateway: "/assets/images/seven-series/artwork-icons.jpg",
+    fallback: "/assets/images/artwork/icons/icons-series-01-grace-jones.jpg",
+    works: [
+      W("Grace Jones", "icons-series-01-grace-jones.jpg", ["music-series-11-grace-jones.jpg"]),
+      W("Queen Nanny", "jamaican-icons-series-02-queen-nanny.jpg", ["icons-series-queen-nanny.jpg"]),
+      W("Bob Marley-Frequency of Love", "music-series-03-bob-marley.jpeg", ["music-series-03-bob-marley.jpg", "artwork-bob-marley.jpg"]),
+      W("Jamaican Griot-Louise Bennett", "icons-series-01-jamaican-griot-louise-bennett.jpg", ["faces-figures-series-10-woman.jpg"])
+    ]
+  },
+  spiritualInfluences: {
+    label: "Spiritual Influences",
+    mood: "Prayer, ancestry, protection, sacred messages, and the unseen energy moving through the work.",
+    folder: "faces-figures",
+    gateway: "/assets/images/artwork/faces-figures/faces-figures-series-09-the-message-above.jpg",
+    fallback: "/assets/images/artwork/faces-figures/faces-figures-series-09-the-message-above.jpg",
+    works: [
+      W("The Message Above", "faces-figures-series-09-the-message-above.jpg"),
+      W("Maori Queen", "faces-figures-series-17-maori-queen.jpg", [], {wide:true}),
+      W("Prayer To Heaven", "icons-series-05-prayers-to- heaven.jpg", ["icons-series-05-prayers-to-heaven.jpg"], {folder:"icons"}),
+      W("Self-Portrait: From the Beginning", "spiritual-influences-series-04-self-portrait-from-the-beginning.jpg", ["self-portrait-from-the-beginning.jpg"], {wide:true})
     ]
   }
 };
@@ -1672,75 +1823,41 @@ const personalityImages = [
 const studioImages = Array.from({length:20}, (_,i)=>`donna-studio-${String(i+1).padStart(2,"0")}.png`);
 
 const exhibitionImageBases = [
-  "exhibition",
-  "exhibitions",
-  "event",
-  "events",
-  "events-collectors",
-  "event-collector",
-  "gallery-event",
-  "gallery-opening",
-  "collector",
-  "collectors",
-  "client",
-  "clients",
-  "artist-talk",
-  "gallery",
-  "opening"
+  "exhibition","exhibitions","event","events","events-collectors","event-collector","gallery-event","gallery-opening","collector","collectors","client","clients","artist-talk","gallery","opening"
 ];
 
 const exhibitionImages = [
-  // Verified Group 4 — Events / Clients / Collectors images in GitHub.
-  // These are loaded first so the Proof of Presence section shows the real exhibition folder.
   ...Array.from({length:20}, (_,i)=>`exhibition-${String(i+1).padStart(2,"0")}.png`),
-
-  // Optional fallback naming support for future uploads. Missing files auto-hide.
-  ...exhibitionImageBases.flatMap(base =>
-    Array.from({length:40}, (_,i) => {
-      const n = String(i+1).padStart(2,"0");
-      return [
-        `${base}-${n}.jpg`,
-        `${base}-${n}.jpeg`,
-        `${base}-${n}.png`,
-        `${base}-${n}.webp`
-      ];
-    }).flat()
-  ),
-  "the-bishop-gallery.jpg",
-  "the-bishop-gallery.png",
-  "fortune-favors-the-curious.jpg",
-  "fortune-favors-the-curious.png",
-  "donna-exhibition.jpg",
-  "donna-exhibition.png",
-  "donna-gallery.jpg",
-  "donna-gallery.png",
-  "donna-collector.jpg",
-  "donna-collector.png",
-  "donna-event.jpg",
-  "donna-event.png",
-  "donna-with-collectors.jpg",
-  "donna-with-collectors.png"
+  ...Array.from({length:20}, (_,i)=>`exhibition-${String(i+1).padStart(2,"0")}.jpg`),
+  ...exhibitionImageBases.flatMap(base => Array.from({length:40}, (_,i) => {
+    const n = String(i+1).padStart(2,"0");
+    return [`${base}-${n}.jpg`,`${base}-${n}.png`,`${base}-${i+1}.jpg`,`${base}-${i+1}.png`];
+  }).flat())
 ];
 
+function encodePath(path){
+  return String(path || "").split("/").map((part, idx) => idx === 0 ? part : encodeURIComponent(part).replace(/%2F/g,"/")).join("/");
+}
 function folderFor(key){
   return media[key].folder || key;
 }
-function pathFor(key, file){
-  return `/assets/images/artwork/${folderFor(key)}/${file}`;
+function pathFor(key, file, item={}){
+  if(!file) return "";
+  if(file.startsWith("/")) return file;
+  const folder = item.folder || folderFor(key);
+  return `/assets/images/artwork/${folder}/${file}`;
 }
-function encodePath(path){
-  return path.split('/').map((part, i) => i === 0 ? part : encodeURIComponent(part)).join('/');
-}
-function titleToSlug(t){
-  return String(t || "").toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
-}
-function imgEl(src, alt){
-  return imgElCandidates([src], alt);
+function unique(arr){ return [...new Set(arr.filter(Boolean))]; }
+
+function artworkDetailText(item){
+  const medium = item.medium || "Mixed Media";
+  const size = item.size ? `, ${item.size}` : "";
+  return `${medium}${size}`;
 }
 
-function imgElCandidates(sources, alt, fallbackSrc){
+function imgElCandidates(sources, alt, fallback, onFinalMissing){
   const img = document.createElement("img");
-  const list = [...new Set([...(sources || []), fallbackSrc].filter(Boolean))];
+  const list = unique([...(Array.isArray(sources) ? sources : [sources]), fallback]);
   let index = 0;
   img.alt = alt || "";
   img.loading = "lazy";
@@ -1748,26 +1865,37 @@ function imgElCandidates(sources, alt, fallbackSrc){
   img.src = encodePath(list[0] || "");
   img.onerror = function(){
     index += 1;
-    if(index < list.length){
-      this.src = encodePath(list[index]);
-      return;
-    }
+    if(index < list.length){ this.src = encodePath(list[index]); return; }
     const parent = this.closest(".series-card,.art-tile,.modal-art,.series-page-art,.exhibition-tile");
     if(parent){ parent.classList.add("missing"); }
     this.classList.add("missing");
+    if(typeof onFinalMissing === "function") onFinalMissing(parent, this);
   };
   return img;
 }
 
 function workSourcesFor(key, item){
-  const [file, title, alternates] = item;
-  const names = [file, ...(Array.isArray(alternates) ? alternates : [])];
-  return names.map(name => pathFor(key, name));
+  const names = [item.file, ...(Array.isArray(item.alternates) ? item.alternates : [])];
+  return names.map(name => pathFor(key, name, item));
+}
+
+function addArtworkCaption(node, item){
+  const caption = document.createElement("div");
+  caption.className = "artwork-caption";
+  caption.innerHTML = `<strong>${item.title}</strong><span>${artworkDetailText(item)}</span>`;
+  node.appendChild(caption);
+}
+
+function applyArtworkShape(node, item){
+  if(item.wide) node.classList.add("is-wide");
+  if(item.fit) node.dataset.fit = item.fit;
+  if(item.focus) node.style.setProperty("--focus", item.focus);
 }
 
 function buildSeriesGrid(){
   const grid = document.getElementById("seriesGrid");
   if(!grid) return;
+  grid.innerHTML = "";
   Object.keys(media).forEach(key => {
     const s = media[key];
     const card = document.createElement("button");
@@ -1790,24 +1918,23 @@ function buildSeriesGrid(){
 function buildHighlights(){
   const strip = document.getElementById("highlightStrip");
   if(!strip) return;
+  strip.innerHTML = "";
   const picks = [
-    ["music","music-series-08-miles-davis.jpg","Miles Davis",true],
-    ["music","music-series-07-prince.jpg","Prince",false],
-    ["children","children-series-07-the-bluest-eye.png","The Bluest Eye",false],
-    ["sports","sports-series-02-jackie-robinson.jpg","Jackie Robinson",false],
-    ["nature","nature-series-01-dragon-fly.jpg","Dragon Fly",false],
-    ["icons","icons-series-04-lock-and-key-fredrick-douglas.jpg","Frederick Douglass",false],
-    ["sports","sports-series-03-the-greatest.jpg","The Greatest",false],
-    ["music","music-series-02-billie-holiday.jpg","Billie Holiday",false],
-    ["nature","nature-series-02-koi.jpg","Koi",false],
-    ["faces","faces-figures-series-20-the gaze.jpg","The Gaze",true]
+    ["music", "Miles Davis"], ["music", "Prince"], ["children", "The Bluest Eye"],
+    ["sports", "Jackie Robinson"], ["nature", "Dragon Fly"], ["icons", "Lock & Key: Frederick Douglass"],
+    ["sports", "The Greatest"], ["music", "Billie Holiday"], ["nature", "Koi"], ["faces", "The Gaze"]
   ];
-  picks.forEach(([series,file,title,wide]) => {
+  picks.forEach(([series,title]) => {
+    const item = media[series].works.find(w => w.title === title);
+    if(!item) return;
     const tile = document.createElement("div");
-    tile.className = `art-tile ${wide ? "wide" : ""}`;
-    tile.dataset.title = title;
-    tile.appendChild(imgEl(pathFor(series,file), title));
-    tile.addEventListener("click", () => openLightbox(pathFor(series,file), title));
+    tile.className = `art-tile ${item.wide ? "wide" : ""}`;
+    tile.dataset.title = item.title;
+    if(item.focus) tile.style.setProperty("--focus", item.focus);
+    const sources = workSourcesFor(series, item);
+    const image = imgElCandidates(sources, item.title, media[series].fallback);
+    tile.appendChild(image);
+    tile.addEventListener("click", () => openLightbox(image.currentSrc || image.src || sources[0], item));
     strip.appendChild(tile);
   });
 }
@@ -1816,23 +1943,15 @@ function buildExhibitions(){
   const grid = document.getElementById("exhibitionGrid");
   if(!grid) return;
   grid.innerHTML = "";
-
-  const exhibitionPaths = [...new Set(exhibitionImages.map(f => `/assets/images/exhibitions/${f}`))];
-
-  // Pull directly from Group 4 / Exhibitions only so this section is true exhibition, collector,
-  // client, and event proof-of-presence — not recycled studio/personality filler.
-  exhibitionPaths.slice(0,120).forEach((src, idx) => {
+  const exhibitionPaths = unique(exhibitionImages.map(f => `/assets/images/exhibitions/${f}`));
+  exhibitionPaths.slice(0,160).forEach((src, idx) => {
     const tile = document.createElement("button");
     tile.className = "exhibition-tile";
     tile.type = "button";
     tile.setAttribute("aria-label", `Open exhibition moment ${idx+1}`);
-    const image = imgEl(src, `Donna M. Richardson exhibition, collector, client, studio, or joyful personality moment ${idx+1}`);
-    image.onerror = function(){
-      tile.classList.add("missing");
-      this.classList.add("missing");
-    };
+    const image = imgElCandidates([src], `Donna M. Richardson exhibition, collector, client, or event moment ${idx+1}`, null, (parent)=>parent && parent.remove());
     tile.appendChild(image);
-    tile.addEventListener("click", () => openLightbox(src, "Donna M. Richardson Exhibition Moment"));
+    tile.addEventListener("click", () => openLightbox(image.currentSrc || image.src || src, {title:"Donna M. Richardson Exhibition Moment", medium:"Exhibition / Collector Moment", size:""}));
     grid.appendChild(tile);
   });
 }
@@ -1845,25 +1964,22 @@ function openSeries(key){
   const modalLead = document.getElementById("modalLead");
   const modalEyebrow = document.getElementById("modalEyebrow");
   const modalGrid = document.getElementById("modalGrid");
-
   modalTitle.textContent = s.label;
   modalLead.textContent = s.mood;
   modalEyebrow.textContent = "Cinematic Series Room";
   modalGrid.innerHTML = "";
-
   s.works.forEach((item) => {
-    const [file,title] = item;
     const art = document.createElement("div");
     art.className = "modal-art";
-    art.dataset.title = title;
+    art.dataset.title = item.title;
+    applyArtworkShape(art, item);
     const sources = workSourcesFor(key, item);
-    const fallback = s.fallback || sources[0];
-    const image = imgElCandidates(sources, title, fallback);
+    const image = imgElCandidates(sources, item.title, s.fallback);
     art.appendChild(image);
-    art.addEventListener("click", () => openLightbox(image.currentSrc || image.src || sources[0], title));
+    addArtworkCaption(art, item);
+    art.addEventListener("click", () => openLightbox(image.currentSrc || image.src || sources[0], item));
     modalGrid.appendChild(art);
   });
-
   modal.classList.add("open");
   modal.setAttribute("aria-hidden","false");
   document.body.style.overflow = "hidden";
@@ -1876,11 +1992,16 @@ function closeSeries(){
   document.body.style.overflow = "";
 }
 
-function openLightbox(src, title){
+function openLightbox(src, itemOrTitle){
   const lb = document.getElementById("lightbox");
   const img = document.getElementById("lightboxImg");
+  const caption = document.getElementById("lightboxCaption");
+  const item = typeof itemOrTitle === "object" ? itemOrTitle : {title:itemOrTitle};
   img.src = encodePath(src);
-  img.alt = title || "Donna M. Richardson artwork";
+  img.alt = item.title || "Donna M. Richardson artwork";
+  if(caption){
+    caption.innerHTML = `<h3>${item.title || "Donna M. Richardson Artwork"}</h3><p>${artworkDetailText(item)}</p>`;
+  }
   lb.classList.add("open");
   lb.setAttribute("aria-hidden","false");
 }
@@ -1890,6 +2011,8 @@ function closeLightbox(){
   lb.classList.remove("open");
   lb.setAttribute("aria-hidden","true");
   document.getElementById("lightboxImg").src = "";
+  const caption = document.getElementById("lightboxCaption");
+  if(caption) caption.innerHTML = "";
 }
 
 function showSeriesPage(key){
@@ -1920,23 +2043,16 @@ function wireEvents(){
       return;
     }
     const back = e.target.closest(".series-page-close");
-    if(back){
-      document.querySelectorAll(".series-page").forEach(page => page.classList.remove("is-active"));
-    }
+    if(back){ document.querySelectorAll(".series-page").forEach(page => page.classList.remove("is-active")); }
   });
   window.addEventListener("hashchange", syncHashSeries);
   document.getElementById("modalClose").addEventListener("click", closeSeries);
-  document.getElementById("seriesModal").addEventListener("click", (e) => {
-    if(e.target.id === "seriesModal") closeSeries();
-  });
+  document.getElementById("seriesModal").addEventListener("click", (e) => { if(e.target.id === "seriesModal") closeSeries(); });
   document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
-  document.getElementById("lightbox").addEventListener("click", (e) => {
-    if(e.target.id === "lightbox") closeLightbox();
-  });
+  document.getElementById("lightbox").addEventListener("click", (e) => { if(e.target.id === "lightbox") closeLightbox(); });
   document.addEventListener("keydown", (e) => {
     if(e.key === "Escape"){
-      closeLightbox();
-      closeSeries();
+      closeLightbox(); closeSeries();
       document.querySelectorAll(".series-page").forEach(page => page.classList.remove("is-active"));
     }
   });
@@ -1946,12 +2062,9 @@ function initFallbacks(){
   document.querySelectorAll("img").forEach(img => {
     img.addEventListener("error", function(){
       const holder = this.closest(".series-frame,.portrait-card,.texture-img-card");
-      if(holder){
-        holder.dataset.fallback = "true";
-      }
+      if(holder) holder.dataset.fallback = "true";
     }, {once:true});
   });
-
   document.querySelectorAll("video").forEach(video => {
     video.addEventListener("error", function(){
       const holder = this.closest(".feature-video,.video-card,.texture-video-card");
@@ -1960,10 +2073,10 @@ function initFallbacks(){
   });
 }
 
-
 function buildSeriesPages(){
   const holder = document.getElementById("seriesPages");
   if(!holder) return;
+  holder.innerHTML = "";
   Object.keys(media).forEach(key => {
     const s = media[key];
     const section = document.createElement("section");
@@ -1982,15 +2095,15 @@ function buildSeriesPages(){
     `;
     const grid = section.querySelector(".series-page-grid");
     s.works.forEach((item) => {
-      const [file,title] = item;
       const art = document.createElement("div");
       art.className = "series-page-art";
-      art.dataset.title = title;
+      art.dataset.title = item.title;
+      applyArtworkShape(art, item);
       const sources = workSourcesFor(key, item);
-      const fallback = s.fallback || sources[0];
-      const image = imgElCandidates(sources, title, fallback);
+      const image = imgElCandidates(sources, item.title, s.fallback);
       art.appendChild(image);
-      art.addEventListener("click", () => openLightbox(image.currentSrc || image.src || sources[0], title));
+      addArtworkCaption(art, item);
+      art.addEventListener("click", () => openLightbox(image.currentSrc || image.src || sources[0], item));
       grid.appendChild(art);
     });
     holder.appendChild(section);
@@ -2009,11 +2122,8 @@ function activateLivingMotion(){
     if(paused || !strip.children.length) return;
     const max = strip.scrollWidth - strip.clientWidth;
     if(max <= 0) return;
-    if(strip.scrollLeft >= max - 8){
-      strip.scrollTo({left:0, behavior:"smooth"});
-    }else{
-      strip.scrollBy({left:360, behavior:"smooth"});
-    }
+    if(strip.scrollLeft >= max - 8){ strip.scrollTo({left:0, behavior:"smooth"}); }
+    else{ strip.scrollBy({left:360, behavior:"smooth"}); }
   }, 2800);
 }
 
